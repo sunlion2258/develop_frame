@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <variable
+            name="vm"
+            type="com.sun.dev.viewmodel.CreateSessionViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.sun.dev.widget.AppToolBar
+            android:id="@+id/toolbar_create_session"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:toolbar_style="title_and_back"
+            app:toolbar_title="创建会话" />
+
+    </RelativeLayout>
+</layout>

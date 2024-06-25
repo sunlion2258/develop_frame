@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.sun.dev.viewmodel.AudioRecordViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.sun.dev.widget.AppToolBar
+            android:id="@+id/toolbar_record"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:toolbar_style="title_and_back"
+            app:toolbar_title="我的资料" />
+
+        <Button
+            android:id="@+id/btn_record"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_30"
+            android:layout_marginEnd="@dimen/dp_30"
+            android:background="@drawable/shape_login_btn"
+            android:text="点我录制"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_15" />
+
+    </RelativeLayout>
+</layout>

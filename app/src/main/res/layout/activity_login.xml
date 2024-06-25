@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.sun.dev.login.LoginViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".login.LoginActivity">
+
+        <ImageView
+            android:id="@+id/login_head_iv"
+            android:layout_width="@dimen/dp_90"
+            android:layout_height="@dimen/dp_90"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_150"
+            android:layout_marginBottom="@dimen/dp_70"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_app"
+            app:layout_constraintBottom_toTopOf="@+id/et_phone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_phone"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textSize="@dimen/sp_14"
+            app:met_autoValidate="true"
+            app:met_baseColor="@color/color_333333"
+            app:met_clearButton="true"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelAnimating="true"
+            app:met_iconLeft="@mipmap/icon_login_phone"
+            app:met_iconPadding="@dimen/dp_0"
+            app:met_maxCharacters="11" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/et_psd"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="@string/input_psd"
+                    android:inputType="textPassword"
+                    android:maxLength="18"
+                    android:textSize="@dimen/sp_14"
+                    app:met_autoValidate="true"
+                    app:met_baseColor="@color/color_333333"
+                    app:met_clearButton="true"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelAnimating="true"
+                    app:met_iconLeft="@mipmap/icon_login_psd"
+                    app:met_iconPadding="@dimen/dp_0"
+                    app:met_maxCharacters="18"
+                    app:met_singleLineEllipsis="true" />
+
+                <TextView
+                    android:id="@+id/tv_send_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/shape_blue10_btn"
+                    android:padding="5dp"
+                    android:text="发送验证码"
+                    android:clickable="@{vm.codeBtnClickable}"
+                    android:onClick="@{vm.codeBtnClickListener}"
+                    android:textColor="@color/color_white"
+                    android:textSize="14dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_30"
+            android:layout_marginEnd="@dimen/dp_30"
+            android:background="@drawable/shape_login_btn"
+            android:clickable="@{vm.loginClickable}"
+            android:onClick="@{vm.loginBtnClickListener}"
+            android:text="@string/login"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_15" />
+
+    </LinearLayout>
+</layout>

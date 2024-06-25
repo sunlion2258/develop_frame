@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.sun.dev.fragment.mine.MineViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/mine_top_iv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_250"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="lottiefiles.com - Star Wars Rey.json"
+            app:lottie_loop="true" />
+
+        <com.sun.dev.widget.AppRowLayout
+            android:id="@+id/mine_my"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{vm.mineViewOnClick}"
+            android:visibility="gone"
+            app:image_left="@mipmap/icon_data"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mine_top_iv"
+            app:row_title_text="@string/my_info" />
+
+        <com.sun.dev.widget.AppRowLayout
+            android:id="@+id/mine_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{vm.mineViewOnClick}"
+            android:visibility="gone"
+            app:image_left="@mipmap/icon_location"
+            app:layout_constraintTop_toBottomOf="@+id/mine_my"
+            app:row_title_text="@string/location" />
+
+        <com.sun.dev.widget.AppRowLayout
+            android:id="@+id/mine_drawing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{vm.mineViewOnClick}"
+            android:visibility="gone"
+            app:image_left="@mipmap/icon_draw"
+            app:layout_constraintTop_toBottomOf="@+id/mine_location"
+            app:row_title_text="@string/drawing" />
+
+        <com.sun.dev.widget.AppRowLayout
+            android:id="@+id/mine_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{vm.mineViewOnClick}"
+            android:visibility="gone"
+            app:image_left="@mipmap/icon_contact"
+            app:layout_constraintTop_toBottomOf="@+id/mine_drawing"
+            app:row_title_text="@string/contact" />
+
+        <com.sun.dev.widget.AppRowLayout
+            android:id="@+id/mine_jump_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{vm.mineViewOnClick}"
+            app:image_left="@mipmap/icon_jump_url"
+            app:layout_constraintTop_toBottomOf="@+id/mine_contact"
+            app:row_title_text="输入URL跳转" />
+
+        <com.sun.dev.widget.AppRowLayout
+            android:id="@+id/mine_share_friends"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:image_left="@mipmap/icon_contact"
+            app:layout_constraintTop_toBottomOf="@+id/mine_jump_url"
+            app:row_title_text="分享好友" />
+
+        <com.sun.dev.widget.AppRowLayout
+            android:id="@+id/mine_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:image_left="@mipmap/icon_3d"
+            app:layout_constraintTop_toBottomOf="@+id/mine_share_friends"
+            app:row_title_text="Opgl ES 2.0" />
+
+        <com.sun.dev.widget.AppRowLayout
+            android:id="@+id/mine_fbx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:image_left="@mipmap/icon_fbx"
+            app:layout_constraintTop_toBottomOf="@+id/mine_feedback"
+            app:row_title_text="加载FBX模型" />
+
+        <com.sun.dev.widget.AppRowLayout
+            android:id="@+id/mine_media_record"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/mine_fbx"
+            app:row_title_text="录制音频" />
+
+        <com.sun.dev.widget.AppRowLayout
+            android:id="@+id/mine_media_record_demo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/mine_fbx"
+            app:row_title_text="录制音频" />
+
+          <com.sun.dev.widget.AppRowLayout
+            android:id="@+id/mine_gyroscope"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/mine_fbx"
+            app:row_title_text="陀螺仪" />
+        <com.sun.dev.widget.AppRowLayout
+            android:id="@+id/mine_glb_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:image_left="@mipmap/icon_glb_model"
+            app:layout_constraintTop_toBottomOf="@+id/mine_fbx"
+            app:row_title_text="glb 模型" />
+        <com.sun.dev.widget.AppRowLayout
+            android:id="@+id/mine_to_unity"
+            android:layout_width="match_parent"
+            app:image_left="@mipmap/icon_unity_3d"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/mine_glb_model"
+            app:row_title_text="跳转unity游戏" />
+
+        <TextView
+            android:id="@+id/tv_quit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_55"
+            android:layout_marginTop="@dimen/dp_100"
+            android:layout_marginBottom="@dimen/dp_40"
+            android:background="@color/color_white"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:onClick="@{vm.mineViewOnClick}"
+            android:text="@string/quit"
+            android:textColor="@color/color_ff0000"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

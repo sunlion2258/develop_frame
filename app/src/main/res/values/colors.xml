@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#3D91FF</color>
+    <color name="colorPrimaryDark">#3D91FF</color>
+    <color name="colorAccent">#3D91FF</color>
+
+    <!--region 刻度进度条渐变色 -->
+    <color name="gradient1">#3D91FF</color>
+    <color name="gradient2">#71F1FF</color>
+    <color name="gradient3">#3D91FF</color>
+    <!--endregion-->
+
+    <color name="common_blue">#007AFF</color>
+    <color name="picker_blue">#1481FF</color>
+    <color name="picker_select_background">#0D007AFF</color>
+    <color name="picker_background">#FFFFFF</color>
+
+    <!-- 认证页面==>按钮背景颜色 -->
+    <color name="auth_btn_no">#FFB1AFB2</color>
+    <color name="auth_btn_yes">@color/common_blue</color>
+    <color name="ac_borrow_background">#EFEFEF</color>
+    <color name="ac_borrow_code_textColor">#444444</color>
+    <color name="color_FEFEFE">#FEFEFE</color>
+    <color name="color_ff0000">#FF0000</color>
+
+
+
+    <!--Login Button-->
+    <color name="color_66c1fa">#66C1FA</color>
+    <color name="color_4278ff">#4278FF</color>
+
+    <color name="color_white">#ffffff</color>
+    <color name="color_8d8d8d">#8D8D8D</color>
+    <color name="color_CCCCCC">#CCCCCC</color>
+    <color name="color_55a4fe">#55A4FE</color>
+
+    <color name="color_black">#000000</color>
+    <color name="color_1d1d1d">#1D1D1D</color>
+    <color name="color_ffa107">#FFA107</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_ff4b4b">#FF4B4B</color>
+    <color name="color_5095fd">#5095FD</color>
+    <color name="color_ededed">#EDEDED</color>
+    <color name="color_c4c4c4">#C4C4C4</color>
+    <color name="color_view_line_bg">#dbdbdb</color>
+
+    <color name="color_2b8afe">#2B8AFE</color>
+    <color name="transparent">#00000000</color>
+
+
+
+</resources>

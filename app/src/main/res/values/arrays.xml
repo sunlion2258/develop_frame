@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 圆形刻度进度条的渐变色 -->
+    <integer-array name="gradient_arc_color">
+        <item>@color/gradient1</item>
+        <item>@color/gradient2</item>
+        <item>@color/gradient3</item>
+    </integer-array>
+
+    <!-- 联系人认证 关系 -->
+    <string-array name="Contact_Relation">
+        <item>父亲</item>
+        <item>母亲</item>
+        <item>配偶</item>
+        <item>子女</item>
+    </string-array>
+</resources>

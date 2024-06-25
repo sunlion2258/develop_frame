@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--   ===============废===弃=============   -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".login.register.RegisterActivity">
+
+        <com.sun.dev.widget.AppToolBar
+                android:id="@+id/register_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_constraintTop_toTopOf="parent"
+                app:toolbar_style="title_and_back"
+                app:toolbar_title="注册"/>
+
+        <LinearLayout
+                android:id="@+id/register_phone_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                app:layout_constraintTop_toBottomOf="@id/register_toolbar"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+            <EditText
+                    android:id="@+id/register_phone_ed"
+                    android:hint="请输入您的手机号码"
+                    android:textColorHint="#c3c3c3"
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:paddingLeft="3dp"
+                    android:inputType="phone"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/register_code_ll"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:background="@android:color/white"
+                app:layout_constraintTop_toBottomOf="@+id/register_phone_ll"
+                app:layout_constraintLeft_toLeftOf="@id/register_phone_ll"
+                app:layout_constraintRight_toRightOf="@id/register_phone_ll"
+                android:layout_marginTop="1dp">
+
+            <EditText
+                    android:id="@+id/register_code_ed"
+                    android:hint="请输入验证码"
+                    android:textColorHint="#c3c3c3"
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:background="@null"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingLeft="3dp"
+                    android:inputType="number"
+                    android:maxLines="1"/>
+
+            <Button
+                    android:id="@+id/register_code_btn"
+                    android:text="获取验证码"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/shape_register_code_btn"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginRight="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/register_agreement_ll"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/register_code_ll"
+                app:layout_constraintLeft_toLeftOf="@id/register_phone_ll"
+                app:layout_constraintRight_toRightOf="@id/register_phone_ll"
+                android:layout_marginTop="10dp">
+
+            <CheckBox
+                    android:id="@+id/register_agreement_cb"
+                    android:text="我同意"
+                    android:textSize="13dp"
+                    android:textColor="#666666"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    android:id="@+id/register_agreement_tv"
+                    android:textSize="13dp"
+                    android:text="《用户注册协议》"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"/>
+        </LinearLayout>
+
+        <Button
+                android:id="@+id/register_btn"
+                android:text="立即注册"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/register_agreement_ll"
+                app:layout_constraintLeft_toLeftOf="@id/register_phone_ll"
+                app:layout_constraintRight_toRightOf="@id/register_phone_ll"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/shape_login_btn"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

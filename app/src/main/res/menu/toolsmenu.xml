@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:title="颜色"
+        tools:ignore="HardcodedText">
+        <menu>
+            <!--定义一组单选菜单项-->
+            <group android:checkableBehavior="single">
+                <!--定义子菜单-->
+                <item
+                    android:id="@+id/red"
+                    android:title="红"
+                    tools:ignore="HardcodedText" />
+                <item
+                    android:id="@+id/green"
+                    android:title="绿"
+                    tools:ignore="HardcodedText" />
+                <item
+                    android:id="@+id/blue"
+                    android:title="蓝"
+                    tools:ignore="HardcodedText" />
+                <item
+                    android:id="@+id/cyan"
+                    android:title="青"
+                    tools:ignore="HardcodedText" />
+                <item
+                    android:id="@+id/magenta"
+                    android:title="粉"
+                    tools:ignore="HardcodedText" />
+
+            </group>
+        </menu>
+
+    </item>
+
+    <item
+        android:title="线宽"
+        tools:ignore="HardcodedText">
+        <menu>
+            <!--定义子菜单-->
+            <group>
+                <item
+                    android:id="@+id/width_1"
+                    android:title="1"
+                    tools:ignore="HardcodedText" />
+                <item
+                    android:id="@+id/width_2"
+                    android:title="2"
+                    tools:ignore="HardcodedText" />
+                <item
+                    android:id="@+id/width_3"
+                    android:title="3"
+                    tools:ignore="HardcodedText" />
+            </group>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/clear"
+        android:title="橡皮檫"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/reset"
+        android:title="清除"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/save"
+        android:title="保存到相册"
+        tools:ignore="HardcodedText" />
+</menu>

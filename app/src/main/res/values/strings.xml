@@ -1,0 +1,42 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">小语智能</string>
+    <string name="main_bottom_home">对话</string>
+    <string name="main_bottom_return">AI智能体</string>
+    <string name="main_bottom_mine">我的</string>
+
+
+    <string name="welcome_tip">超乎你的想象</string>
+    <string name="quit">退出</string>
+    <string name="location">地图</string>
+    <string name="drawing">灵魂画手</string>
+    <string name="contact">通话记录</string>
+    <string name="my_info">我的信息</string>
+    <string name="my_info_name">姓名</string>
+    <string name="phone">手机号</string>
+    <string name="ID_number">身份证号</string>
+    <string name="skip">跳过</string>
+    <string name="single_blog_title">个人博客</string>
+    <string name="video_play">视频</string>
+
+    <string name="photo_tip_1">请上传在推荐APP上借款驳回截图</string>
+    <string name="photo_tip_2">请上传银行卡</string>
+    <string name="photo_tip_3">请上传身份证</string>
+    <string name="photo_tip_4">请上传手持身份证正面照</string>
+    <string name="load_photo_1">第一张</string>
+    <string name="load_photo_2">第二张</string>
+    <string name="load_photo_3">第三张</string>
+    <string name="load_photo_4">第四张</string>
+    <string name="load_photo_front">正面</string>
+    <string name="load_photo_back">反面</string>
+    <string name="refund_service">退款服务</string>
+    <string name="submit">提交</string>
+    <string name="confirm_quit">确定退出</string>
+    <string name="input_phone">请输入你的手机号</string>
+    <string name="input_psd">请输入你的密码</string>
+    <string name="login">登录</string>
+    <string name="choose_photo">选择相册</string>
+    <string name="reptile_blog_title">爬虫数据</string>
+    <string name="my_blog">我的博客</string>
+    <string name="jump_url">跳转URL</string>
+
+</resources>

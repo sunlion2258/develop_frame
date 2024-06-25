@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 垂直滚动Text -->
+    <declare-styleable name="VerticalScrollTextView">
+        <attr name="vst_sleepTime" format="integer" />
+        <attr name="vst_animDuration" format="integer" />
+        <attr name="vst_textSize" format="dimension" />
+        <attr name="vst_textColor" format="color" />
+        <attr name="vst_singleLine" format="boolean" />
+        <attr name="vst_scrollOrientation">
+            <enum name="up" value="0" />
+            <enum name="down" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <!-- Row UI -->
+    <declare-styleable name="AppRowLayout">
+        <attr name="row_style" format="integer">
+            <enum name="with_right_arrow" value="0" />
+            <enum name="with_right_text" value="1" />
+        </attr>
+        <attr name="image_left" format="reference" />
+        <attr name="row_title_text" format="string" />
+        <attr name="row_content_text" format="string" />
+        <attr name="image_right" format="reference" />
+        <attr name="row_right_text_style" format="integer">
+            <enum name="auth_no" value="0" />
+            <enum name="auth_yes" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <!-- 自定义ToolBar -->
+    <declare-styleable name="AppToolBar">
+        <attr name="toolbar_style" format="integer">
+            <enum name="home_page" value="0" />
+            <enum name="title_and_back" value="1" />
+            <enum name="only_title" value="2" />
+            <enum name="black_title" value="6" />
+        </attr>
+        <attr name="toolbar_title" format="string" />
+    </declare-styleable>
+
+    <!-- 自定义 我的信息中，一行的ViewGroup -->
+    <declare-styleable name="InfoRowLayout">
+        <attr name="info_title" format="string" />
+        <attr name="info_content" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="VerCodeInputView">
+        <attr name="VerCodeInputView_inputNum" format="integer"/>
+        <attr name="VerCodeInputView_inputWidth" format="dimension" />
+        <attr name="VerCodeInputView_inputPadding" format="dimension" />
+        <attr name="VerCodeInputView_inputTxtColor" format="color" />
+        <attr name="VerCodeInputView_inputTxtSize" format="dimension" />
+        <attr name="VerCodeInputView_inputBg" format="color" />
+        <attr name="VerCodeInputView_inputType" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="VerCodeInputView_inputNum">12
+
+    </declare-styleable>
+
+
+</resources>

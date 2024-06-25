@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/bottom_home"
+          android:icon="@mipmap/tab_shouye_b"
+          android:title="@string/main_bottom_home"/>
+
+<!--    <item android:id="@+id/bottom_return_money"-->
+<!--          android:icon="@mipmap/tab_huankuan_b"-->
+<!--          android:title="@string/main_bottom_return"/>-->
+
+    <item android:id="@+id/bottom_mine"
+          android:icon="@mipmap/tab_wode_b"
+          android:title="@string/main_bottom_mine"/>
+</menu>

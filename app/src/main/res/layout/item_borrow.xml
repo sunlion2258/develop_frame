@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent" android:layout_height="125dp"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:clickable="true"
+        android:background="@drawable/shape_borrow_list"
+        android:foreground="?attr/selectableItemBackground" android:focusable="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+                android:id="@+id/borrow_code"
+                android:text="借贷编号：2019040112345678"
+                android:textSize="@dimen/sp_14"
+                android:textColor="@color/color_333333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"/>
+
+        <!-- 虚线 -->
+        <View
+                android:id="@+id/borrow_dotted_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_2"
+                android:background="@drawable/item_dotted_line"
+                app:layout_constraintTop_toBottomOf="@+id/borrow_code"
+                android:layout_marginTop="@dimen/dp_10"/>
+
+        <TextView
+                android:id="@+id/borrow_date_days"
+                android:text="借款天数：1期（7天）"
+                android:textSize="@dimen/sp_16"
+                android:textColor="@color/color_333333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/borrow_code"/>
+
+        <TextView
+                android:id="@+id/borrow_text_money"
+                android:text="借款金额:"
+                android:textSize="@dimen/sp_14"
+                android:textColor="@color/color_333333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@+id/borrow_date_days"
+                app:layout_constraintLeft_toRightOf="@id/borrow_date_days"
+                android:layout_marginStart="@dimen/dp_30"/>
+
+        <TextView
+                android:id="@+id/borrow_money"
+                tools:text="￥1000"
+                android:textSize="@dimen/sp_14"
+                android:textColor="@color/color_ff0000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@+id/borrow_date_days"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginEnd="@dimen/dp_10"/>
+
+        <TextView
+                android:id="@+id/borrow_date_request"
+                android:text="申请日期 2019-04-01"
+                android:textSize="@dimen/sp_13"
+                android:textColor="@color/color_999999"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/borrow_date_days"
+                app:layout_constraintTop_toBottomOf="@id/borrow_date_days"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+                android:id="@+id/borrow_state"
+                android:text="待审核"
+                android:textSize="@dimen/sp_14"
+                android:textColor="@color/color_FEFEFE"
+                android:gravity="center"
+                android:paddingStart="@dimen/dp_10"
+                android:paddingEnd="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_2"
+                android:paddingBottom="@dimen/dp_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintRight_toRightOf="@id/borrow_money"
+                app:layout_constraintTop_toTopOf="@id/borrow_date_request"
+                android:background="@drawable/item_borrow_state_check_shape"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
