@@ -41,6 +41,7 @@
     <!--用于申请获取蓝牙信息进行室内定位-->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BODY_SENSORS"/>
     <!--    在清单中声明 OpenGL ES 的使用-->
     <uses-feature
         android:glEsVersion="0x00030000"

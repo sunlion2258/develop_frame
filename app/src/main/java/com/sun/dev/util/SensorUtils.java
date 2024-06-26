@@ -12,9 +12,9 @@ import java.util.List;
 public class SensorUtils {
     public static boolean hasOrientationSensor(Context context) {
         SensorManager sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
-        List<Sensor> sensorList = sensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
+        List<Sensor> sensorList = sensorManager.getSensorList(Sensor.TYPE_ALL);
 
-        boolean hasOrientationSensor = sensorManager.getSensorList(Sensor.TYPE_ORIENTATION).size() > 0;
+        boolean hasOrientationSensor = sensorManager.getSensorList(Sensor.TYPE_ALL).size() > 0;
         return hasOrientationSensor;
     }
 }

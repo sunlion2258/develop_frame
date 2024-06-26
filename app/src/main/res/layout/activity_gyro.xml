@@ -19,7 +19,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:toolbar_style="title_and_back"
-            app:toolbar_title="陀螺仪" />
+            app:toolbar_title="传感器获取设备三维坐标" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前设备传感器："
+            android:layout_marginStart="@dimen/dp_10"
+            android:textSize="@dimen/sp_11" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_gyro_list"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_gyro_xy"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2" />
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 </layout>
