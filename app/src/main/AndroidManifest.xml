@@ -46,8 +46,7 @@
         android:glEsVersion="0x00030000"
         android:required="true" />
     <uses-feature
-        android:name="android.hardware.camera.ar"
-        android:required="true" />
+        android:name="android.hardware.camera.ar"/>
 
     <supports-screens
         android:anyDensity="true"
@@ -94,7 +93,7 @@
         <!-- https://github.com/SceneView/sceneform-android-->
         <meta-data
             android:name="com.google.ar.core"
-            android:value="optional" />
+            android:value="required" />
 
         <activity
             android:name=".activity.WelcomeActivity"

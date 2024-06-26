@@ -5,7 +5,6 @@ import android.os.CountDownTimer
 import android.text.Editable
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,9 +26,9 @@ import io.reactivex.schedulers.Schedulers
 class LoginViewModel(private val activity: LoginActivity, private val repository: LoginRepository) : ViewModel() {
 
     //登陆界面注册按钮是否能够点击
-    val loginClickable = MutableLiveData<Boolean>(true)
+    val loginClickable = MutableLiveData(true)
     //获取验证码按钮是否可以点击
-    val codeBtnClickable = MutableLiveData<Boolean>(true)
+    val codeBtnClickable = MutableLiveData(true)
     //获取验证码是否成功
     val codeBean = MutableLiveData<CodeBean>()
     //是否登陆成功
@@ -180,7 +179,6 @@ class LoginViewModel(private val activity: LoginActivity, private val repository
             code = s.toString()
         }
     }
-
 
     /**
      * 登陆成功后保存用户信息

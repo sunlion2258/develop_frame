@@ -116,24 +116,26 @@
             app:layout_constraintTop_toBottomOf="@+id/mine_fbx"
             app:row_title_text="录制音频" />
 
-          <com.sun.dev.widget.AppRowLayout
+        <com.sun.dev.widget.AppRowLayout
             android:id="@+id/mine_gyroscope"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/mine_fbx"
             app:row_title_text="陀螺仪" />
+
         <com.sun.dev.widget.AppRowLayout
             android:id="@+id/mine_glb_model"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:image_left="@mipmap/icon_glb_model"
-            app:layout_constraintTop_toBottomOf="@+id/mine_fbx"
+            app:layout_constraintTop_toBottomOf="@+id/mine_gyroscope"
             app:row_title_text="glb 模型" />
+
         <com.sun.dev.widget.AppRowLayout
             android:id="@+id/mine_to_unity"
             android:layout_width="match_parent"
-            app:image_left="@mipmap/icon_unity_3d"
             android:layout_height="wrap_content"
+            app:image_left="@mipmap/icon_unity_3d"
             app:layout_constraintTop_toBottomOf="@+id/mine_glb_model"
             app:row_title_text="跳转unity游戏" />
 

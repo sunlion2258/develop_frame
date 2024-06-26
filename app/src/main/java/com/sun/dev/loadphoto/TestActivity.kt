@@ -3,13 +3,23 @@
 package com.sun.dev.loadphoto
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
+import com.google.ar.core.ArCoreApk
+import com.google.ar.sceneform.ux.ArFragment
 import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseMVVMActivity
 import com.sun.dev.databinding.ActivityTestBinding
 import kotlinx.android.synthetic.main.activity_test.toolbar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.jetbrains.anko.toast
 
 
 /**
@@ -24,7 +34,6 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
     override fun onClick(v: View?) {
     }
 
-
     override fun initViewModel(): TestModel =
         ViewModelProviders.of(this, TestFactory(TestRepository()))
             .get(TestModel::class.java)
@@ -34,6 +43,5 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
         ImmersionBar.with(this)
             .statusBarDarkFont(true)
             .init()
-
     }
 }

@@ -10,6 +10,10 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.ar.core.HitResult
 import com.google.ar.core.Plane
 import com.google.ar.sceneform.AnchorNode
+import com.google.ar.sceneform.Node
+import com.google.ar.sceneform.SkeletonNode
+import com.google.ar.sceneform.math.Quaternion
+import com.google.ar.sceneform.math.Vector3
 import com.google.ar.sceneform.rendering.ModelRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
@@ -55,22 +59,34 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
             }
 
         // 设置点击事件来放置模型
-        arFragment!!.setOnTapArPlaneListener { hitResult: HitResult, plane: Plane?, motionEvent: MotionEvent? ->
-            if (modelRenderable == null) {
-                return@setOnTapArPlaneListener
+//        arFragment!!.setOnTapArPlaneListener { hitResult: HitResult, plane: Plane?, motionEvent: MotionEvent? ->
+//            if (modelRenderable == null) {
+//                return@setOnTapArPlaneListener
+//            }
+//            // 创建锚点
+//            val anchor = hitResult.createAnchor()
+//            val anchorNode =
+//                AnchorNode(anchor)
+//            anchorNode.parent = arFragment!!.arSceneView.scene
+//
+//            // 创建模型节点
+//            val modelNode = TransformableNode(arFragment!!.transformationSystem)
+//            modelNode.parent = anchorNode
+//            modelNode.setRenderable(modelRenderable)
+//            modelNode.select()
+//        }
+
+
+        modelRenderable.let {
+            val jointNode: Node?= SkeletonNode().findByName("Human_LeftArm")
+            if (jointNode != null) {
+                val newRotation: Quaternion = Quaternion.axisAngle(Vector3(0f, 1f, 0f), 45f)
+                animateJoint(jointNode, newRotation);
             }
-            // 创建锚点
-            val anchor = hitResult.createAnchor()
-            val anchorNode =
-                AnchorNode(anchor)
-            anchorNode.parent = arFragment!!.arSceneView.scene
-
-            // 创建模型节点
-            val modelNode = TransformableNode(arFragment!!.transformationSystem)
-            modelNode.parent = anchorNode
-            modelNode.setRenderable(modelRenderable)
-            modelNode.select()
         }
+    }
 
+    private fun animateJoint(node: Node, rotation: Quaternion) {
+        node.localRotation = rotation
     }
 }

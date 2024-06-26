@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.sun.dev.loadphoto.TestModel" />
+            type="com.sun.dev.loadphoto.GyroModel" />
     </data>
 
     <LinearLayout
@@ -20,12 +20,6 @@
             android:layout_height="wrap_content"
             app:toolbar_style="title_and_back"
             app:toolbar_title="陀螺仪" />
-
-        <fragment
-            android:id="@+id/ux_fragment"
-            android:name="com.google.ar.sceneform.ux.ArFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
     </LinearLayout>
 </layout>

@@ -13,22 +13,25 @@ import cn.qqtheme.framework.util.LogUtils
 import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseMVVMActivity
+import com.sun.dev.databinding.ActivityGyroBinding
 import com.sun.dev.databinding.ActivityTestBinding
+import com.sun.dev.util.SensorUtils
 import kotlinx.android.synthetic.main.activity_test.toolbar
+import org.jetbrains.anko.toast
 
 /**
  * 陀螺仪页面
  * Created by SunLion on 2024/6/25.
  */
 @Suppress("DEPRECATION")
-class GyroActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>() {
+class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
     private var sensorManager: SensorManager? = null
 
-    override fun initContentViewID(): Int = R.layout.activity_test
+    override fun initContentViewID(): Int = R.layout.activity_gyro
 
-    override fun initViewModel(): TestModel =
-        ViewModelProviders.of(this, TestFactory(TestRepository()))
-            .get(TestModel::class.java)
+    override fun initViewModel(): GyroModel =
+        ViewModelProviders.of(this, GyroFactory(GyroRepository()))
+            .get(GyroModel::class.java)
 
     override fun onMVVMCreated(savedInstanceState: Bundle?) {
         ImmersionBar.setTitleBar(this, toolbar)
@@ -38,14 +41,20 @@ class GyroActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>() {
         /**
          * 陀螺仪相关逻辑
          */
-        initGyroscope()
+//        initGyroscope()
+
+        val hasOrientationSensor = SensorUtils.hasOrientationSensor(this@GyroActivity)
     }
 
     private fun initGyroscope() {
         //陀螺仪管理器
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-
+        sensorManager =getSystemService(Context.SENSOR_SERVICE) as SensorManager?
+        if (sensorManager == null) {
+            toast("sensorManager 为null")
+            return
+        }
         val gyroscopeSensor: Sensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
+
         sensorManager?.registerListener(
             sensorEventListener,
             gyroscopeSensor,
@@ -63,9 +72,9 @@ class GyroActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>() {
             val y = event.values[1]
             //正值表示顺时针旋转，负值表示逆时针旋转。
             val z = event.values[2]
-            LogUtils.debug("X 坐标 $x")
-            LogUtils.debug("Y 坐标 $y")
-            LogUtils.debug("Z 坐标 $z")
+            LogUtils.debug("陀螺仪 X 坐标 $x")
+            LogUtils.debug("陀螺仪 Y 坐标 $y")
+            LogUtils.debug("陀螺仪 Z 坐标 $z")
         }
 
         override fun onAccuracyChanged(p0: Sensor?, p1: Int) {

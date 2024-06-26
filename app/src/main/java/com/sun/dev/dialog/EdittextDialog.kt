@@ -93,7 +93,7 @@ class EdittextDialog : DialogFragment() {
         params.height = WindowManager.LayoutParams.WRAP_CONTENT
         dialog!!.window!!.attributes = params
         dialog!!.window!!.setBackgroundDrawable(null)
-        val m = activity!!.windowManager
+        val m = requireActivity().windowManager
         val d = m.defaultDisplay
         val p = dialog!!.window!!.attributes
         p.width = (d.width)

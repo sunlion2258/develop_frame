@@ -19,7 +19,9 @@ import com.sun.dev.loadphoto.UnityTestActivity
 import com.sun.dev.login.LoginActivity
 import com.sun.dev.nuidemo.SpeechRecognizerActivity
 import com.sun.dev.util.CodeUtil
+import kotlinx.coroutines.delay
 import org.jetbrains.anko.support.v4.startActivity
+import java.lang.Thread.sleep
 
 /**
  *  Created by SunLion on 2019/4/29 17:54

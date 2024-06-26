@@ -26,12 +26,6 @@ import retrofit2.converter.gson.GsonConverterFactory
  * Created by SunLion on 2019/5/6 13:39
  */
 object RetrofitManager {
-
-    /**
-     * Gson工具
-     */
-    var gson = Gson()
-
     /**
      * 设置okhttp
      */
