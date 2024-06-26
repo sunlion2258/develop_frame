@@ -66,7 +66,7 @@ class MineFragment : BaseMVVMFragment<FragmentMainMineBinding, MineViewModel>() 
             startActivity<TestActivity>()
         }
         bindView.mineFbx.setOnClickListener {
-            startActivity<GyroActivity>()
+            startActivity<TestActivity>()
         }
         bindView.mineGyroscope.setOnClickListener {
             startActivity<GyroActivity>()

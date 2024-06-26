@@ -110,6 +110,7 @@
         <activity
             android:name=".login.LoginActivity"
             android:screenOrientation="fullSensor"
+            android:launchMode="singleInstance"
             tools:ignore="DiscouragedApi" />
         <activity
             android:name=".activity.TitleWithContentActivity"
@@ -139,7 +140,7 @@
             tools:ignore="DiscouragedApi" />
         <activity
             android:name="com.sun.dev.loadphoto.GyroActivity"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi" />
         <activity
             android:name="com.sun.dev.loadphoto.GLBActivity"

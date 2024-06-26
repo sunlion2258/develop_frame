@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.activity_unity_test.tv_to_unity
 /**
  * Created by SunLion on 2024/6/20.
  */
-@Suppress("DEPRECATION")
 class UnityTestActivity : BaseMVVMActivity<ActivityUnityTestBinding, UnityModel>() {
 
     override fun initContentViewID(): Int = R.layout.activity_unity_test

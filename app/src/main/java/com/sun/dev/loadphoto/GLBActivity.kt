@@ -4,19 +4,14 @@ package com.sun.dev.loadphoto
 
 import android.net.Uri
 import android.os.Bundle
-import android.view.MotionEvent
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
-import com.google.ar.core.HitResult
-import com.google.ar.core.Plane
-import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.Node
 import com.google.ar.sceneform.SkeletonNode
 import com.google.ar.sceneform.math.Quaternion
 import com.google.ar.sceneform.math.Vector3
 import com.google.ar.sceneform.rendering.ModelRenderable
 import com.google.ar.sceneform.ux.ArFragment
-import com.google.ar.sceneform.ux.TransformableNode
 import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseMVVMActivity
@@ -48,7 +43,6 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
         // 加载.glb模型
         ModelRenderable.builder()
             .setSource(this@GLBActivity, Uri.parse("file:///android_asset/Human.glb"))
-//            .setIsFilamentGltf(true)
             .build()
             .thenAccept { renderable: ModelRenderable ->
                 modelRenderable = renderable
@@ -57,25 +51,6 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
                 Toast.makeText(this, "无法加载模型", Toast.LENGTH_LONG).show()
                 null
             }
-
-        // 设置点击事件来放置模型
-//        arFragment!!.setOnTapArPlaneListener { hitResult: HitResult, plane: Plane?, motionEvent: MotionEvent? ->
-//            if (modelRenderable == null) {
-//                return@setOnTapArPlaneListener
-//            }
-//            // 创建锚点
-//            val anchor = hitResult.createAnchor()
-//            val anchorNode =
-//                AnchorNode(anchor)
-//            anchorNode.parent = arFragment!!.arSceneView.scene
-//
-//            // 创建模型节点
-//            val modelNode = TransformableNode(arFragment!!.transformationSystem)
-//            modelNode.parent = anchorNode
-//            modelNode.setRenderable(modelRenderable)
-//            modelNode.select()
-//        }
-
 
         modelRenderable.let {
             val jointNode: Node?= SkeletonNode().findByName("Human_LeftArm")

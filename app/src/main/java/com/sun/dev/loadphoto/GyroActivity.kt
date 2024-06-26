@@ -50,6 +50,13 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
             .init()
 
         val sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+
+        if (sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE) != null) {
+        } else {
+            toast("没有陀螺仪传感器")
+        }
+
+
         val sensorList = sensorManager.getSensorList(Sensor.TYPE_ALL)
         for (sensor in sensorList) {
             mList.add(GyroBean(sensor.name))
@@ -91,7 +98,7 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
 
                 mXYList.add(GyroBean("X轴坐标：$x  Y轴：$y   Z轴： $z"))
                 mXYAdapter.setNewData(mXYList)
-                rv_gyro_xy.smoothScrollToPosition(mXYList.size-1)
+                rv_gyro_xy.smoothScrollToPosition(mXYList.size - 1)
             }
 
         }
