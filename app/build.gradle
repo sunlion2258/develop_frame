@@ -151,8 +151,6 @@ dependencies {
     //noinspection GradleDependency
     implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '1.6.0'
     implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-android', version: '1.6.4'
-    //RxPermission
-    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     //Logger
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
     //滚轮选择器
@@ -191,6 +189,7 @@ dependencies {
     implementation rootProject.ext.dependencies.BGAQRCode
     implementation rootProject.ext.dependencies.eventbus
     implementation rootProject.ext.dependencies.SmartRefreshLayout
+    implementation rootProject.ext.dependencies.rxpermissions
 
     implementation 'com.google.ar:core:1.36.0'
     implementation "com.google.ar.sceneform:core:1.17.1"

@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.sun.dev.datebase.AppDatabase
+import com.sun.dev.datebase.DatabaseProvider
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -23,9 +24,5 @@ class MyApplication : Application() {
         super.onCreate()
         //初始化全局Context
         context = this.applicationContext
-
-        GlobalScope.launch {
-        db = Room.databaseBuilder(context, AppDatabase::class.java, "my-database").build()
-        }
     }
 }

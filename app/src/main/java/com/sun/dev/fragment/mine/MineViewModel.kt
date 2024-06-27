@@ -25,7 +25,6 @@ import org.jetbrains.anko.startActivity
 class MineViewModel(repository: MineRepository, val activity: MainActivity) : ViewModel() {
 
     private val account = MutableLiveData<String>()
-    private val isLogin = MutableLiveData<Boolean>()
 
     init {
         account.value = repository.getAccount()

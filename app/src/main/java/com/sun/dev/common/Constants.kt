@@ -6,7 +6,9 @@ import com.sun.dev.BuildConfig
 /**
  * 常量
  */
-internal interface Constants {
+object Constants {
+
+    const val DATABASE_NAME = "app_database"
 
     /**
      * 网络请求相关
@@ -24,30 +26,6 @@ internal interface Constants {
         const val LOGIN = "xiaoyu/member/smsLogin"
         //博客地址
         const val BLOG_URL = "https://blog.csdn.net/qq_36255612/article/list/1"
-        //退出登录
-        const val LOGOUT = "xiaoyu/member/logout"
-        //注销账号
-        const val DELETE = "xiaoyu/member/delete"
-        //创建对话
-        const val SESSION_CREATE = "xiaoyu/session/create"
-        //查询对话列表
-        const val SESSION_LIST = "xiaoyu/session/list"
-        //删除对话
-        const val SESSION_DELETE = "xiaoyu/session/delete"
-        //修改对话
-        const val SESSION_UPDATE = "xiaoyu/session/update"
-        //清除上下文
-        const val CONTEXT_DELETE = "xiaoyu/context/delete"
-        //翻译1
-        const val SESSION_TRANS = "xiaoyu/session/trans"
-        //纠错1
-        const val SESSION_CORRECTION = "xiaoyu/session/correction"
-        //解析1
-        const val SESSION_ANALYSIS = "xiaoyu/session/analysis"
-        //获取对话
-        const val SESSION_GET = "xiaoyu/session/get"
-        //语言列表
-        const val SESSION_LANGUAGE = "xiaoyu/session/language"
     }
 
     /**

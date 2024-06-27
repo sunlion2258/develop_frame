@@ -2,7 +2,6 @@
 
 package com.sun.dev.fragment.mine
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
@@ -11,17 +10,13 @@ import com.sun.dev.R
 import com.sun.dev.activity.MainActivity
 import com.sun.dev.base.BaseMVVMFragment
 import com.sun.dev.databinding.FragmentMainMineBinding
-import com.sun.dev.dialog.RedPacketInviteFriendDialog
-import com.sun.dev.loadphoto.GyroActivity
 import com.sun.dev.loadphoto.GLBActivity
+import com.sun.dev.loadphoto.GyroActivity
 import com.sun.dev.loadphoto.TestActivity
 import com.sun.dev.loadphoto.UnityTestActivity
 import com.sun.dev.login.LoginActivity
-import com.sun.dev.nuidemo.SpeechRecognizerActivity
 import com.sun.dev.util.CodeUtil
-import kotlinx.coroutines.delay
 import org.jetbrains.anko.support.v4.startActivity
-import java.lang.Thread.sleep
 
 /**
  *  Created by SunLion on 2019/4/29 17:54
@@ -47,24 +42,7 @@ class MineFragment : BaseMVVMFragment<FragmentMainMineBinding, MineViewModel>() 
         bindView.mineMediaRecord.setOnClickListener {
             AudioRecordActivity.start(activity!!, "我是录制")
         }
-        bindView.mineMediaRecordDemo.setOnClickListener {
-            val intent = Intent(activity, SpeechRecognizerActivity::class.java)
-            startActivity(intent)
-        }
-        bindView.mineShareFriends.setOnClickListener {
-            val receiveRedPacketDialog = RedPacketInviteFriendDialog(
-                activity!!,
-                "https://www.baidu.com",
-                "1"
-            )
-            receiveRedPacketDialog.show(
-                activity!!.supportFragmentManager,
-                MineFragment::class.java.toString()
-            )
-        }
-        bindView.mineFeedback.setOnClickListener {
-            startActivity<TestActivity>()
-        }
+
         bindView.mineFbx.setOnClickListener {
             startActivity<TestActivity>()
         }
