@@ -12,7 +12,11 @@ import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseMVVMActivity
 import com.sun.dev.common.Constants
+import com.sun.dev.common.MyApplication
 import com.sun.dev.databinding.ActivityLoginBinding
+import com.sun.dev.entity.User
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.toast
 
 /**

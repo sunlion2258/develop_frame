@@ -99,7 +99,7 @@
         <activity
             android:name=".activity.WelcomeActivity"
             android:exported="true"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -109,34 +109,34 @@
         </activity>
         <activity
             android:name=".login.LoginActivity"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="landscape"
             android:launchMode="singleInstance"
             tools:ignore="DiscouragedApi" />
         <activity
             android:name=".activity.TitleWithContentActivity"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi" />
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi" />
         <activity android:name=".location.LocationActivity" />
         <activity
             android:name="com.sun.dev.loadphoto.TestActivity"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi" />
         <activity
             android:name="com.sun.dev.fragment.mine.AudioRecordActivity"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi" />
         <activity
             android:name="com.sun.dev.nuidemo.SpeechRecognizerActivity"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi" />
         <activity
             android:name="com.sun.dev.activity.CreateSessionActivity"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi" />
         <activity
             android:name="com.sun.dev.loadphoto.GyroActivity"
@@ -144,11 +144,11 @@
             tools:ignore="DiscouragedApi" />
         <activity
             android:name="com.sun.dev.loadphoto.GLBActivity"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi" />
         <activity
             android:name="com.sun.dev.loadphoto.UnityTestActivity"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi" />
 
 

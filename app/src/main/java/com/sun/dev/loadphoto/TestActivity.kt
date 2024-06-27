@@ -11,10 +11,16 @@ import com.google.ar.sceneform.ux.ArFragment
 import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseMVVMActivity
+import com.sun.dev.common.MyApplication
 import com.sun.dev.databinding.ActivityTestBinding
+import com.sun.dev.entity.User
 import kotlinx.android.synthetic.main.activity_test.toolbar
+import kotlinx.android.synthetic.main.activity_test.tv_insert_user
+import kotlinx.android.synthetic.main.activity_test.tv_query_all_user
+import kotlinx.android.synthetic.main.activity_test.tv_update_user
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -43,5 +49,43 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
         ImmersionBar.with(this)
             .statusBarDarkFont(true)
             .init()
+
+        tv_insert_user.setOnClickListener {
+            GlobalScope.launch {
+                MyApplication.db.userDao()
+                    .insertUser(User(1, "18625916235"))
+            }
+        }
+        tv_query_all_user.setOnClickListener {
+            GlobalScope.launch {
+                val allUser = MyApplication.db.userDao().getAllUser()
+                for (user in allUser) {
+
+                }
+
+            }
+        }
+
+        tv_update_user.setOnClickListener {
+            var currentUser: User
+
+            GlobalScope.launch {
+                val allUser = MyApplication.db.userDao().getAllUser()
+                if (allUser.isNotEmpty()) {
+                    for (user in allUser) {
+                        if (user.phoneNum == "18625916235") {
+                            currentUser = user
+
+                            currentUser.phoneNum = "186"
+                            GlobalScope.launch {
+                                MyApplication.db.userDao()
+                                    .updateUser(currentUser)
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
     }
 }

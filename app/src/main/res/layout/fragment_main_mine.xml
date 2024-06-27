@@ -98,9 +98,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:image_left="@mipmap/icon_fbx"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintTop_toBottomOf="@+id/mine_feedback"
-            app:row_title_text="加载FBX模型" />
+            app:row_title_text="测试页面" />
 
         <com.sun.dev.widget.AppRowLayout
             android:id="@+id/mine_media_record"
