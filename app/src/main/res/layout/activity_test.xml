@@ -21,6 +21,24 @@
             app:toolbar_style="title_and_back"
             app:toolbar_title="测试页面" />
 
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_phone"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textSize="@dimen/sp_14"
+            app:met_autoValidate="true"
+            app:met_baseColor="@color/color_333333"
+            app:met_clearButton="true"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelAnimating="true"
+            app:met_iconLeft="@mipmap/icon_login_phone"
+            app:met_iconPadding="@dimen/dp_0"
+            app:met_maxCharacters="11" />
+
+
         <TextView
             android:id="@+id/tv_insert_user"
             android:layout_width="wrap_content"
@@ -66,6 +84,22 @@
             android:paddingEnd="@dimen/dp_15"
             android:paddingBottom="@dimen/dp_10"
             android:text="更新user"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_13" />
+
+        <TextView
+            android:id="@+id/tv_delete_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_40"
+            android:background="@drawable/shape_login_btn"
+            android:gravity="center"
+            android:paddingStart="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_15"
+            android:paddingBottom="@dimen/dp_10"
+            android:text="删除user"
             android:textColor="@color/color_white"
             android:textSize="@dimen/sp_13" />
 

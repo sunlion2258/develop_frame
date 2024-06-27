@@ -15,12 +15,16 @@ interface UserDao {
     @Insert
     fun insertUser(user: User)
 
-    @Delete
-    fun deleteUser(user: User)
+//    @Delete
+    @Query("delete from user where phoneNum = :phoneNum")
+    fun deleteUser(phoneNum: String)
 
     @Update
     fun updateUser(user: User)
 
     @Query("SELECT * FROM user")
     fun getAllUser(): List<User>
+
+    @Query("select * from user where phoneNum = :phoneNum")
+    fun queryUser(phoneNum: String): User?
 }

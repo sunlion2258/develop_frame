@@ -1,5 +1,6 @@
 package com.sun.dev.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -9,6 +10,15 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "user")
 data class User(
     @PrimaryKey
-    val id: Int,
-    var phoneNum: String
-)
+    @ColumnInfo(name = "phoneNum")
+    var phoneNum: String,
+
+    @ColumnInfo(name = "name")
+    var name: String
+
+
+) {
+    override fun toString(): String {
+        return "User(phoneNum='$phoneNum', name='$name')"
+    }
+}
