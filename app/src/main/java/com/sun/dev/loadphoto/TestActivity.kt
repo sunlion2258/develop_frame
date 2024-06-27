@@ -9,8 +9,10 @@ import androidx.lifecycle.ViewModelProviders
 import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseMVVMActivity
+import com.sun.dev.common.Constants
 import com.sun.dev.common.MyApplication
 import com.sun.dev.databinding.ActivityTestBinding
+import com.sun.dev.datebase.DatabaseProvider
 import com.sun.dev.entity.User
 import com.sun.dev.util.toast
 import kotlinx.android.synthetic.main.activity_test.et_phone
@@ -45,12 +47,19 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
             .statusBarDarkFont(true)
             .init()
 
+
+        val db = DatabaseProvider.getDatabase(this@TestActivity)
+
         tv_insert_user.setOnClickListener {
             if (!TextUtils.isEmpty(et_phone.text.toString().trim())) {
                 GlobalScope.launch {
-                    MyApplication.db.userDao()
+                    db.userDao()
                         .insertUser(User(et_phone.text.toString().trim(), "哈哈"))
                 }
+
+
+                val internalDbFile = getDatabasePath(Constants.DATABASE_NAME)
+                DatabaseProvider.updateExternalDatabase(this@TestActivity, internalDbFile)
             } else {
                 toast("请输入手机号")
             }
@@ -58,7 +67,7 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
         tv_query_all_user.setOnClickListener {
             val builder = StringBuilder()
             GlobalScope.launch {
-                val allUser = MyApplication.db.userDao().getAllUser()
+                val allUser = db.userDao().getAllUser()
                 for (user in allUser) {
                     builder.append(user.toString())
                     builder.append("\n")
@@ -71,11 +80,11 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
 
         tv_update_user.setOnClickListener {
             GlobalScope.launch {
-                val allUser = MyApplication.db.userDao().getAllUser()
+                val allUser = db.userDao().getAllUser()
                 if (allUser.isNotEmpty()) {
                     for (user in allUser) {
                         if (user.phoneNum == "18625916235") {
-                            MyApplication.db.userDao().updateUser(User(user.phoneNum, "拉拉"))
+                            db.userDao().updateUser(User(user.phoneNum, "拉拉"))
                         }
                     }
 
@@ -84,7 +93,7 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
         }
         tv_delete_user.setOnClickListener {
             GlobalScope.launch {
-                MyApplication.db.userDao().deleteUser("18625916235")
+                db.userDao().deleteUser("18625916235")
             }
         }
     }

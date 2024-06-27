@@ -88,18 +88,6 @@
                 app:vst_textColor="@color/color_ffa107"
                 app:vst_textSize="@dimen/sp_13" />
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/lottie_1"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/dp_60"
-                android:layout_marginStart="@dimen/dp_10"
-                android:layout_marginTop="@dimen/dp_30"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="@id/home_scroll_iv"
-                app:layout_constraintWidth_percent=".30"
-                app:lottie_autoPlay="true"
-                app:lottie_fileName="lottiefiles.com - Emoji Wink.json"
-                app:lottie_loop="true" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottie_2"
@@ -107,48 +95,11 @@
                 android:layout_height="@dimen/dp_60"
                 android:layout_marginTop="@dimen/dp_30"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/lottie_1"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@id/home_scroll_iv"
                 app:layout_constraintWidth_percent=".30"
                 app:lottie_autoPlay="true"
                 app:lottie_fileName="lottiefiles.com - Emoji Tongue.json"
-                app:lottie_loop="true" />
-
-            <com.airbnb.lottie.LottieAnimationView
-                android:layout_width="0dp"
-                android:layout_height="@dimen/dp_60"
-                android:layout_marginTop="@dimen/dp_30"
-                app:layout_constraintLeft_toRightOf="@id/lottie_2"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/home_scroll_iv"
-                app:layout_constraintWidth_percent=".30"
-                app:lottie_autoPlay="true"
-                app:lottie_fileName="lottiefiles.com - Emoji Shock.json"
-                app:lottie_loop="true" />
-
-            <View
-                android:id="@+id/view_line"
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginTop="@dimen/dp_10"
-                android:background="@color/color_333333"
-                app:layout_constraintTop_toBottomOf="@id/lottie_1" />
-
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/tv_video"
-                android:layout_width="@dimen/dp_250"
-                android:layout_height="@dimen/dp_250"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/dp_40"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:text="@string/video_play"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/view_line"
-                app:lottie_autoPlay="true"
-                app:lottie_fileName="lottiefiles.com - Beating Heart.json"
                 app:lottie_loop="true" />
 
             <TextView

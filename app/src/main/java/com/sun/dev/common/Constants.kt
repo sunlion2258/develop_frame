@@ -8,7 +8,7 @@ import com.sun.dev.BuildConfig
  */
 object Constants {
 
-    const val DATABASE_NAME = "app_database"
+    const val DATABASE_NAME = "sphxt_app_database.db"
 
     /**
      * 网络请求相关
@@ -43,6 +43,9 @@ object Constants {
 
         //手机号
         const val PHONE_NUM = "phone_num"
+
+        //是否首次安装
+        const val IS_FIRST = "is_first"
 
     }
 

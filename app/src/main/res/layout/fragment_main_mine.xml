@@ -19,16 +19,6 @@
             android:layout_height="wrap_content"
             android:background="@color/color_white">
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/mine_top_iv"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_200"
-                android:scaleType="fitXY"
-                android:visibility="visible"
-                app:layout_constraintTop_toTopOf="parent"
-                app:lottie_autoPlay="true"
-                app:lottie_fileName="lottiefiles.com - Star Wars Rey.json"
-                app:lottie_loop="true" />
 
             <com.sun.dev.widget.AppRowLayout
                 android:id="@+id/mine_my"
@@ -38,8 +28,8 @@
                 android:visibility="gone"
                 app:image_left="@mipmap/icon_data"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mine_top_iv"
                 app:row_title_text="@string/my_info" />
 
             <com.sun.dev.widget.AppRowLayout

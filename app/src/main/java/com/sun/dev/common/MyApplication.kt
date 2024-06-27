@@ -3,6 +3,7 @@ package com.sun.dev.common
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 import com.sun.dev.datebase.AppDatabase
 import com.sun.dev.datebase.DatabaseProvider
@@ -17,7 +18,7 @@ class MyApplication : Application() {
     companion object {
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
-        lateinit var db: AppDatabase
+        lateinit var dp: AppDatabase
     }
 
     override fun onCreate() {
