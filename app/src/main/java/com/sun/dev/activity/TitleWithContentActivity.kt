@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.include_toolbar.view.*
  * 制式Activity
  */
 class TitleWithContentActivity : BaseActivity() {
+    private var strokeWidth:Float=1F
 
     override fun initContentViewID(): Int = R.layout.activity_title_with_content
 
@@ -56,42 +57,50 @@ class TitleWithContentActivity : BaseActivity() {
                                 drawView.paint.color = Color.RED
                                 it.isChecked = true
                                 drawView.setPaintModel()
+                                drawView.paint.strokeWidth=strokeWidth
                             }
                             R.id.green -> {
                                 drawView.paint.color = Color.GREEN
                                 it.isChecked = true
                                 drawView.setPaintModel()
+                                drawView.paint.strokeWidth=strokeWidth
                             }
                             R.id.blue -> {
                                 drawView.paint.color = Color.BLUE
                                 it.isChecked = true
                                 drawView.setPaintModel()
+                                drawView.paint.strokeWidth=strokeWidth
                             }
                             R.id.cyan -> {
                                 drawView.paint.color = Color.CYAN
                                 it.isChecked = true
                                 drawView.setPaintModel()
+                                drawView.paint.strokeWidth=strokeWidth
                             }
                             R.id.magenta -> {
                                 drawView.paint.color = Color.MAGENTA
                                 it.isChecked = true
                                 drawView.setPaintModel()
+                                drawView.paint.strokeWidth=strokeWidth
                             }
 
 
                             R.id.width_1 -> {
                                 drawView.setPaintModel()
                                 drawView.paint.strokeWidth = 1F
+                                strokeWidth=drawView.paint.strokeWidth
                             }
 
                             R.id.width_2 -> {
                                 drawView.setPaintModel()
-                                drawView.paint.strokeWidth = 2F
+                                drawView.paint.strokeWidth = 5F
+                                strokeWidth=drawView.paint.strokeWidth
                             }
 
                             R.id.width_3 -> {
                                 drawView.setPaintModel()
-                                drawView.paint.strokeWidth = 3F
+                                drawView.paint.strokeWidth = 10F
+                                strokeWidth=drawView.paint.strokeWidth
                             }
 
 

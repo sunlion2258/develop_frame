@@ -55,7 +55,6 @@ public class DrawView extends View {
         canvas.drawPath(path, paint);        //绘制路径
         canvas.save();                      //保存canvas的状态
         canvas.restore();                   //回复canvas之前的保存的状态，放置保存后对canvas执行的操作对后续的绘制有影响
-
     }
 
     /**
@@ -122,6 +121,7 @@ public class DrawView extends View {
      */
     public void resetCanvas() {
         cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+        invalidate();
     }
 
     /**
