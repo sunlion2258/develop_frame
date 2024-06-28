@@ -7,6 +7,18 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gyf.immersionbar.ImmersionBar
+import com.scwang.smartrefresh.header.DeliveryHeader
+import com.scwang.smartrefresh.header.DropBoxHeader
+import com.scwang.smartrefresh.header.FunGameBattleCityHeader
+import com.scwang.smartrefresh.header.FunGameHitBlockHeader
+import com.scwang.smartrefresh.header.MaterialHeader
+import com.scwang.smartrefresh.header.PhoenixHeader
+import com.scwang.smartrefresh.header.StoreHouseHeader
+import com.scwang.smartrefresh.header.TaurusHeader
+import com.scwang.smartrefresh.header.WaterDropHeader
+import com.scwang.smartrefresh.layout.header.BezierRadarHeader
+import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import com.scwang.smartrefresh.layout.header.TwoLevelHeader
 import com.sun.dev.R
 import com.sun.dev.activity.CreateSessionActivity
 import com.sun.dev.adapter.RedPacketRankListAdapter
@@ -87,6 +99,9 @@ class HomeFragment : BaseMVVMFragment<FragmentMainHomeBinding, HomeViewModel>(),
 
         }
 
+        bindView.refreshLayout.setRefreshHeader(ClassicsHeader(requireActivity()))
+        //淘宝二楼
+//        bindView.refreshLayout.setRefreshHeader(TwoLevelHeader(requireActivity()))
         bindView.refreshLayout.setOnRefreshListener {
             bindView.refreshLayout.finishRefresh(1000)
         }

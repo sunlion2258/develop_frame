@@ -1,22 +1,19 @@
 <resources>
-
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <!-- NoActionBar -->
-    <style name="AppTheme.NoActionBar" parent="AppTheme">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_black</item>
+        <item name="colorPrimaryDark">@color/color_black</item>
+        <item name="colorAccent">@color/color_black</item>
     </style>
 
-    <!-- 透明状态栏 -->
-    <style name="AppTheme.NoActionBar.TransparentStatus" parent="AppTheme.NoActionBar">
-        <item name="android:windowTranslucentStatus">true</item>
-    </style>
 
     <!-- 自定义等待Dialog -->
     <style name="AlertDialog.WaitProgress" parent="@style/Theme.AppCompat.Dialog">
@@ -40,5 +37,7 @@
         <item name="android:maxHeight">10dp</item>
     </style>
 
+
+    <item name="icon_change_language_dark" type="drawable">@drawable/icon_change_language_dark</item>
 
 </resources>

@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:toolbar_style="back_title"
-            app:toolbar_title="测试页面" />
+            app:toolbar_title="@string/test_page" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/et_phone"

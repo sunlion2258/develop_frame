@@ -49,6 +49,7 @@ object Constants {
         const val IS_FIRST = "is_first"
         const val VIP_FILE_NAME = "vip_file_name"
         const val LANGUAGE = "language"
+        const val THEME_PREFS = "theme_prefs"
 
     }
 

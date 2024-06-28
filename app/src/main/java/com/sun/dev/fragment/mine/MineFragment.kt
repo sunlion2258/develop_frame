@@ -2,26 +2,34 @@
 
 package com.sun.dev.fragment.mine
 
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import androidx.core.app.ActivityCompat.recreate
 import androidx.lifecycle.ViewModelProviders
 import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.activity.ChangeLanguageActivity
 import com.sun.dev.activity.MainActivity
 import com.sun.dev.base.BaseMVVMFragment
+import com.sun.dev.common.Constants
 import com.sun.dev.databinding.FragmentMainMineBinding
 import com.sun.dev.loadphoto.GLBActivity
 import com.sun.dev.loadphoto.GyroActivity
 import com.sun.dev.loadphoto.TestActivity
 import com.sun.dev.loadphoto.UnityTestActivity
+import com.sun.dev.util.SharedHelper
 import org.jetbrains.anko.support.v4.startActivity
+
 
 /**
  *  Created by SunLion on 2019/4/29 17:54
  */
 @Suppress("DEPRECATION")
 class MineFragment : BaseMVVMFragment<FragmentMainMineBinding, MineViewModel>() {
+    private var isDarkTheme = false
+
     override fun initContentViewID(): Int = R.layout.fragment_main_mine
 
     override fun initViewModel(): MineViewModel =
@@ -32,6 +40,15 @@ class MineFragment : BaseMVVMFragment<FragmentMainMineBinding, MineViewModel>() 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        isDarkTheme = SharedHelper.getShared().getBoolean(Constants.SP.THEME_PREFS, false)
+        if (isDarkTheme) {
+            requireActivity().setTheme(R.style.AppTheme_Dark)
+        } else {
+            requireActivity().setTheme(R.style.AppTheme)
+        }
+
         ImmersionBar.with(this)
             .statusBarDarkFont(true)
             .init()
@@ -56,6 +73,14 @@ class MineFragment : BaseMVVMFragment<FragmentMainMineBinding, MineViewModel>() 
         }
         bindView.logoutChangeLanguage.setOnClickListener {
             startActivity<ChangeLanguageActivity>()
+        }
+        bindView.mineChangeTheme.setOnClickListener {
+            // 切换主题标志
+            isDarkTheme = !isDarkTheme;
+
+            SharedHelper.getEdit { sp -> sp.putBoolean(Constants.SP.THEME_PREFS, isDarkTheme) }
+            // 重新启动活动以应用新主题
+            recreate(requireActivity())
         }
     }
 
