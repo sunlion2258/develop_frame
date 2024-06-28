@@ -32,6 +32,8 @@ import kotlinx.coroutines.launch
 class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
     View.OnClickListener {
 
+    var inputNum: String? = null
+
     override fun initContentViewID(): Int = R.layout.activity_test
 
     override fun onClick(v: View?) {
@@ -50,13 +52,21 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
 
         val db = DatabaseProvider.getDatabase(this@TestActivity)
 
+
         tv_insert_user.setOnClickListener {
-            if (!TextUtils.isEmpty(et_phone.text.toString().trim())) {
+            inputNum = et_phone.text.toString().trim()
+            if (!TextUtils.isEmpty(inputNum)) {
                 GlobalScope.launch {
+                    for (user in db.userDao().getAllUser()) {
+                        if (user.phoneNum == inputNum) {
+                            toast("表中数据存在请修改")
+                            return@launch
+                        }
+                    }
+
                     db.userDao()
                         .insertUser(User(et_phone.text.toString().trim(), "哈哈"))
                 }
-
 
                 val internalDbFile = getDatabasePath(Constants.DATABASE_NAME)
                 DatabaseProvider.updateExternalDatabase(this@TestActivity, internalDbFile)
@@ -65,6 +75,7 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
             }
         }
         tv_query_all_user.setOnClickListener {
+            inputNum = et_phone.text.toString().trim()
             val builder = StringBuilder()
             GlobalScope.launch {
                 val allUser = db.userDao().getAllUser()
@@ -79,21 +90,30 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
         }
 
         tv_update_user.setOnClickListener {
-            GlobalScope.launch {
-                val allUser = db.userDao().getAllUser()
-                if (allUser.isNotEmpty()) {
-                    for (user in allUser) {
-                        if (user.phoneNum == "18625916235") {
-                            db.userDao().updateUser(User(user.phoneNum, "拉拉"))
+            inputNum = et_phone.text.toString().trim()
+            if (!TextUtils.isEmpty(inputNum)) {
+                GlobalScope.launch {
+                    val allUser = db.userDao().getAllUser()
+                    if (allUser.isNotEmpty()) {
+                        for (user in allUser) {
+                            if (user.phoneNum == inputNum) {
+                                db.userDao().updateUser(User(user.phoneNum, "拉拉"))
+                            }
                         }
                     }
-
                 }
+            }else {
+                toast("请输入手机号")
             }
         }
         tv_delete_user.setOnClickListener {
-            GlobalScope.launch {
-                db.userDao().deleteUser("18625916235")
+            inputNum = et_phone.text.toString().trim()
+            if (!TextUtils.isEmpty(inputNum)) {
+                GlobalScope.launch {
+                    db.userDao().deleteUser(et_phone.text.toString().trim())
+                }
+            }else {
+                toast("请输入手机号")
             }
         }
     }

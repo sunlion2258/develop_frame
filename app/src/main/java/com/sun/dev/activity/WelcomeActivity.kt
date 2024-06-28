@@ -35,14 +35,11 @@ class WelcomeActivity : BaseActivity() {
             .statusBarDarkFont(true)
             .init()
 
-
-
         //如果点击Home回到后台，不再展示欢迎页，除非杀掉进程或者返回键返回才展示此界面
         if (intent.flags and Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT != 0) {
             finish()
             return
         }
-
 
         RxPermissions(this).request(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -71,7 +68,6 @@ class WelcomeActivity : BaseActivity() {
                 finish()
             }
         }
-
 
         tv_skip.setOnClickListener {
             //取消定时器
