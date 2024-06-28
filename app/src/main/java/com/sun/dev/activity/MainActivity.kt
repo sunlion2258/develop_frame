@@ -145,6 +145,5 @@ class MainActivity : BaseActivity() {
             return true
         }
         return super.onKeyDown(keyCode, event)
-
     }
 }

@@ -94,7 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/mine_fbx"
-                app:row_title_text="陀螺仪" />
+                app:row_title_text="@string/gyroscope" />
 
             <com.sun.dev.widget.AppRowLayout
                 android:id="@+id/mine_glb_model"
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 app:image_left="@mipmap/icon_glb_model"
                 app:layout_constraintTop_toBottomOf="@+id/mine_gyroscope"
-                app:row_title_text="glb 模型" />
+                app:row_title_text="@string/glb_model" />
 
             <com.sun.dev.widget.AppRowLayout
                 android:id="@+id/mine_to_unity"

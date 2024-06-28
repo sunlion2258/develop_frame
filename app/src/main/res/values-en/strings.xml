@@ -17,5 +17,7 @@
     <string name="jump_url">Jump URL</string>
     <string name="main_tab_mine">Mine</string>
     <string name="main_tab_home">Home</string>
+    <string name="glb_model">glb model</string>
+    <string name="gyroscope">gyroscope</string>
 
 </resources>

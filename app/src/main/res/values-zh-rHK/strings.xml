@@ -18,5 +18,7 @@
     <string name="jump_url">跳轉URL</string>
     <string name="main_tab_mine">我的</string>
     <string name="main_tab_home">首頁</string>
+    <string name="glb_model">glb 模型</string>
+    <string name="gyroscope">陀螺儀</string>
 
 </resources>

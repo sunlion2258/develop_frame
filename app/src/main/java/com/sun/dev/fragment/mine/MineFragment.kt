@@ -15,8 +15,6 @@ import com.sun.dev.loadphoto.GLBActivity
 import com.sun.dev.loadphoto.GyroActivity
 import com.sun.dev.loadphoto.TestActivity
 import com.sun.dev.loadphoto.UnityTestActivity
-import com.sun.dev.login.LoginActivity
-import com.sun.dev.util.CodeUtil
 import org.jetbrains.anko.support.v4.startActivity
 
 /**

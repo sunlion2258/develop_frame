@@ -32,5 +32,7 @@
     <string name="to_unity">跳转unity游戏</string>
     <string name="main_tab_mine">我的</string>
     <string name="main_tab_home">首页</string>
+    <string name="glb_model">glb 模型</string>
+    <string name="gyroscope">陀螺仪</string>
 
 </resources>
