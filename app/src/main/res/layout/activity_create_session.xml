@@ -16,7 +16,7 @@
             android:id="@+id/toolbar_create_session"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:toolbar_style="title_and_back"
+            app:toolbar_style="back_title"
             app:toolbar_title="创建会话" />
 
     </RelativeLayout>

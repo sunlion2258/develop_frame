@@ -2,7 +2,7 @@ package com.sun.dev.fragment.blog
 
 import android.text.Html
 import com.sun.dev.util.doInBackground
-import com.sun.dev.util.net.RetrofitManager
+import com.sun.dev.net.RetrofitManager
 import io.reactivex.Observable
 
 /**

@@ -1,6 +1,6 @@
 @file:Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 
-package com.sun.dev.util.net
+package com.sun.dev.net
 
 import android.text.Html
 import com.google.gson.Gson

@@ -3,7 +3,7 @@ package com.sun.dev.login
 import com.sun.dev.entity.CodeBean
 import com.sun.dev.entity.RegisterBean
 import com.sun.dev.util.doInBackground
-import com.sun.dev.util.net.RetrofitManager
+import com.sun.dev.net.RetrofitManager
 import io.reactivex.Observable
 
 /**

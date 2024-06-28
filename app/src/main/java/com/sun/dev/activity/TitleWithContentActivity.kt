@@ -41,13 +41,13 @@ class TitleWithContentActivity : BaseActivity() {
                 transaction.replace(R.id.info_content, MyInfoFragment()).commit()
             }
             TYPE_DRAWING -> {
-                info_toolbar.setMessageImage(R.mipmap.icon_menu)
-                info_toolbar.toolbar_message.visibility = View.VISIBLE
+                info_toolbar.setRightImage(R.mipmap.icon_menu)
+                info_toolbar.toolbar_right.visibility = View.VISIBLE
                 info_toolbar.setTitle(resources.getString(R.string.drawing))
                 transaction.replace(R.id.info_content, DrawFragment()).commit()
 
-                info_toolbar.setMessageOnclickListener {
-                    val popupMenu = PopupMenu(this, info_toolbar.toolbar_message)
+                info_toolbar.setRightOnclickListener {
+                    val popupMenu = PopupMenu(this, info_toolbar.toolbar_right)
                     val inflater = popupMenu.menuInflater
                     inflater.inflate(R.menu.toolsmenu, popupMenu.menu)
                     popupMenu.setOnMenuItemClickListener {

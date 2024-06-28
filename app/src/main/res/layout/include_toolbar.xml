@@ -30,22 +30,21 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="@dimen/dp_5"
             android:src="@mipmap/icon_back"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
-        <!-- 客服 -->
         <ImageView
-            android:id="@+id/toolbar_service"
+            android:id="@+id/toolbar_left"
             android:layout_width="@dimen/dp_40"
             android:layout_height="@dimen/dp_40"
             android:layout_centerVertical="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="@dimen/dp_10"
             android:src="@mipmap/home_service"
-            android:visibility="visible" />
+            android:visibility="gone"
+            tools:visibility="visible" />
 
-        <!-- 消息 -->
         <ImageView
-            android:id="@+id/toolbar_message"
+            android:id="@+id/toolbar_right"
             android:layout_width="@dimen/dp_40"
             android:layout_height="@dimen/dp_40"
             android:layout_alignParentEnd="true"
@@ -53,5 +52,30 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="@dimen/dp_10"
             android:src="@mipmap/home_unread_message" />
+
+        <ImageView
+            android:id="@+id/iv_to_right_left"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/toolbar_right"
+            android:gravity="center"
+            android:padding="@dimen/dp_10"
+            android:src="@drawable/select_voice_change"
+            android:visibility="invisible"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_chat_model"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_50"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/iv_to_right_left"
+            android:gravity="center"
+            android:textSize="@dimen/sp_11"
+            android:visibility="invisible"
+            tools:text="试用次数：5"
+            tools:visibility="visible" />
+
     </RelativeLayout>
 </LinearLayout>

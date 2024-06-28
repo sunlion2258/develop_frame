@@ -1,4 +1,4 @@
-package com.sun.dev.util.view;
+package com.sun.dev.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;

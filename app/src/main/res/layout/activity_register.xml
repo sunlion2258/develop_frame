@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_constraintTop_toTopOf="parent"
-                app:toolbar_style="title_and_back"
+                app:toolbar_style="back_title"
                 app:toolbar_title="注册"/>
 
         <LinearLayout

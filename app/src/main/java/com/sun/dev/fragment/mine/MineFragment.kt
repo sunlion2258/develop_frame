@@ -7,6 +7,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
+import com.sun.dev.activity.ChangeLanguageActivity
 import com.sun.dev.activity.MainActivity
 import com.sun.dev.base.BaseMVVMFragment
 import com.sun.dev.databinding.FragmentMainMineBinding
@@ -55,14 +56,17 @@ class MineFragment : BaseMVVMFragment<FragmentMainMineBinding, MineViewModel>() 
         bindView.mineToUnity.setOnClickListener {
             startActivity<UnityTestActivity>()
         }
-    }
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if (!hidden) {
-            if (!CodeUtil.checkIsLogin()) {
-                startActivity<LoginActivity>()
-            }
+        bindView.logoutChangeLanguage.setOnClickListener {
+            startActivity<ChangeLanguageActivity>()
         }
     }
+
+//    override fun onHiddenChanged(hidden: Boolean) {
+//        super.onHiddenChanged(hidden)
+//        if (!hidden) {
+//            if (!CodeUtil.checkIsLogin()) {
+//                startActivity<LoginActivity>()
+//            }
+//        }
+//    }
 }

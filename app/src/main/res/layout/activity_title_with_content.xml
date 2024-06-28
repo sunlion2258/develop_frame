@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFEFEFEF"
-        tools:context=".activity.TitleWithContentActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFEFEFEF"
+    android:orientation="vertical"
+    tools:context=".activity.TitleWithContentActivity">
 
     <com.sun.dev.widget.AppToolBar
-            android:id="@+id/info_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:toolbar_title="我的资料"
-            app:toolbar_style="title_and_back"/>
+        android:id="@+id/info_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:toolbar_style="back_title"
+        app:toolbar_title="我的资料" />
 
     <FrameLayout
-            android:id="@+id/info_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+        android:id="@+id/info_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

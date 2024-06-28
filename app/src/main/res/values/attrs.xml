@@ -29,14 +29,13 @@
             <enum name="auth_yes" value="1" />
         </attr>
     </declare-styleable>
-
     <!-- 自定义ToolBar -->
     <declare-styleable name="AppToolBar">
         <attr name="toolbar_style" format="integer">
-            <enum name="home_page" value="0" />
-            <enum name="title_and_back" value="1" />
+            <enum name="back_title_right" value="0" />
+            <enum name="back_title" value="1" />
             <enum name="only_title" value="2" />
-            <enum name="black_title" value="6" />
+            <enum name="title_right" value="3" />
         </attr>
         <attr name="toolbar_title" format="string" />
     </declare-styleable>

@@ -14,13 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.sun.dev.widget.AppToolBar
-            android:id="@+id/toolbar_record"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:toolbar_style="title_and_back"
-            app:toolbar_title="我的资料" />
-
         <Button
             android:id="@+id/btn_record"
             android:layout_width="match_parent"

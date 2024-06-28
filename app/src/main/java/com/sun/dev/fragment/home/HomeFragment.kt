@@ -21,8 +21,8 @@ import kotlinx.android.synthetic.main.fragment_main_home.home_banner
 import kotlinx.android.synthetic.main.fragment_main_home.home_scroll_text
 import kotlinx.android.synthetic.main.fragment_main_home.home_toolbar
 import kotlinx.android.synthetic.main.fragment_main_home.lottie_2
-import kotlinx.android.synthetic.main.include_toolbar.view.toolbar_message
-import kotlinx.android.synthetic.main.include_toolbar.view.toolbar_service
+import kotlinx.android.synthetic.main.include_toolbar.view.toolbar_left
+import kotlinx.android.synthetic.main.include_toolbar.view.toolbar_right
 import org.jetbrains.anko.support.v4.startActivity
 
 /**
@@ -34,6 +34,7 @@ class HomeFragment : BaseMVVMFragment<FragmentMainHomeBinding, HomeViewModel>(),
 
     //红包排行榜适配器
     private var mRedRankListAdapter = RedPacketRankListAdapter()
+
     //红包排行榜集合
     private var mRedRankList = mutableListOf<RedPacketRankBean>()
 
@@ -65,14 +66,17 @@ class HomeFragment : BaseMVVMFragment<FragmentMainHomeBinding, HomeViewModel>(),
         // 测试banner
         initBanner()
 
-        home_toolbar.setTitle("对话")
-        home_toolbar.setMessageImage(R.mipmap.add_focus)
-        home_toolbar.toolbar_service.setOnClickListener(this)
-        home_toolbar.toolbar_message.setOnClickListener(this)
+        home_toolbar.setTitle(requireActivity().resources.getString(R.string.main_bottom_home))
+        home_toolbar.setRightImage(R.mipmap.add_focus)
+        home_toolbar.toolbar_left.setOnClickListener(this)
+        home_toolbar.toolbar_right.setOnClickListener(this)
         lottie_2.setOnClickListener(this)
 
-        for (index in 0..1){
-            val redPacketRankBean = RedPacketRankBean("聊天对话$index", "聊天内容$index")
+        for (index in 0..1) {
+            val redPacketRankBean = RedPacketRankBean(
+                "${resources.getString(R.string.test_name)}$index",
+                "${resources.getString(R.string.test_name)}$index"
+            )
             mRedRankList.add(redPacketRankBean)
         }
 
@@ -94,16 +98,14 @@ class HomeFragment : BaseMVVMFragment<FragmentMainHomeBinding, HomeViewModel>(),
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            R.id.toolbar_service -> {
-
-            }
-            R.id.toolbar_message -> {
+            R.id.toolbar_right -> {
                 if (!CodeUtil.checkIsLogin()) {
                     startActivity<LoginActivity>()
                 } else {
-                    CreateSessionActivity.start(requireActivity(),"创建会话")
+                    CreateSessionActivity.start(requireActivity(), "创建会话")
                 }
             }
+
             R.id.lottie_2 -> {
                 startActivity<TestActivity>()
             }

@@ -39,7 +39,6 @@ class AudioRecordActivity : BaseMVVMActivity<ActivityAudioRecordBinding, AudioRe
 
 
     override fun onMVVMCreated(savedInstanceState: Bundle?) {
-        ImmersionBar.setTitleBar(this,toolbar_record)
         ImmersionBar.with(this)
             .transparentStatusBar()
             .statusBarDarkFont(true)
@@ -49,7 +48,6 @@ class AudioRecordActivity : BaseMVVMActivity<ActivityAudioRecordBinding, AudioRe
 
         bindViews.vm = vm
 
-        bindViews.toolbarRecord.setTitle("我是录制")
         bindViews.btnRecord.setOnClickListener {
             AudioRecorder().startRecording()
             bindViews.btnRecord.text="录制中"

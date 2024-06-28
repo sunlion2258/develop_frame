@@ -6,13 +6,9 @@ import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProviders
-import com.blankj.rxbus.RxBus
-import com.blankj.rxbus.RxBus.Callback
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseActivity
-import com.sun.dev.common.Constants
 import com.sun.dev.fragment.BlogFragment
 import com.sun.dev.fragment.home.HomeFragment
 import com.sun.dev.fragment.mine.MineFragment
@@ -20,12 +16,16 @@ import com.sun.dev.fragment.mine.MineRepository
 import com.sun.dev.fragment.mine.MineVMFactory
 import com.sun.dev.fragment.mine.MineViewModel
 import com.sun.dev.util.toast
-import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.reflect.ParameterizedType
+import kotlinx.android.synthetic.main.activity_main.container
+import kotlinx.android.synthetic.main.activity_main.lottie_home
+import kotlinx.android.synthetic.main.activity_main.lottie_mine
+import kotlinx.android.synthetic.main.activity_main.rl_main
+import kotlinx.android.synthetic.main.activity_main.rl_mine
+import kotlinx.android.synthetic.main.activity_main.tv_main
+import kotlinx.android.synthetic.main.activity_main.tv_mine
 
 
 class MainActivity : BaseActivity() {
-
     override fun initContentViewID(): Int = R.layout.activity_main
 
     override fun onViewCreated() {
@@ -41,43 +41,29 @@ class MainActivity : BaseActivity() {
         //初始化Fragment管理类
         mainFragmentManager =
             MainFragmentManager(supportFragmentManager, container.id)
-        //设置底部导航选择监听
-        nav_view.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-        nav_view.selectedItemId = 0
+
+
+        rl_main.setOnClickListener {
+            setImmersionBar(0)
+            mainFragmentManager.select(0)
+            tv_main.setTextColor(resources.getColor(R.color.common_blue))
+            tv_mine.setTextColor(resources.getColor(R.color.color_c5))
+            lottie_home.repeatCount=0
+            lottie_home.playAnimation()
+        }
+        rl_mine.setOnClickListener {
+            setImmersionBar(2)
+            mainFragmentManager.select(2)
+            tv_main.setTextColor(resources.getColor(R.color.color_c5))
+            tv_mine.setTextColor(resources.getColor(R.color.common_blue))
+            lottie_mine.repeatCount=0
+            lottie_mine.playAnimation()
+        }
+
 
         //MineFragment的ViewModel
         ViewModelProviders.of(this, MineVMFactory(MineRepository(), this)).get(MineViewModel::class.java)
-
-        //接收到其他方式登录点击
-//        RxBus.getDefault().subscribe(this, Constants.RxBusTag.LOGIN_BACK, Callback<String> {
-//            //手动调到首页
-//            mainFragmentManager.select(0)
-//            nav_view.selectedItemId = R.id.bottom_home
-//        })
     }
-
-
-    private val onNavigationItemSelectedListener =
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.bottom_home -> {
-                    setImmersionBar(0)
-                    mainFragmentManager.select(0)
-                    return@OnNavigationItemSelectedListener true
-                }
-//                R.id.bottom_return_money -> {
-//                    setImmersionBar(1)
-//                    mainFragmentManager.select(1)
-//                    return@OnNavigationItemSelectedListener true
-//                }
-                R.id.bottom_mine -> {
-                    setImmersionBar(2)
-                    mainFragmentManager.select(2)
-                    return@OnNavigationItemSelectedListener true
-                }
-            }
-            false
-        }
 
     private lateinit var mainFragmentManager: MainFragmentManager
 
@@ -93,7 +79,6 @@ class MainActivity : BaseActivity() {
         init {
             fragments.add(HomeFragment())
             fragments.add(BlogFragment.newInstance("https://blog.csdn.net/qq_36255612"))
-//            fragments.add(ContentFragment())
             fragments.add(MineFragment())
             fragmentManager.beginTransaction().replace(containerId, fragments[0])
                 .commitAllowingStateLoss()

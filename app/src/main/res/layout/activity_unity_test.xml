@@ -18,7 +18,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:toolbar_style="title_and_back"
+            app:toolbar_style="back_title"
             app:toolbar_title="Unity游戏" />
 
         <TextView

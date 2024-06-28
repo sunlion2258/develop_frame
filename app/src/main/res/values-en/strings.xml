@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">AI Mind</string>
+    <string name="main_bottom_home">Home</string>
+    <string name="main_bottom_mine">My</string>
+    <string name="welcome_tip">More than you can imagine</string>
+    <string name="quit">Quit</string>
+    <string name="skip">Skip</string>
+    <string name="submit">submit</string>
+    <string name="confirm_quit">Confirm Exit</string>
+    <string name="input_phone">Phone number</string>
+    <string name="login">Login</string>
+    <string name="change_language_kind">Switch Language </string>
+    <string name="change_language">Change Language</string>
+    <string name="test_name">Test content</string>
+    <string name="test_page">Test page</string>
+    <string name="to_unity">Go to unity3d</string>
+    <string name="jump_url">Jump URL</string>
+    <string name="main_tab_mine">Mine</string>
+    <string name="main_tab_home">Home</string>
+
+</resources>

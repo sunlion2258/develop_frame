@@ -10,6 +10,7 @@ object Constants {
 
     const val DATABASE_NAME = "sphxt_app_database.db"
 
+
     /**
      * 网络请求相关
      */
@@ -46,6 +47,8 @@ object Constants {
 
         //是否首次安装
         const val IS_FIRST = "is_first"
+        const val VIP_FILE_NAME = "vip_file_name"
+        const val LANGUAGE = "language"
 
     }
 

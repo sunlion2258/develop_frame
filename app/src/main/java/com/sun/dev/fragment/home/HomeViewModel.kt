@@ -20,10 +20,10 @@ class HomeViewModel(val repository: HomeRepository) : ViewModel() {
             return@OnClickListener
         }
         when (it.id) {
-            R.id.toolbar_service -> {
+            R.id.toolbar_left -> {
                 toast("客服")
             }
-            R.id.toolbar_message->{
+            R.id.toolbar_right->{
                 toast("消息")
             }
         }

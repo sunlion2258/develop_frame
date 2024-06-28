@@ -32,7 +32,7 @@ import kotlinx.coroutines.launch
 class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
     View.OnClickListener {
 
-    var inputNum: String? = null
+    private var inputNum: String? = null
 
     override fun initContentViewID(): Int = R.layout.activity_test
 

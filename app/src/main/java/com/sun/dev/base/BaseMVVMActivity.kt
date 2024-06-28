@@ -1,13 +1,13 @@
 package com.sun.dev.base
 
 import android.os.Bundle
-import android.view.View
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
-import com.sun.dev.R
+import com.sun.dev.common.Constants
+import com.sun.dev.util.LanguageUtil
+import com.sun.dev.util.SharedHelper
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -25,6 +25,8 @@ abstract class BaseMVVMActivity<VDB : ViewDataBinding, VM : ViewModel> : AppComp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //重启之后恢复到之前的语言
+        LanguageUtil().selectLanguage(this,SharedHelper.getShared().getString(Constants.SP.LANGUAGE,"en"))
         bindViews = DataBindingUtil.setContentView(this, initContentViewID())
         //bindViews=DataBindingUtil.inflate<VDB>(LayoutInflater.from(this),initContentViewID(),null,false)
         bindViews.lifecycleOwner = this
@@ -64,6 +66,5 @@ abstract class BaseMVVMActivity<VDB : ViewDataBinding, VM : ViewModel> : AppComp
         //及时销毁订阅
         clearDisposable()
     }
-
 
 }

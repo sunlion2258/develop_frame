@@ -41,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#FFDFB6"
                 android:textSize="@dimen/sp_12"
+                android:text="@string/test_name"
                 tools:text="2000" />
 
             <TextView
@@ -48,6 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#FFDFB6"
+                android:visibility="gone"
                 android:textSize="@dimen/sp_10"
                 tools:text="金豆" />
 
@@ -61,6 +63,7 @@
             android:layout_marginTop="@dimen/dp_5"
             android:text="累计获得金豆"
             android:textColor="#FFDFB6"
+            android:visibility="gone"
             android:textSize="@dimen/sp_10" />
     </LinearLayout>
 

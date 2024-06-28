@@ -3,6 +3,8 @@ package com.sun.dev.activity
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Configuration
+import android.os.Build
 import android.os.CountDownTimer
 import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
@@ -18,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_welcome.tv_skip
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
+import java.util.Locale
 
 
 /**
@@ -31,6 +34,9 @@ class WelcomeActivity : BaseActivity() {
     @SuppressLint("CheckResult")
     override fun onViewCreated() {
         super.onViewCreated()
+        //重启之后恢复到之前的语言
+        selectLanguage(SharedHelper.getShared().getString(Constants.SP.LANGUAGE, "zh"))
+
         ImmersionBar.with(this)
             .statusBarDarkFont(true)
             .init()
@@ -91,5 +97,43 @@ class WelcomeActivity : BaseActivity() {
                 finish()
             }
         }.start()
+    }
+
+    private fun selectLanguage(language: String?) {
+        //设置语言类型
+        val resources = resources
+        val configuration: Configuration = resources.configuration
+        val locale: Locale
+        when (language) {
+            "en" -> {
+                configuration.setLocale(Locale.ENGLISH)
+                locale = Locale.ENGLISH
+            }
+
+            "zh" -> {
+                configuration.setLocale(Locale.SIMPLIFIED_CHINESE)
+                locale = Locale.SIMPLIFIED_CHINESE
+            }
+
+            "zh-rHK" -> {
+                configuration.setLocale(Locale.TAIWAN)
+                locale = Locale.TAIWAN
+            }
+
+            else -> {
+                configuration.setLocale(Locale.SIMPLIFIED_CHINESE)
+                locale = Locale.SIMPLIFIED_CHINESE
+            }
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            configuration.setLocale(locale)
+            createConfigurationContext(configuration)
+        } else {
+            configuration.locale = locale
+            resources.updateConfiguration(configuration, resources.displayMetrics)
+        }
+        //保存设置语言的类型
+        SharedHelper.getEdit { sp -> sp.putString(Constants.SP.LANGUAGE, language) }
     }
 }

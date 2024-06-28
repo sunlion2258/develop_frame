@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="vm"
             type="com.sun.dev.fragment.mine.MineViewModel" />
@@ -28,8 +29,8 @@
                 android:visibility="gone"
                 app:image_left="@mipmap/icon_data"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:row_title_text="@string/my_info" />
 
             <com.sun.dev.widget.AppRowLayout
@@ -69,7 +70,7 @@
                 android:onClick="@{vm.mineViewOnClick}"
                 app:image_left="@mipmap/icon_jump_url"
                 app:layout_constraintTop_toBottomOf="@+id/mine_contact"
-                app:row_title_text="输入URL跳转" />
+                app:row_title_text="@string/jump_url" />
 
             <com.sun.dev.widget.AppRowLayout
                 android:id="@+id/mine_fbx"
@@ -78,7 +79,7 @@
                 android:visibility="visible"
                 app:image_left="@mipmap/icon_fbx"
                 app:layout_constraintTop_toBottomOf="@+id/mine_jump_url"
-                app:row_title_text="测试页面" />
+                app:row_title_text="@string/test_page" />
 
             <com.sun.dev.widget.AppRowLayout
                 android:id="@+id/mine_media_record"
@@ -109,7 +110,16 @@
                 android:layout_height="wrap_content"
                 app:image_left="@mipmap/icon_unity_3d"
                 app:layout_constraintTop_toBottomOf="@+id/mine_glb_model"
-                app:row_title_text="跳转unity游戏" />
+                app:row_title_text="@string/to_unity" />
+
+            <com.sun.dev.widget.AppRowLayout
+                android:id="@+id/logout_change_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@+id/mine_to_unity"
+                app:image_left="@mipmap/icon_change_language"
+                app:row_title_text="@string/change_language" />
 
             <TextView
                 android:id="@+id/tv_quit"

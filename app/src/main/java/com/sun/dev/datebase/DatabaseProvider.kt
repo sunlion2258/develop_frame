@@ -9,6 +9,8 @@ import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.IOException
+import java.io.InputStream
+import java.io.OutputStream
 
 /**
  * Created by fengwj on 2024/6/27.
@@ -61,4 +63,35 @@ object DatabaseProvider {
         }
         newDatabaseFile.copyTo(externalDbFile)
     }
+
+    /**
+     * 将数据库添加进来。
+     */
+    fun initAssets(path: String, name: String,context: Context): File {
+        val fileDB = File(path + name)
+        if (!fileDB.exists()) {
+            val file = File(path)
+            if (!file.exists()) {
+                file.mkdirs()
+            }
+            try {
+                val `is`: InputStream = context.assets.open(name)
+                val os: OutputStream = FileOutputStream(path + name)
+                val buffer = ByteArray(1024)
+                var len: Int
+                while ((`is`.read(buffer).also { len = it }) > 0) {
+                    os.write(buffer, 0, len)
+                }
+                os.flush()
+                os.close()
+                `is`.close()
+                return file
+            } catch (e: IOException) {
+                Log.e("wwwwww", "init: IOException$e")
+                e.printStackTrace()
+            }
+        }
+        return fileDB
+    }
+
 }
