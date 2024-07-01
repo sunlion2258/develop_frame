@@ -69,7 +69,9 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
                 }
 
                 val internalDbFile = getDatabasePath(Constants.DATABASE_NAME)
-                DatabaseProvider.updateExternalDatabase(this@TestActivity, internalDbFile)
+                if (internalDbFile.exists()) {
+                    DatabaseProvider.updateExternalDatabase(this@TestActivity, internalDbFile)
+                }
             } else {
                 toast("请输入手机号")
             }
@@ -102,7 +104,7 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
                         }
                     }
                 }
-            }else {
+            } else {
                 toast("请输入手机号")
             }
         }
@@ -112,7 +114,7 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
                 GlobalScope.launch {
                     db.userDao().deleteUser(et_phone.text.toString().trim())
                 }
-            }else {
+            } else {
                 toast("请输入手机号")
             }
         }

@@ -36,8 +36,8 @@ class LanguageUtil {
             }
 
             else -> {
-                configuration.setLocale(Locale.ENGLISH)
-                locale = Locale.ENGLISH
+                configuration.setLocale(Locale.SIMPLIFIED_CHINESE)
+                locale = Locale.SIMPLIFIED_CHINESE
             }
         }
 

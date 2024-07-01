@@ -17,14 +17,13 @@ import java.io.OutputStream
  * 数据库创建、copy到外部储存、卸载重装从外部储存恢复数据库
  */
 object DatabaseProvider {
-    var content: String = "Hello, World!"
 
     fun getDatabase(context: Context): AppDatabase {
         // 使用外部存储路径
-        val externalDbFile = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), Constants.DATABASE_NAME)
+//        val externalDbFile = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), Constants.DATABASE_NAME)
+        val externalDbFile = File(Environment.getExternalStorageDirectory().path+"/XY-SPHXT", Constants.DATABASE_NAME)
+        externalDbFile.setReadOnly()
         val internalDbFile = context.getDatabasePath(Constants.DATABASE_NAME)
-        val interExist = internalDbFile.exists()
-        val externalExist = externalDbFile.exists()
 
         // 检查外部存储中是否存在数据库文件，并复制到内部存储中
         if (!internalDbFile.exists() && externalDbFile.exists()) {
@@ -34,7 +33,6 @@ object DatabaseProvider {
                 e.printStackTrace()
             }
         }
-        val absolutePath = externalDbFile.absolutePath
         // 返回 Room 数据库实例
         return Room.databaseBuilder(
             context.applicationContext,

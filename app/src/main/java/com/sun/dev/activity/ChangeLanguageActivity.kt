@@ -34,6 +34,7 @@ class ChangeLanguageActivity :
         )[ChangeLanguageViewModel::class.java]
 
 
+
     override fun onMVVMCreated(savedInstanceState: Bundle?) {
         ImmersionBar.setTitleBar(this, toolbar_change_language)
         ImmersionBar.with(this)

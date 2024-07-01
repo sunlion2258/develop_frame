@@ -26,9 +26,8 @@ abstract class BaseMVVMActivity<VDB : ViewDataBinding, VM : ViewModel> : AppComp
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //重启之后恢复到之前的语言
-        LanguageUtil().selectLanguage(this,SharedHelper.getShared().getString(Constants.SP.LANGUAGE,"en"))
+        LanguageUtil().selectLanguage(this,SharedHelper.getShared().getString(Constants.SP.LANGUAGE,"zh"))
         bindViews = DataBindingUtil.setContentView(this, initContentViewID())
-        //bindViews=DataBindingUtil.inflate<VDB>(LayoutInflater.from(this),initContentViewID(),null,false)
         bindViews.lifecycleOwner = this
         vm = initViewModel()
 
