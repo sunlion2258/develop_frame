@@ -2,15 +2,14 @@ package com.sun.dev.datebase
 
 import android.content.Context
 import android.os.Environment
-import android.util.Log
 import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.sun.dev.common.Constants
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.IOException
-import java.io.InputStream
-import java.io.OutputStream
 
 /**
  * Created by fengwj on 2024/6/27.
@@ -19,9 +18,11 @@ import java.io.OutputStream
 object DatabaseProvider {
 
     fun getDatabase(context: Context): AppDatabase {
-        // 使用外部存储路径
-//        val externalDbFile = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), Constants.DATABASE_NAME)
-        val externalDbFile = File(Environment.getExternalStorageDirectory().path+"/XY-SPHXT", Constants.DATABASE_NAME)
+        //指定文件目录存储
+        val externalDbFile = File(
+            Environment.getExternalStorageDirectory().path + "/XY-SPHXT",
+            Constants.DATABASE_NAME
+        )
         externalDbFile.setReadOnly()
         val internalDbFile = context.getDatabasePath(Constants.DATABASE_NAME)
 
@@ -38,7 +39,9 @@ object DatabaseProvider {
             context.applicationContext,
             AppDatabase::class.java,
             externalDbFile.absolutePath
-        ).build()
+        )
+            .addMigrations(MIGRATION_1_2)
+            .build()
 
     }
 
@@ -63,33 +66,18 @@ object DatabaseProvider {
     }
 
     /**
-     * 将数据库添加进来。
+     * 数据库版本 1 升级到 版本 2 的迁移类实例对象
      */
-    fun initAssets(path: String, name: String,context: Context): File {
-        val fileDB = File(path + name)
-        if (!fileDB.exists()) {
-            val file = File(path)
-            if (!file.exists()) {
-                file.mkdirs()
-            }
-            try {
-                val `is`: InputStream = context.assets.open(name)
-                val os: OutputStream = FileOutputStream(path + name)
-                val buffer = ByteArray(1024)
-                var len: Int
-                while ((`is`.read(buffer).also { len = it }) > 0) {
-                    os.write(buffer, 0, len)
-                }
-                os.flush()
-                os.close()
-                `is`.close()
-                return file
-            } catch (e: IOException) {
-                Log.e("wwwwww", "init: IOException$e")
-                e.printStackTrace()
-            }
-        }
-        return fileDB
-    }
+    val MIGRATION_1_2: Migration = object : Migration(3, 4) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+//            Log.i("Room_StudentDatabase", "数据库版本 1 升级到 版本 2")
+//            database.execSQL("alter table user add column sex integer not null default 2")
+            // 创建新表的SQL语句
+            val CREATE_NEW_TABLE_SQL =
+                "CREATE TABLE IF NOT EXISTS drillRecord (drillRecordId TEXT PRIMARY KEY NOT NULL,drillScore TEXT NOT NULL)"
 
+            // 执行SQL语句创建新表
+            database.execSQL(CREATE_NEW_TABLE_SQL)
+        }
+    }
 }

@@ -75,38 +75,6 @@ class LocationActivity : BaseMVVMActivity<ActivityLocationBinding, LocationViewM
         iv_location.setOnClickListener {
             mAMap!!.moveCamera(CameraUpdateFactory.changeLatLng(latLng))
         }
-//        locationbtn.setOnClickListener{
-//            if (locationbtn.isChecked) {
-//                mAMap!!.clear(true)
-//                if (record != null) {
-//                    record = null
-//                }
-//                record = PathRecord()
-//                mStartTime = System.currentTimeMillis()
-//                record.setDate(getcueDate(mStartTime))
-//                mResultShow.setText("总距离")
-//            } else {
-//                mEndTime = System.currentTimeMillis()
-//                mOverlayList.add(mTraceoverlay)
-//                val decimalFormat = DecimalFormat("0.0")
-//                mResultShow.setText(
-//                    decimalFormat.format(getTotalDistance() / 1000.0) + "KM"
-//                )
-//                var mTraceClient: LBSTraceClient? = null
-//                try {
-//                    mTraceClient = LBSTraceClient(applicationContext)
-//                    mTraceClient.queryProcessedTrace(
-//                        2,
-//                        Util.parseTraceLocationList(record.getPathline()),
-//                        LBSTraceClient.TYPE_AMAP,
-//                        this@LocationActivity
-//                    )
-//                } catch (e: Exception) {
-//                    e.printStackTrace()
-//                }
-//                saveRecord(record.getPathline(), record.getDate())
-//            }
-//        }
     }
 
 
@@ -123,8 +91,6 @@ class LocationActivity : BaseMVVMActivity<ActivityLocationBinding, LocationViewM
         mAMap!!.setMyLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER)
         //手势监听
         mAMap!!.setOnMapTouchListener(this)
-
-
     }
 
     /**
@@ -231,7 +197,6 @@ class LocationActivity : BaseMVVMActivity<ActivityLocationBinding, LocationViewM
                 locationMarker!!.position = latLng
             }
         }
-
     }
 
     /**

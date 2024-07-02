@@ -14,11 +14,13 @@ data class User(
     var phoneNum: String,
 
     @ColumnInfo(name = "name")
-    var name: String
-
-
+    var name: String,
+    @ColumnInfo(name = "sex")
+    var sex:Int,
+     @ColumnInfo(name = "age")
+    var age:Int
 ) {
     override fun toString(): String {
-        return "User(phoneNum='$phoneNum', name='$name')"
+        return "User(phoneNum='$phoneNum', name='$name', sex=$sex, age=$age)"
     }
 }

@@ -10,9 +10,9 @@ import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseMVVMActivity
 import com.sun.dev.common.Constants
-import com.sun.dev.common.MyApplication
 import com.sun.dev.databinding.ActivityTestBinding
 import com.sun.dev.datebase.DatabaseProvider
+import com.sun.dev.entity.DrillRecordBean
 import com.sun.dev.entity.User
 import com.sun.dev.util.toast
 import kotlinx.android.synthetic.main.activity_test.et_phone
@@ -49,8 +49,8 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
             .statusBarDarkFont(true)
             .init()
 
-
         val db = DatabaseProvider.getDatabase(this@TestActivity)
+
 
 
         tv_insert_user.setOnClickListener {
@@ -64,8 +64,9 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
                         }
                     }
 
-                    db.userDao()
-                        .insertUser(User(et_phone.text.toString().trim(), "哈哈"))
+                    db.userDao().insertUser(User(et_phone.text.toString().trim(), "哈哈", 5, 19))
+
+                    db.drillRecordDao().insertDrillRecord(DrillRecordBean("训练记录1", "90"))
                 }
 
                 val internalDbFile = getDatabasePath(Constants.DATABASE_NAME)
@@ -80,14 +81,25 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
             inputNum = et_phone.text.toString().trim()
             val builder = StringBuilder()
             GlobalScope.launch {
-                val allUser = db.userDao().getAllUser()
+                val userDao = db.userDao()
+                val allUser = userDao.getAllUser()
                 for (user in allUser) {
                     builder.append(user.toString())
                     builder.append("\n")
                 }
+                builder.append("\n")
+                builder.append("\n")
+                builder.append("\n")
+                
+                for (drillRecordBean in db.drillRecordDao().getAllDrillRecord()) {
+                    builder.append(drillRecordBean.toString())
+                    builder.append("\n")
+                }
+
                 runOnUiThread {
                     toast(builder.toString())
                 }
+
             }
         }
 
@@ -99,7 +111,7 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
                     if (allUser.isNotEmpty()) {
                         for (user in allUser) {
                             if (user.phoneNum == inputNum) {
-                                db.userDao().updateUser(User(user.phoneNum, "拉拉"))
+                                db.userDao().updateUser(User(user.phoneNum, "拉拉", 8, 19))
                             }
                         }
                     }
