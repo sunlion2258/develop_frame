@@ -7,11 +7,13 @@ import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseActivity
 import com.sun.dev.common.Constants
-import com.sun.dev.fragment.*
+import com.sun.dev.fragment.DrawFragment
+import com.sun.dev.fragment.JumpUrlFragment
+import com.sun.dev.fragment.MyInfoFragment
 import com.sun.dev.util.toast
-import kotlinx.android.synthetic.main.activity_title_with_content.*
-import kotlinx.android.synthetic.main.fragment_draw.*
-import kotlinx.android.synthetic.main.include_toolbar.view.*
+import kotlinx.android.synthetic.main.activity_title_with_content.info_toolbar
+import kotlinx.android.synthetic.main.fragment_draw.drawView
+import kotlinx.android.synthetic.main.include_toolbar.view.toolbar_right
 
 
 /**
@@ -106,7 +108,7 @@ class TitleWithContentActivity : BaseActivity() {
 
                             R.id.clear -> drawView.clear()
                             R.id.reset -> drawView.resetCanvas()
-                            R.id.save -> drawView.save()
+                            R.id.save -> drawView.save(this@TitleWithContentActivity)
                         }
                         return@setOnMenuItemClickListener true
                     }

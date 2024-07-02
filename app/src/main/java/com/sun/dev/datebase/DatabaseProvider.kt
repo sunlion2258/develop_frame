@@ -40,7 +40,8 @@ object DatabaseProvider {
             AppDatabase::class.java,
             externalDbFile.absolutePath
         )
-            .addMigrations(MIGRATION_1_2)
+            //测试数据库更新升级
+//            .addMigrations(MIGRATION_1_2)
             .build()
 
     }
@@ -68,7 +69,7 @@ object DatabaseProvider {
     /**
      * 数据库版本 1 升级到 版本 2 的迁移类实例对象
      */
-    val MIGRATION_1_2: Migration = object : Migration(3, 4) {
+    private val MIGRATION_1_2: Migration = object : Migration(3, 4) {
         override fun migrate(database: SupportSQLiteDatabase) {
 //            Log.i("Room_StudentDatabase", "数据库版本 1 升级到 版本 2")
 //            database.execSQL("alter table user add column sex integer not null default 2")

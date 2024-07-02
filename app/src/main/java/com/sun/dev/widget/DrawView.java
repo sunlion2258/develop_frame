@@ -9,6 +9,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.sun.dev.util.PhotoUtils;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -82,9 +84,9 @@ public class DrawView extends View {
     /**
      * 调用saveBitmap（）方法将当前绘图保存为PNG图片
      */
-    public void save() {
+    public void save(Context context) {
         try {
-            saveBitmap();
+            saveBitmap(context);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -96,16 +98,21 @@ public class DrawView extends View {
      * 最后将缓冲区的数据全部写出到输出流中，关闭文件输出流对象
      */
     @SuppressLint("WrongThread")
-    private void saveBitmap() throws IOException {
+    private void saveBitmap(Context context) throws IOException {
         String storage = Environment.getExternalStorageDirectory().getPath();
-        Toast.makeText(getContext(), storage, Toast.LENGTH_SHORT).show();     //显示得到的储存路径
-        File dirFile = new File(storage + "/abcd");         //在storage/emulated/0目录下创建abcd文件夹
+
+        File dirFile = new File(storage + "/灵魂画手");         //在storage/emulated/0目录下创建abcd文件夹
         dirFile.mkdir();                                        //创建一个新文件
         File file = new File(dirFile, System.currentTimeMillis() + ".jpg");
         FileOutputStream fileOS = new FileOutputStream(file);                           //创建一个文件输出流对象
         cacheBitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOS);             //将绘图内容压缩为PNG格式输出到输出流对象中，PNG为透明图片
         fileOS.flush();                 //将缓冲区中的数据全部写出道输出流中
         fileOS.close();                 //关闭文件输出流对象
+
+//        Toast.makeText(getContext(), file.getAbsolutePath(), Toast.LENGTH_SHORT).show();     //显示得到的储存路径
+        Toast.makeText(getContext(), "已保存到相册", Toast.LENGTH_SHORT).show();     //显示得到的储存路径
+
+        PhotoUtils.addToSystemGallery(context,file);
     }
 
     /**

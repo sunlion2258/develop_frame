@@ -51,22 +51,26 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
 
         val db = DatabaseProvider.getDatabase(this@TestActivity)
 
-
-
         tv_insert_user.setOnClickListener {
             inputNum = et_phone.text.toString().trim()
             if (!TextUtils.isEmpty(inputNum)) {
                 GlobalScope.launch {
                     for (user in db.userDao().getAllUser()) {
                         if (user.phoneNum == inputNum) {
-                            toast("表中数据存在请修改")
+                            toast("用户表中数据存在请修改")
                             return@launch
                         }
                     }
 
                     db.userDao().insertUser(User(et_phone.text.toString().trim(), "哈哈", 5, 19))
+                    for (drillRecordBean in db.drillRecordDao().getAllDrillRecord()) {
+                        if (drillRecordBean.drillRecordId==inputNum){
+                            toast("记录表中数据存在请修改")
+                            return@launch
+                        }
+                    }
 
-                    db.drillRecordDao().insertDrillRecord(DrillRecordBean("训练记录1", "90"))
+                    db.drillRecordDao().insertDrillRecord(DrillRecordBean(et_phone.text.toString().trim(), "90"))
                 }
 
                 val internalDbFile = getDatabasePath(Constants.DATABASE_NAME)
@@ -87,19 +91,16 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
                     builder.append(user.toString())
                     builder.append("\n")
                 }
-                builder.append("\n")
-                builder.append("\n")
-                builder.append("\n")
-                
+                builder.append("\n\n")
+
                 for (drillRecordBean in db.drillRecordDao().getAllDrillRecord()) {
-                    builder.append(drillRecordBean.toString())
+                    builder.append("训练记录： $drillRecordBean")
                     builder.append("\n")
                 }
 
                 runOnUiThread {
                     toast(builder.toString())
                 }
-
             }
         }
 
