@@ -2,20 +2,14 @@
 
 package com.sun.dev.loadphoto
 
-import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
-import com.google.ar.sceneform.Node
-import com.google.ar.sceneform.SkeletonNode
-import com.google.ar.sceneform.math.Quaternion
-import com.google.ar.sceneform.math.Vector3
-import com.google.ar.sceneform.rendering.ModelRenderable
-import com.google.ar.sceneform.ux.ArFragment
 import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseMVVMActivity
 import com.sun.dev.databinding.ActivityGlbBinding
+import com.sun.dev.widget.CustomViewer
+import kotlinx.android.synthetic.main.activity_glb.surface_view
 import kotlinx.android.synthetic.main.activity_glb.toolbar
 
 
@@ -24,8 +18,8 @@ import kotlinx.android.synthetic.main.activity_glb.toolbar
  */
 @Suppress("DEPRECATION")
 class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
-    private var arFragment: ArFragment? = null
-    private var modelRenderable: ModelRenderable? = null
+
+    var customViewer: CustomViewer = CustomViewer()
 
     override fun initContentViewID(): Int = R.layout.activity_glb
 
@@ -38,30 +32,33 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
         ImmersionBar.with(this)
             .statusBarDarkFont(true)
             .init()
-        arFragment = supportFragmentManager.findFragmentById(R.id.arFragment) as ArFragment?
 
-        // 加载.glb模型
-        ModelRenderable.builder()
-            .setSource(this@GLBActivity, Uri.parse("file:///android_asset/Human.glb"))
-            .build()
-            .thenAccept { renderable: ModelRenderable ->
-                modelRenderable = renderable
-            }
-            .exceptionally { throwable: Throwable? ->
-                Toast.makeText(this, "无法加载模型", Toast.LENGTH_LONG).show()
-                null
-            }
 
-        modelRenderable.let {
-            val jointNode: Node?= SkeletonNode().findByName("Human_LeftArm")
-            if (jointNode != null) {
-                val newRotation: Quaternion = Quaternion.axisAngle(Vector3(0f, 1f, 0f), 45f)
-                animateJoint(jointNode, newRotation);
-            }
+        customViewer.run {
+            loadEntity()
+            setSurfaceView(requireNotNull(surface_view))
+
+            loadGlb(this@GLBActivity, "grogu", "Human")
+
+            //Enviroments and Lightning (OPTIONAL)
+            loadIndirectLight(this@GLBActivity, "venetian_crossroads_2k")
+            //loadEnviroment(this@MainActivity, "venetian_crossroads_2k");
         }
+
     }
 
-    private fun animateJoint(node: Node, rotation: Quaternion) {
-        node.localRotation = rotation
+    override fun onResume() {
+        super.onResume()
+        customViewer.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        customViewer.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        customViewer.onDestroy()
     }
 }

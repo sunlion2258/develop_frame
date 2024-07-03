@@ -17,6 +17,7 @@ import com.sun.dev.loadphoto.GLBActivity
 import com.sun.dev.loadphoto.GyroActivity
 import com.sun.dev.loadphoto.TestActivity
 import com.sun.dev.loadphoto.UnityTestActivity
+import com.sun.dev.util.ClickUtils
 import com.sun.dev.util.SharedHelper
 import org.jetbrains.anko.support.v4.startActivity
 
@@ -58,18 +59,33 @@ class MineFragment : BaseMVVMFragment<FragmentMainMineBinding, MineViewModel>() 
         }
 
         bindView.mineFbx.setOnClickListener {
+            if (!ClickUtils.isNotFastClick()) {
+                return@setOnClickListener
+            }
             startActivity<TestActivity>()
         }
         bindView.mineGyroscope.setOnClickListener {
+            if (!ClickUtils.isNotFastClick()) {
+                return@setOnClickListener
+            }
             startActivity<GyroActivity>()
         }
         bindView.mineGlbModel.setOnClickListener {
+            if (!ClickUtils.isNotFastClick()) {
+                return@setOnClickListener
+            }
             startActivity<GLBActivity>()
         }
         bindView.mineToUnity.setOnClickListener {
+            if (!ClickUtils.isNotFastClick()) {
+                return@setOnClickListener
+            }
             startActivity<UnityTestActivity>()
         }
         bindView.logoutChangeLanguage.setOnClickListener {
+            if (!ClickUtils.isNotFastClick()) {
+                return@setOnClickListener
+            }
             startActivity<ChangeLanguageActivity>()
         }
         bindView.mineChangeTheme.setOnClickListener {
