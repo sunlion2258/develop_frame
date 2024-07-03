@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.sun.dev.loadphoto
+package com.sun.dev.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,9 @@ import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseMVVMActivity
 import com.sun.dev.databinding.ActivityUnityTestBinding
+import com.sun.dev.viewmodel.UnityModel
+import com.sun.dev.viewrepository.UnityRepository
+import com.sun.dev.vmfactory.UnityFactory
 import com.unity3d.player.GameCallHelper
 import com.unity3d.player.UnityPlayerActivity
 import kotlinx.android.synthetic.main.activity_unity_test.toolbar

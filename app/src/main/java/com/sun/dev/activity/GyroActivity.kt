@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.sun.dev.loadphoto
+package com.sun.dev.activity
 
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -17,6 +17,9 @@ import com.sun.dev.adapter.GyroXYZListAdapter
 import com.sun.dev.base.BaseMVVMActivity
 import com.sun.dev.bean.GyroBean
 import com.sun.dev.databinding.ActivityGyroBinding
+import com.sun.dev.viewmodel.GyroModel
+import com.sun.dev.viewrepository.GyroRepository
+import com.sun.dev.vmfactory.GyroFactory
 import kotlinx.android.synthetic.main.activity_gyro.rv_gyro_list
 import kotlinx.android.synthetic.main.activity_gyro.rv_gyro_xy
 import kotlinx.android.synthetic.main.activity_test.toolbar

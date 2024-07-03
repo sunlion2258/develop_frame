@@ -13,10 +13,10 @@ import com.sun.dev.activity.MainActivity
 import com.sun.dev.base.BaseMVVMFragment
 import com.sun.dev.common.Constants
 import com.sun.dev.databinding.FragmentMainMineBinding
-import com.sun.dev.loadphoto.GLBActivity
-import com.sun.dev.loadphoto.GyroActivity
-import com.sun.dev.loadphoto.TestActivity
-import com.sun.dev.loadphoto.UnityTestActivity
+import com.sun.dev.activity.GLBActivity
+import com.sun.dev.activity.GyroActivity
+import com.sun.dev.activity.TestActivity
+import com.sun.dev.activity.UnityTestActivity
 import com.sun.dev.util.ClickUtils
 import com.sun.dev.util.SharedHelper
 import org.jetbrains.anko.support.v4.startActivity

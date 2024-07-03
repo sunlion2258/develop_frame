@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.sun.dev.loadphoto
+package com.sun.dev.activity
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
@@ -8,6 +8,9 @@ import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseMVVMActivity
 import com.sun.dev.databinding.ActivityGlbBinding
+import com.sun.dev.viewmodel.TestModel
+import com.sun.dev.viewrepository.TestRepository
+import com.sun.dev.vmfactory.TestFactory
 import com.sun.dev.widget.CustomViewer
 import kotlinx.android.synthetic.main.activity_glb.surface_view
 import kotlinx.android.synthetic.main.activity_glb.toolbar

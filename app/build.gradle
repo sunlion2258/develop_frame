@@ -108,7 +108,7 @@ android {
         variant.outputs.all {
             if (buildType == "release") {
                 variant.getPackageApplicationProvider().get().outputDirectory = new File(project.rootDir.absolutePath + "/apks/${buildType}/${createTime}")
-                fileName = "Totodile_${defaultConfig.versionName}_${createTime}_${buildType}.apk"
+                fileName = "app_${defaultConfig.versionName}_${createTime}_${buildType}.apk"
                 it.outputFileName = fileName
             }
         }
@@ -196,8 +196,8 @@ dependencies {
     kapt "androidx.room:room-compiler:2.4.0"
     implementation "androidx.room:room-ktx:2.2.5"
 
-    implementation 'com.google.android.filament:filament-android:1.20.0'
-    implementation 'com.google.android.filament:filament-utils-android:1.20.0'
-    implementation 'com.google.android.filament:gltfio-android:1.20.0'
+    implementation 'com.google.android.filament:filament-android:1.21.1'
+    implementation 'com.google.android.filament:filament-utils-android:1.21.1'
+    implementation 'com.google.android.filament:gltfio-android:1.21.1'
 
 }

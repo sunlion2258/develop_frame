@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.sun.dev.loadphoto
+package com.sun.dev.activity
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -15,6 +15,9 @@ import com.sun.dev.datebase.DatabaseProvider
 import com.sun.dev.entity.DrillRecordBean
 import com.sun.dev.entity.User
 import com.sun.dev.util.toast
+import com.sun.dev.viewmodel.TestModel
+import com.sun.dev.viewrepository.TestRepository
+import com.sun.dev.vmfactory.TestFactory
 import kotlinx.android.synthetic.main.activity_test.et_phone
 import kotlinx.android.synthetic.main.activity_test.toolbar
 import kotlinx.android.synthetic.main.activity_test.tv_delete_user

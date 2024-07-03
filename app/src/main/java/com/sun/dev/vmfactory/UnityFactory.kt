@@ -1,7 +1,9 @@
-package com.sun.dev.loadphoto
+package com.sun.dev.vmfactory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.sun.dev.viewmodel.UnityModel
+import com.sun.dev.viewrepository.UnityRepository
 
 /**
  * Created by SunLion on 2019/12/5.

@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.sun.dev.loadphoto.UnityModel" />
+            type="com.sun.dev.viewmodel.UnityModel" />
     </data>
 
     <LinearLayout

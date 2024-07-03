@@ -93,7 +93,6 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/dp_30"
             android:layout_marginEnd="@dimen/dp_5"
-            android:src="@mipmap/icon_car"
             android:visibility="invisible" />
 
     </RelativeLayout>
