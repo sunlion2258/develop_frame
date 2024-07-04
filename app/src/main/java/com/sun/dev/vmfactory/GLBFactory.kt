@@ -10,7 +10,7 @@ import com.sun.dev.viewrepository.GLBRepository
  */
 @Suppress("UNCHECKED_CAST")
 class GLBFactory(private val repository: GLBRepository):ViewModelProvider.NewInstanceFactory() {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return GLBModel(repository) as T
 
     }

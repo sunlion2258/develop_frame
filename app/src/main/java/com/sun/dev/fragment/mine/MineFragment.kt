@@ -15,6 +15,7 @@ import com.sun.dev.common.Constants
 import com.sun.dev.databinding.FragmentMainMineBinding
 import com.sun.dev.activity.GLBActivity
 import com.sun.dev.activity.GyroActivity
+import com.sun.dev.activity.SettingActivity
 import com.sun.dev.activity.TestActivity
 import com.sun.dev.activity.UnityTestActivity
 import com.sun.dev.util.ClickUtils
@@ -95,6 +96,12 @@ class MineFragment : BaseMVVMFragment<FragmentMainMineBinding, MineViewModel>() 
             SharedHelper.getEdit { sp -> sp.putBoolean(Constants.SP.THEME_PREFS, isDarkTheme) }
             // 重新启动活动以应用新主题
             recreate(requireActivity())
+        }
+        bindView.mineSetting.setOnClickListener {
+            if (!ClickUtils.isNotFastClick()) {
+                return@setOnClickListener
+            }
+            startActivity<SettingActivity>()
         }
     }
 

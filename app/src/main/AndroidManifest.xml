@@ -155,6 +155,11 @@
             android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi" />
 
+        <activity
+            android:name="com.sun.dev.activity.SettingActivity"
+            android:screenOrientation="landscape"
+            tools:ignore="DiscouragedApi" />
+
 
     </application>
 </manifest>

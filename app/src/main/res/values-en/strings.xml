@@ -20,5 +20,6 @@
     <string name="glb_model">glb model</string>
     <string name="gyroscope">Gyroscope</string>
     <string name="change_theme">Change theme</string>
+    <string name="setting">Setting</string>
 
 </resources>

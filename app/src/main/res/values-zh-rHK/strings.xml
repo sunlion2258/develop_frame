@@ -21,5 +21,6 @@
     <string name="glb_model">glb 模型</string>
     <string name="gyroscope">陀螺儀</string>
     <string name="change_theme">切換主題</string>
+    <string name="setting">設置</string>
 
 </resources>

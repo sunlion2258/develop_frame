@@ -47,7 +47,6 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
             loadIndirectLight(this@GLBActivity, "venetian_crossroads_2k")
             //loadEnviroment(this@MainActivity, "venetian_crossroads_2k");
         }
-
     }
 
     override fun onResume() {

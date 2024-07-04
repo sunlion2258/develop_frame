@@ -52,14 +52,4 @@ object Constants {
         const val THEME_PREFS = "theme_prefs"
 
     }
-
-    /**
-     * 使用RxBus进行事件监听
-     * tips：《强制》必须一对一，不能一对多，否则无法控制是哪一个接收到事件
-     * 不要所有的都使用RxBus来控制，建议在页面嵌套深时使用，如果只是单独界面交互，建议使用interface来操作
-     */
-    object RxBusTag {
-        const val LOGIN_BACK = "登录页点击返回"
-    }
-
 }

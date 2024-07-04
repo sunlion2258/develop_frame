@@ -12,7 +12,7 @@ import com.sun.dev.viewrepository.AudioRecordRepository
 @Suppress("UNCHECKED_CAST")
 class AudioRecordVMFactory(private val activity: AudioRecordActivity, val repository: AudioRecordRepository) :
     ViewModelProvider.NewInstanceFactory() {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return AudioRecordViewModel(activity, repository) as T
     }
 }

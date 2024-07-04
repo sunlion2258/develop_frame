@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.sun.dev.viewmodel.SettingModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.sun.dev.widget.AppToolBar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:toolbar_style="back_title"
+            app:toolbar_title="@string/setting" />
+
+        <com.sun.dev.widget.LevelProgressBar
+            android:id="@+id/levelProgressBar"
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/dp_50"
+            android:layout_marginEnd="@dimen/dp_50"
+            android:layout_height="60dp" />
+
+    </LinearLayout>
+</layout>

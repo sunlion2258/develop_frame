@@ -10,7 +10,7 @@ import com.sun.dev.viewrepository.GyroRepository
  */
 @Suppress("UNCHECKED_CAST")
 class GyroFactory(private val repository: GyroRepository):ViewModelProvider.NewInstanceFactory() {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return GyroModel(repository) as T
 
     }

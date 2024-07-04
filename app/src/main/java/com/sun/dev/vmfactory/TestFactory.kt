@@ -10,7 +10,7 @@ import com.sun.dev.viewrepository.TestRepository
  */
 @Suppress("UNCHECKED_CAST")
 class TestFactory(private val repository: TestRepository):ViewModelProvider.NewInstanceFactory() {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return TestModel(repository) as T
 
     }

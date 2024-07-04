@@ -11,6 +11,8 @@ public class GameCallHelper {
     public static int language;
     //实际玩游戏时间
     public static int mRealTime;
+    //小球运动速度
+    public static int mSpeed;
 
 
     //Android端设置游戏名字
@@ -49,5 +51,13 @@ public class GameCallHelper {
     //游戏结束时自动调用2: 通知Android端关闭界面:
     public static void closeAcitity() {
         Log.d("", "closeAcitity: closeAcitity123");
+    }
+
+    /**
+     * 设置小球的运动速度
+     * @param speed int值 速度等级
+     */
+    public static void setSpeed(int speed){
+        mSpeed=speed;
     }
 }

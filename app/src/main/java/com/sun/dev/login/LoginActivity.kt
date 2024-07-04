@@ -3,21 +3,13 @@
 package com.sun.dev.login
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.KeyEvent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.blankj.rxbus.RxBus
 import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseMVVMActivity
-import com.sun.dev.common.Constants
-import com.sun.dev.common.MyApplication
 import com.sun.dev.databinding.ActivityLoginBinding
-import com.sun.dev.entity.User
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import org.jetbrains.anko.toast
 
 /**
  * 登陆界面
@@ -57,7 +49,6 @@ class LoginActivity : BaseMVVMActivity<ActivityLoginBinding, LoginViewModel>() {
             && event!!.action == KeyEvent.ACTION_DOWN
         ) {
             finish()
-            RxBus.getDefault().post("", Constants.RxBusTag.LOGIN_BACK)
         }
         return super.onKeyDown(keyCode, event)
     }

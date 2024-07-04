@@ -15,7 +15,7 @@ import com.sun.dev.viewrepository.CreateSessionRepository
 @Suppress("UNCHECKED_CAST")
 class CreateSessionVMFactory(private val activity: CreateSessionActivity, val repository: CreateSessionRepository) :
     ViewModelProvider.NewInstanceFactory() {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return CreateSessionViewModel(activity, repository) as T
     }
 }

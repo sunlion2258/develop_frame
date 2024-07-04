@@ -130,6 +130,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/logout_change_language"
                 app:row_title_text="@string/change_theme" />
 
+            <com.sun.dev.widget.AppRowLayout
+                android:id="@+id/mine_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:image_left="@mipmap/icon_setting"
+                app:layout_constraintTop_toBottomOf="@+id/mine_change_theme"
+                app:row_title_text="@string/setting" />
+
+
             <TextView
                 android:id="@+id/tv_quit"
                 android:layout_width="match_parent"
