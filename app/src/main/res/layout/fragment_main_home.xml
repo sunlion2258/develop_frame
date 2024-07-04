@@ -88,19 +88,6 @@
                 app:vst_textSize="@dimen/sp_13" />
 
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/lottie_2"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/dp_60"
-                android:layout_marginTop="@dimen/dp_30"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/home_scroll_iv"
-                app:layout_constraintWidth_percent=".30"
-                app:lottie_autoPlay="true"
-                app:lottie_fileName="lottiefiles.com - Emoji Tongue.json"
-                app:lottie_loop="true" />
-
             <TextView
                 android:id="@+id/tv_photo"
                 android:layout_width="wrap_content"

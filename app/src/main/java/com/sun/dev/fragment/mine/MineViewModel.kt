@@ -12,7 +12,6 @@ import com.sun.dev.activity.TitleWithContentActivity
 import com.sun.dev.common.Constants
 import com.sun.dev.dialog.BottomDialog
 import com.sun.dev.dialog.EdittextDialog
-import com.sun.dev.location.LocationActivity
 import com.sun.dev.util.toast
 import com.tbruyelle.rxpermissions2.RxPermissions
 import org.jetbrains.anko.startActivity
@@ -76,7 +75,6 @@ class MineViewModel(repository: MineRepository, val activity: MainActivity) : Vi
             Manifest.permission.ACCESS_FINE_LOCATION
         ).subscribe {
             if (it) {
-                activity.startActivity<LocationActivity>()
             } else {
                 toast("需要同意定位权限")
             }

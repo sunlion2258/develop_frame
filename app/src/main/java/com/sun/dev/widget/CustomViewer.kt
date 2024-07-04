@@ -7,9 +7,7 @@ import com.google.android.filament.Skybox
 import com.google.android.filament.utils.KTXLoader
 import com.google.android.filament.utils.ModelViewer
 import com.google.android.filament.utils.Utils
-import com.sun.dev.util.toast
 import java.nio.ByteBuffer
-
 
 class CustomViewer {
     companion object {
