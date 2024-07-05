@@ -8,7 +8,6 @@ public class GameCallHelper {
     //游戏时间
     public static int mGameTime = 600;
 
-    public static int language;
     //实际玩游戏时间
     public static int mRealTime;
     //小球运动速度

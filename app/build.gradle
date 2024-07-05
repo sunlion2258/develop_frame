@@ -181,8 +181,6 @@ dependencies {
     implementation "com.sun.xml.bind:jaxb-impl:2.3.0"
     //--- end
 
-    //3D地图so及jar
-    implementation 'com.amap.api:3dmap:latest.integration'
     implementation files('libs/fastjson-1.1.46.android.jar')
     implementation rootProject.ext.dependencies.BGAQRCode
     implementation rootProject.ext.dependencies.eventbus
@@ -197,5 +195,7 @@ dependencies {
     implementation 'com.google.android.filament:filament-android:1.21.1'
     implementation 'com.google.android.filament:filament-utils-android:1.21.1'
     implementation 'com.google.android.filament:gltfio-android:1.21.1'
+
+    implementation project(':unityLibrary')
 
 }

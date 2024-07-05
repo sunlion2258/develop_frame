@@ -139,7 +139,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/mine_change_theme"
                 app:row_title_text="@string/setting" />
 
-
             <TextView
                 android:id="@+id/tv_quit"
                 android:layout_width="match_parent"
