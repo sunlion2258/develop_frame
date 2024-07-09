@@ -18,5 +18,4 @@ class LoginRepository {
     fun beginLogin(phoneNumber: String, code: String, phoneName: String):Observable<RegisterBean> {
         return RetrofitManager.beginLogin(phoneNumber,code,phoneName)
     }
-
 }

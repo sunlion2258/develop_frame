@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-//DataBinding适配kotlin
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -40,6 +39,7 @@ android {
 
         ndk {
             //架构支持
+            //noinspection ChromeOsAbiSupport
             abiFilters 'armeabi-v7a'
         }
         signingConfig signingConfigs.release
@@ -73,6 +73,7 @@ android {
     dataBinding {
         enabled = true
     }
+
     //协程
     kotlin {
         experimental {
@@ -188,8 +189,11 @@ dependencies {
     implementation rootProject.ext.dependencies.SmartRefreshHeader
     implementation rootProject.ext.dependencies.rxpermissions
 
+    //noinspection GradleDependency
     implementation "androidx.room:room-runtime:2.4.0"
+    //noinspection GradleDependency
     kapt "androidx.room:room-compiler:2.4.0"
+    //noinspection GradleDependency
     implementation "androidx.room:room-ktx:2.2.5"
 
     implementation 'com.google.android.filament:filament-android:1.21.1'

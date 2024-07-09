@@ -3,7 +3,9 @@ package com.sun.dev.widget
 import android.content.Context
 import android.view.Choreographer
 import android.view.SurfaceView
+import com.google.android.filament.Engine
 import com.google.android.filament.Skybox
+import com.google.android.filament.gltfio.FilamentAsset
 import com.google.android.filament.utils.KTXLoader
 import com.google.android.filament.utils.ModelViewer
 import com.google.android.filament.utils.Utils
@@ -46,6 +48,7 @@ class CustomViewer {
         modelViewer.apply {
             loadModelGlb(buffer)
             transformToUnitCube()
+
         }
     }
 
@@ -82,7 +85,7 @@ class CustomViewer {
         }
     }
 
-    fun loadEnviroment(context: Context, ibl: String) {
+    fun loadEnvironment(context: Context, ibl: String) {
         // Create the sky box and add it to the scene.
         val buffer = readAsset(context, "environments/venetian_crossroads_2k/${ibl}_skybox.ktx")
         KTXLoader.createSkybox(modelViewer.engine, buffer).apply {
@@ -122,5 +125,12 @@ class CustomViewer {
 
     fun onDestroy() {
         choreographer.removeFrameCallback(frameCallback)
+    }
+
+    fun getAsset(): FilamentAsset {
+        return modelViewer.asset!!
+    }
+    fun getEngine(): Engine {
+        return modelViewer.engine
     }
 }

@@ -88,7 +88,7 @@ class WelcomeActivity : BaseActivity() {
      * 延迟
      */
     private fun delayToMainActivity() {
-        timer = object : CountDownTimer(2000, 1000) {
+        timer = object : CountDownTimer(0, 1000) {
             override fun onTick(sin: Long) {
             }
 

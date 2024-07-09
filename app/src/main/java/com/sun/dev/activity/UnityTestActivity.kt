@@ -16,6 +16,7 @@ import com.unity3d.player.GameCallHelper
 import com.unity3d.player.UnityPlayerActivity
 import kotlinx.android.synthetic.main.activity_unity_test.toolbar
 import kotlinx.android.synthetic.main.activity_unity_test.tv_to_unity
+import org.jetbrains.anko.toast
 
 
 /**
