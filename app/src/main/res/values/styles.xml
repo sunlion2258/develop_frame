@@ -4,6 +4,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="view1color">@color/common_blue</item>//textview1的颜色
     </style>
 
 
@@ -12,6 +13,7 @@
         <item name="colorPrimary">@color/color_black</item>
         <item name="colorPrimaryDark">@color/color_black</item>
         <item name="colorAccent">@color/color_black</item>
+        <item name="view1color">@color/color_ff0000</item>//textview1的颜色
     </style>
 
 

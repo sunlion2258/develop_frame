@@ -80,7 +80,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/main_tab_mine"
-                    android:textColor="@drawable/selector_main_bottom_title" />
+                    android:textColor="@color/color_c5" />
 
             </RelativeLayout>
         </LinearLayout>

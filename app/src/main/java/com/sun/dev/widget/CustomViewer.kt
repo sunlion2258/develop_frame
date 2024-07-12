@@ -19,7 +19,7 @@ class CustomViewer {
     }
 
     private lateinit var choreographer: Choreographer
-    public lateinit var modelViewer: ModelViewer
+    lateinit var modelViewer: ModelViewer
 
     fun loadEntity() {
         choreographer = Choreographer.getInstance()
@@ -82,14 +82,6 @@ class CustomViewer {
         KTXLoader.createIndirectLight(modelViewer.engine, buffer).apply {
             intensity = 50_000f
             modelViewer.scene.indirectLight = this
-        }
-    }
-
-    fun loadEnvironment(context: Context, ibl: String) {
-        // Create the sky box and add it to the scene.
-        val buffer = readAsset(context, "environments/venetian_crossroads_2k/${ibl}_skybox.ktx")
-        KTXLoader.createSkybox(modelViewer.engine, buffer).apply {
-            modelViewer.scene.skybox = this
         }
     }
 

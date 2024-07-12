@@ -20,6 +20,7 @@ import com.sun.dev.common.Constants
 import com.sun.dev.databinding.FragmentMainMineBinding
 import com.sun.dev.util.ClickUtils
 import com.sun.dev.util.SharedHelper
+import com.sun.dev.util.toast
 import org.jetbrains.anko.support.v4.startActivity
 
 
@@ -39,15 +40,14 @@ class MineFragment : BaseMVVMFragment<FragmentMainMineBinding, MineViewModel>() 
         ).get(MineViewModel::class.java)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
         isDarkTheme = SharedHelper.getShared().getBoolean(Constants.SP.THEME_PREFS, false)
         if (isDarkTheme) {
             requireActivity().setTheme(R.style.AppTheme_Dark)
         } else {
             requireActivity().setTheme(R.style.AppTheme)
         }
+        super.onViewCreated(view, savedInstanceState)
+
 
         ImmersionBar.with(this)
             .statusBarDarkFont(true)
@@ -91,8 +91,7 @@ class MineFragment : BaseMVVMFragment<FragmentMainMineBinding, MineViewModel>() 
         }
         bindView.mineChangeTheme.setOnClickListener {
             // 切换主题标志
-            isDarkTheme = !isDarkTheme;
-
+            isDarkTheme = !isDarkTheme
             SharedHelper.getEdit { sp -> sp.putBoolean(Constants.SP.THEME_PREFS, isDarkTheme) }
             // 重新启动活动以应用新主题
             recreate(requireActivity())

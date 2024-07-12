@@ -46,13 +46,11 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
             loadEntity()
             setSurfaceView(requireNotNull(surface_view))
 
-
             loadGlb(this@GLBActivity, "grogu", "Human")
             loadIndirectLight(this@GLBActivity, "venetian_crossroads_2k")
 
             asset = getAsset()
             engine = getEngine()
-
 
 //            setModelScale(1.6f)
 //            getJoints(asset!!, engine!!)
@@ -74,7 +72,7 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
                                 1.5f, 0.0f, 0.0f, 0.0f,
                                 0f, 1.5f, 0.0f, 0.0f,
                                 0f, 0.0f, 1.5f, 0.0f,
-                                0f, 0.0f, 0.0f, 0.5f,
+                                0f, 0.0f, 0.0f, 0.95f,
                             )
 
                             val currentTransform = Mat4.of(*transformArray)
@@ -89,7 +87,6 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
             }
         }
     }
-
 
     override fun onResume() {
         super.onResume()

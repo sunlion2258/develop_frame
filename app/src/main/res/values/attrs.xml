@@ -60,4 +60,7 @@
     </declare-styleable>
 
 
+    <attr name="mainColor" format="color" />
+    <attr name="view1color" format="color" />
+
 </resources>

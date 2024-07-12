@@ -14,8 +14,8 @@ import android.view.View
 class LevelProgressBar @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
-    private var maxLevel = 5
-    private var currentLevel = 2
+    private var maxLevel = 10
+    private var currentLevel = 3
     private val paint = Paint().apply {
         color = Color.BLUE
         strokeWidth = 20f

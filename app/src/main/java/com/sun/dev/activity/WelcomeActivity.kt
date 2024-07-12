@@ -33,6 +33,7 @@ class WelcomeActivity : BaseActivity() {
 
     @SuppressLint("CheckResult")
     override fun onViewCreated() {
+
         super.onViewCreated()
         //重启之后恢复到之前的语言
         selectLanguage(SharedHelper.getShared().getString(Constants.SP.LANGUAGE, "zh"))

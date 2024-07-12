@@ -55,7 +55,6 @@
         android:smallScreens="true"
         android:xlargeScreens="true" />
 
-
     <application
         android:name=".common.MyApplication"
         android:allowBackup="true"
