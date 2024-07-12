@@ -13,6 +13,8 @@ public class GameCallHelper {
     //小球运动速度
     public static int mSpeed;
 
+    public static int language;
+
 
     //Android端设置游戏名字
     public static void setGameName(String gameName) {

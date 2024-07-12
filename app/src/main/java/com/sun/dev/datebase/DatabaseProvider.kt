@@ -2,6 +2,7 @@ package com.sun.dev.datebase
 
 import android.content.Context
 import android.os.Environment
+import android.util.Log
 import androidx.room.Room
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
@@ -41,7 +42,7 @@ object DatabaseProvider {
             externalDbFile.absolutePath
         )
             //测试数据库更新升级
-//            .addMigrations(MIGRATION_1_2)
+            .addMigrations(MIGRATION_1_2)
             .build()
 
     }
@@ -69,13 +70,13 @@ object DatabaseProvider {
     /**
      * 数据库版本 1 升级到 版本 2 的迁移类实例对象
      */
-    private val MIGRATION_1_2: Migration = object : Migration(3, 4) {
+    private val MIGRATION_1_2: Migration = object : Migration(1, 2) {
         override fun migrate(database: SupportSQLiteDatabase) {
-//            Log.i("Room_StudentDatabase", "数据库版本 1 升级到 版本 2")
+            Log.i("Room_StudentDatabase", "数据库版本 1 升级到 版本 2")
 //            database.execSQL("alter table user add column sex integer not null default 2")
             // 创建新表的SQL语句
-            val CREATE_NEW_TABLE_SQL =
-                "CREATE TABLE IF NOT EXISTS drillRecord (drillRecordId TEXT PRIMARY KEY NOT NULL,drillScore TEXT NOT NULL)"
+//            val CREATE_NEW_TABLE_SQL = "CREATE TABLE IF NOT EXISTS drillRecord (drillRecordId TEXT PRIMARY KEY NOT NULL,drillScore TEXT NOT NULL)"
+            val CREATE_NEW_TABLE_SQL = "CREATE TABLE IF NOT EXISTS access (access_level_id TEXT PRIMARY KEY NOT NULL,static_access_level TEXT NOT NULL,sleep_access_level TEXT NOT NULL)"
 
             // 执行SQL语句创建新表
             database.execSQL(CREATE_NEW_TABLE_SQL)

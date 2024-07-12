@@ -19,7 +19,7 @@ class CustomViewer {
     }
 
     private lateinit var choreographer: Choreographer
-    private lateinit var modelViewer: ModelViewer
+    public lateinit var modelViewer: ModelViewer
 
     fun loadEntity() {
         choreographer = Choreographer.getInstance()

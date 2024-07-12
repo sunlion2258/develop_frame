@@ -49,6 +49,7 @@
     <color name="color_2b8afe">#2B8AFE</color>
     <color name="transparent">#00000000</color>
     <color name="color_c5">#C5C5C5</color>
-
+    <color name="treat_bg_gray">#F8F8F8</color>
+    <color name="common_text_grey">#808992</color>
 
 </resources>

@@ -10,6 +10,7 @@
     </data>
 
     <LinearLayout
+        android:background="@color/color_white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -24,9 +25,15 @@
         <com.sun.dev.widget.LevelProgressBar
             android:id="@+id/levelProgressBar"
             android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:layout_marginStart="@dimen/dp_50"
-            android:layout_marginEnd="@dimen/dp_50"
-            android:layout_height="60dp" />
+            android:layout_marginEnd="@dimen/dp_50" />
+
+        <ImageView style="@style/vas_seekbar_title_img" />
+
+        <com.xw.repo.BubbleSeekBar
+            android:id="@+id/bsc_vas_dynamic"
+            style="@style/SettingSeekBarBase" />
 
     </LinearLayout>
 </layout>

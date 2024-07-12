@@ -118,12 +118,33 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    aaptOptions {
+        noCompress = ['.unity3d', '.ress', '.resource', '.obb', '.txt']
+        ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~"
+    }
+
+    packagingOptions {
+        doNotStrip '*/armeabi-v7a/*.so'
+    }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+        density {
+            enableSplit = false
+        }
+        abi {
+            enableSplit = true
+        }
+    }
 }
 
 
 dependencies {
     api project(':unityLibrary')
-    implementation fileTree(dir: project(':unityLibrary').getProjectDir().toString() + ('\\libs'),includes: ['*.jar'])
+    implementation fileTree(dir: project(':unityLibrary').getProjectDir().toString() + ('\\libs'), includes: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -152,6 +173,7 @@ dependencies {
     //kotlin协程相关
     //noinspection GradleDependency
     implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '1.6.0'
+    //noinspection GradleDependency
     implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-android', version: '1.6.4'
     //Logger
     implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
@@ -189,17 +211,15 @@ dependencies {
     implementation rootProject.ext.dependencies.SmartRefreshHeader
     implementation rootProject.ext.dependencies.rxpermissions
 
-    //noinspection GradleDependency
-    implementation "androidx.room:room-runtime:2.4.0"
+    implementation project(':unityLibrary')
+
     //noinspection GradleDependency
     kapt "androidx.room:room-compiler:2.4.0"
-    //noinspection GradleDependency
-    implementation "androidx.room:room-ktx:2.2.5"
-
-    implementation 'com.google.android.filament:filament-android:1.21.1'
-    implementation 'com.google.android.filament:filament-utils-android:1.21.1'
-    implementation 'com.google.android.filament:gltfio-android:1.21.1'
-
-    implementation project(':unityLibrary')
+    implementation rootProject.ext.dependencies.room_runtime
+    implementation rootProject.ext.dependencies.room_ktx
+    implementation rootProject.ext.dependencies.filament_android
+    implementation rootProject.ext.dependencies.filament_utils_android
+    implementation rootProject.ext.dependencies.gltfio_android
+    implementation rootProject.ext.dependencies.bubbleseekbar
 
 }

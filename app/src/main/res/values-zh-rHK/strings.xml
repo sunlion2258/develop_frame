@@ -1,6 +1,5 @@
 <resources>
-<!--    <string name="app_name">小魚總</string>-->
-    <string name="app_name">AI Mind</string>
+    <string name="app_name">小鱷Tools</string>
     <string name="main_bottom_home">對話</string>
     <string name="main_bottom_mine">我的</string>
     <string name="welcome_tip">超乎你的想象</string>
@@ -10,7 +9,6 @@
     <string name="confirm_quit">確定退出</string>
     <string name="input_phone">請輸入你的手機號</string>
     <string name="login">登錄</string>
-    <string name="change_language_kind">切換語種</string>
     <string name="change_language">語言切換</string>
     <string name="test_name">測試內容</string>
     <string name="test_page">測試頁面</string>

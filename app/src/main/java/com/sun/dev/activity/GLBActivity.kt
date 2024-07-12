@@ -4,6 +4,7 @@ package com.sun.dev.activity
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
+import cn.qqtheme.framework.util.LogUtils
 import com.google.android.filament.Engine
 import com.google.android.filament.gltfio.FilamentAsset
 import com.google.android.filament.utils.Mat4
@@ -17,7 +18,6 @@ import com.sun.dev.vmfactory.TestFactory
 import com.sun.dev.widget.CustomViewer
 import kotlinx.android.synthetic.main.activity_glb.surface_view
 import kotlinx.android.synthetic.main.activity_glb.toolbar
-import com.google.android.filament.gltfio.Animator;
 
 
 /**
@@ -53,11 +53,43 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
             asset = getAsset()
             engine = getEngine()
 
-            setModelScale(1.8f)
 
-            getJoints(asset!!, engine!!)
+//            setModelScale(1.6f)
+//            getJoints(asset!!, engine!!)
+
+            val entities = asset!!.entities
+            val transformManager = engine!!.transformManager
+
+            entities.forEach { entity ->
+                val transformInstance = transformManager.getInstance(entity)
+                if (transformInstance != 0) {
+                    val name = asset!!.getName(entity)
+                    LogUtils.debug("Joint name ----------", name)
+                    if (name.contains("RootNode")) {
+                        val transformInstance = transformManager.getInstance(entity)
+                        if (transformInstance != 0) {
+                            val transformArray = FloatArray(16)
+                            transformManager.getTransform(transformInstance, transformArray)
+                            val scaleMatrix = Mat4.of(
+                                1.5f, 0.0f, 0.0f, 0.0f,
+                                0f, 1.5f, 0.0f, 0.0f,
+                                0f, 0.0f, 1.5f, 0.0f,
+                                0f, 0.0f, 0.0f, 0.5f,
+                            )
+
+                            val currentTransform = Mat4.of(*transformArray)
+                            val newTransform = scaleMatrix * currentTransform
+                            transformManager.setTransform(
+                                transformInstance,
+                                newTransform.toFloatArray()
+                            )
+                        }
+                    }
+                }
+            }
         }
     }
+
 
     override fun onResume() {
         super.onResume()
@@ -76,6 +108,7 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
     private fun setModelScale(scale: Float) {
         val transformManager = engine!!.transformManager
         val root = asset!!.root
+
         val instance = transformManager.getInstance(root)
         if (transformManager.hasComponent(root)) {
             val transformArray = FloatArray(16)
@@ -83,9 +116,9 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
 
             val scaleMatrix = Mat4.of(
                 scale, 0.0f, 0.0f, 0.0f,
-                0.0f, scale, 0.0f, 0.0f,
-                0.0f, 0.0f, scale, 0.0f,
-                0.0f, 0.0f, 0.0f, 1.0f,
+                0f, scale, 0.0f, 0.0f,
+                0f, 0.0f, scale, 0.0f,
+                0f, 0.0f, 0.0f, 1.0f,
             )
 
             val currentTransform = Mat4.of(*transformArray)
@@ -94,10 +127,11 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
         }
     }
 
-
+    /**
+     * 获取关节点
+     */
     private fun getJoints(asset: FilamentAsset, engine: Engine): List<Pair<String, FloatArray>> {
         val joints = mutableListOf<Pair<String, FloatArray>>()
-        val entities = asset.entities
         for (entity in asset.entities) {
             val nodeName = asset.getName(entity)
             if (nodeName != null) {
@@ -118,8 +152,9 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
+        customViewer.modelViewer.destroyModel()
         customViewer.onDestroy()
+        super.onDestroy()
     }
 }
 

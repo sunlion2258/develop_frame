@@ -67,13 +67,14 @@ class TestActivity : BaseMVVMActivity<ActivityTestBinding, TestModel>(),
 
                     db.userDao().insertUser(User(et_phone.text.toString().trim(), "哈哈", 5, 19))
                     for (drillRecordBean in db.drillRecordDao().getAllDrillRecord()) {
-                        if (drillRecordBean.drillRecordId==inputNum){
+                        if (drillRecordBean.drillRecordId == inputNum) {
                             toast("记录表中数据存在请修改")
                             return@launch
                         }
                     }
 
-                    db.drillRecordDao().insertDrillRecord(DrillRecordBean(et_phone.text.toString().trim(), "90"))
+                    db.drillRecordDao()
+                        .insertDrillRecord(DrillRecordBean(et_phone.text.toString().trim(), "90"))
                 }
 
                 val internalDbFile = getDatabasePath(Constants.DATABASE_NAME)

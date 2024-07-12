@@ -36,6 +36,17 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
         mUnityPlayer = new UnityPlayer(this, this);
         setContentView(mUnityPlayer);
         mUnityPlayer.requestFocus();
+
+        Bundle unityBundle = getIntent().getExtras();
+        String gameName = unityBundle.getString("gameName", "game107");
+        int language = unityBundle.getInt("language", 1);
+
+        /**
+         * game107:		僵尸复仇者
+         * game1010:	环球旅行
+         */
+        GameCallHelper.setGameName(gameName);
+        GameCallHelper.language=language;
     }
 
     // When Unity player unloaded move task to background

@@ -87,8 +87,6 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="d2f1f32dd016d2752e18e46b4b3d6602" />
-        <!--定位服务-->
-        <service android:name="com.amap.api.location.APSService" />
 
         <!-- https://github.com/SceneView/sceneform-android-->
         <meta-data
@@ -120,17 +118,12 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi" />
-        <activity android:name=".location.LocationActivity" />
         <activity
             android:name="com.sun.dev.activity.TestActivity"
             android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi" />
         <activity
             android:name="com.sun.dev.fragment.mine.AudioRecordActivity"
-            android:screenOrientation="landscape"
-            tools:ignore="DiscouragedApi" />
-        <activity
-            android:name="com.sun.dev.nuidemo.SpeechRecognizerActivity"
             android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi" />
         <activity
@@ -159,7 +152,6 @@
             android:name="com.sun.dev.activity.SettingActivity"
             android:screenOrientation="landscape"
             tools:ignore="DiscouragedApi" />
-
 
     </application>
 </manifest>

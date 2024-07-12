@@ -92,6 +92,8 @@
     <dimen name="sp_25">25sp</dimen>
     <dimen name="sp_60">60sp</dimen>
     <dimen name="dp_64">64dp</dimen>
+    <dimen name="dp_105">105dp</dimen>
     <dimen name="dp_230">230dp</dimen>
+    <dimen name="dp_880">880dp</dimen>
 
 </resources>

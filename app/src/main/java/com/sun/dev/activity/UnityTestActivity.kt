@@ -12,12 +12,9 @@ import com.sun.dev.databinding.ActivityUnityTestBinding
 import com.sun.dev.viewmodel.UnityModel
 import com.sun.dev.viewrepository.UnityRepository
 import com.sun.dev.vmfactory.UnityFactory
-import com.unity3d.player.GameCallHelper
 import com.unity3d.player.UnityPlayerActivity
 import kotlinx.android.synthetic.main.activity_unity_test.toolbar
 import kotlinx.android.synthetic.main.activity_unity_test.tv_to_unity
-import org.jetbrains.anko.toast
-
 
 /**
  * Created by SunLion on 2024/6/20.
@@ -37,14 +34,11 @@ class UnityTestActivity : BaseMVVMActivity<ActivityUnityTestBinding, UnityModel>
             .init()
 
         tv_to_unity.setOnClickListener {
-            /**
-             * game107:		僵尸复仇者
-             * game1010:	环球旅行
-             */
-
-            GameCallHelper.setGameName("game1010")
-
             val intent = Intent(this@UnityTestActivity, UnityPlayerActivity::class.java)
+            val bundle = Bundle()
+            bundle.putString("gameName", "game1010")
+            bundle.putInt("language", 1)
+            intent.putExtras(bundle)
             startActivity(intent)
         }
     }

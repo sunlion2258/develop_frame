@@ -37,7 +37,43 @@
         <item name="android:maxHeight">10dp</item>
     </style>
 
+    <item name="icon_change_language_dark" type="drawable">@drawable/icon_change_language_dark
+    </item>
 
-    <item name="icon_change_language_dark" type="drawable">@drawable/icon_change_language_dark</item>
+    <!--疼痛评估数值-->
+    <style name="vas_seekbar_title_img">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/dp_20</item>
+        <item name="android:src">@drawable/img_shuzi</item>
+        <item name="android:layout_marginBottom">@dimen/dp_20</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:layout_marginStart">@dimen/dp_105</item>
+        <item name="android:layout_marginEnd">@dimen/dp_105</item>
+    </style>
+
+    <style name="SettingSeekBarBase">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="android:layout_marginBottom">@dimen/dp_30</item>
+        <item name="android:progressDrawable">@drawable/vas_border_gray</item>
+        <item name="android:splitTrack">false</item>
+        <item name="android:layout_marginLeft">@dimen/dp_105</item>
+        <item name="android:layout_marginRight">@dimen/dp_105</item>
+        <item name="android:paddingTop">@dimen/dp_2</item>
+        <item name="bsb_second_track_color">#00000000</item>
+        <item name="bsb_show_section_mark">false</item>
+        <item name="android:background">@drawable/vas_border_gray</item>
+        <item name="bsb_thumb_radius">@dimen/dp_18</item>
+        <item name="bsb_thumb_color">@color/common_text_grey</item>
+        <!--  显示下侧文字  -->
+        <item name="bsb_show_section_text">false</item>
+        <item name="bsb_thumb_radius_on_dragging">@dimen/dp_20</item>
+        <!--  进度条背景色-->
+        <item name="bsb_track_color">#00000000</item>
+        <!--气泡里字的颜色-->
+        <item name="bsb_bubble_text_color">#00000000</item>
+        <item name="bsb_max">10</item>
+        <item name="bsb_min">0.0</item>
+    </style>
 
 </resources>
