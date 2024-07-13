@@ -78,6 +78,8 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
             mUnityPlayer.destroy();
         }
         super.onDestroy();
+
+        setResult(RESULT_OK,new Intent(this, UnityPlayerActivity.class));
     }
 
     // If the activity is in multi window mode or resizing the activity is allowed we will use
