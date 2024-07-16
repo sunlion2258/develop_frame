@@ -9,21 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.gyf.immersionbar.ImmersionBar
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.sun.dev.R
-import com.sun.dev.activity.CreateSessionActivity
 import com.sun.dev.adapter.RedPacketRankListAdapter
 import com.sun.dev.base.BaseMVVMFragment
 import com.sun.dev.bean.RedPacketRankBean
 import com.sun.dev.databinding.FragmentMainHomeBinding
-import com.sun.dev.activity.TestActivity
-import com.sun.dev.login.LoginActivity
-import com.sun.dev.util.CodeUtil
 import com.sun.dev.util.GlideImageLoader
 import kotlinx.android.synthetic.main.fragment_main_home.home_banner
 import kotlinx.android.synthetic.main.fragment_main_home.home_scroll_text
 import kotlinx.android.synthetic.main.fragment_main_home.home_toolbar
-import kotlinx.android.synthetic.main.include_toolbar.view.toolbar_left
-import kotlinx.android.synthetic.main.include_toolbar.view.toolbar_right
-import org.jetbrains.anko.support.v4.startActivity
 
 /**
  *  Created by SunLion on 2019/4/29 17:54
@@ -67,9 +60,6 @@ class HomeFragment : BaseMVVMFragment<FragmentMainHomeBinding, HomeViewModel>(),
         initBanner()
 
         home_toolbar.setTitle(requireActivity().resources.getString(R.string.main_bottom_home))
-        home_toolbar.setRightImage(R.mipmap.add_focus)
-        home_toolbar.toolbar_left.setOnClickListener(this)
-        home_toolbar.toolbar_right.setOnClickListener(this)
 
         for (index in 0..1) {
             val redPacketRankBean = RedPacketRankBean(
@@ -100,13 +90,6 @@ class HomeFragment : BaseMVVMFragment<FragmentMainHomeBinding, HomeViewModel>(),
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            R.id.toolbar_right -> {
-                if (!CodeUtil.checkIsLogin()) {
-                    startActivity<LoginActivity>()
-                } else {
-                    CreateSessionActivity.start(requireActivity(), "创建会话")
-                }
-            }
         }
     }
 

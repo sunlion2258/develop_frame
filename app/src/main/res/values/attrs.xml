@@ -55,12 +55,15 @@
         <attr name="VerCodeInputView_inputBg" format="color" />
         <attr name="VerCodeInputView_inputType" format="integer" />
     </declare-styleable>
-    <declare-styleable name="VerCodeInputView_inputNum">12
-
-    </declare-styleable>
-
+    <declare-styleable name="VerCodeInputView_inputNum">12</declare-styleable>
 
     <attr name="mainColor" format="color" />
     <attr name="view1color" format="color" />
+    <attr name="drawable_setting" format="reference" />
+    <attr name="drawable_change_theme" format="reference" />
+    <attr name="drawable_change_language" format="reference" />
+    <attr name="drawable_unity" format="reference" />
+    <attr name="drawable_glb" format="reference" />
+    <attr name="drawable_gyroscope" format="reference" />
 
 </resources>

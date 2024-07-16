@@ -5,6 +5,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="view1color">@color/common_blue</item>//textview1的颜色
+        <item name="drawable_setting">@mipmap/icon_setting</item>
+        <item name="drawable_change_theme">@mipmap/icon_change_theme</item>
+        <item name="drawable_change_language">@mipmap/icon_change_language</item>
     </style>
 
 
@@ -14,6 +17,9 @@
         <item name="colorPrimaryDark">@color/color_black</item>
         <item name="colorAccent">@color/color_black</item>
         <item name="view1color">@color/color_ff0000</item>//textview1的颜色
+        <item name="drawable_setting">@mipmap/icon_setting_red</item>
+        <item name="drawable_change_theme">@mipmap/icon_change_theme_red</item>
+        <item name="drawable_change_language">@mipmap/icon_change_language_red</item>
     </style>
 
 

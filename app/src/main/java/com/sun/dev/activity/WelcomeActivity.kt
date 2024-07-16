@@ -55,7 +55,6 @@ class WelcomeActivity : BaseActivity() {
             if (it) {
                 val boolean = SharedHelper.getShared().getBoolean(Constants.SP.IS_FIRST, true)
                 if (boolean) {
-
                     GlobalScope.launch {
                         // 初始化数据库
                         MyApplication.dp = DatabaseProvider.getDatabase(this@WelcomeActivity)
@@ -69,7 +68,6 @@ class WelcomeActivity : BaseActivity() {
                 } else {
                     startActivity<MainActivity>()
                 }
-
             } else {
                 toast("需要同意存储权限")
                 finish()

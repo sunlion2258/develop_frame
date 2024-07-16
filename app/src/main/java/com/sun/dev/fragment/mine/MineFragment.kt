@@ -20,9 +20,7 @@ import com.sun.dev.common.Constants
 import com.sun.dev.databinding.FragmentMainMineBinding
 import com.sun.dev.util.ClickUtils
 import com.sun.dev.util.SharedHelper
-import com.sun.dev.util.toast
 import org.jetbrains.anko.support.v4.startActivity
-
 
 /**
  *  Created by SunLion on 2019/4/29 17:54
@@ -103,13 +101,4 @@ class MineFragment : BaseMVVMFragment<FragmentMainMineBinding, MineViewModel>() 
             startActivity<SettingActivity>()
         }
     }
-
-//    override fun onHiddenChanged(hidden: Boolean) {
-//        super.onHiddenChanged(hidden)
-//        if (!hidden) {
-//            if (!CodeUtil.checkIsLogin()) {
-//                startActivity<LoginActivity>()
-//            }
-//        }
-//    }
 }

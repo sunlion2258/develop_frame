@@ -16,8 +16,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color_white">
+            android:background="@color/color_black"
+            android:layout_height="wrap_content">
 
 
             <com.sun.dev.widget.AppRowLayout
@@ -91,6 +91,7 @@
             <com.sun.dev.widget.AppRowLayout
                 android:id="@+id/mine_gyroscope"
                 android:layout_width="match_parent"
+                app:image_left="@mipmap/icon_gyroscope"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/mine_fbx"
                 app:row_title_text="@string/gyroscope" />
@@ -117,7 +118,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                app:image_left="@mipmap/icon_change_language"
+                app:image_left="?attr/drawable_change_language"
                 app:layout_constraintTop_toBottomOf="@+id/mine_to_unity"
                 app:row_title_text="@string/change_language" />
 
@@ -126,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                app:image_left="@mipmap/icon_change_theme"
+                app:image_left="?attr/drawable_change_theme"
                 app:layout_constraintTop_toBottomOf="@+id/logout_change_language"
                 app:row_title_text="@string/change_theme" />
 
@@ -135,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                app:image_left="@mipmap/icon_setting"
+                app:image_left="?attr/drawable_setting"
                 app:layout_constraintTop_toBottomOf="@+id/mine_change_theme"
                 app:row_title_text="@string/setting" />
 

@@ -10,7 +10,6 @@ import com.sun.dev.R
 import com.sun.dev.base.BaseMVVMActivity
 import com.sun.dev.databinding.ActivityUnityTestBinding
 import com.sun.dev.dialog.LoadProgressDialog
-import com.sun.dev.util.toast
 import com.sun.dev.viewmodel.UnityModel
 import com.sun.dev.viewrepository.UnityRepository
 import com.sun.dev.vmfactory.UnityFactory
@@ -54,8 +53,6 @@ class UnityTestActivity : BaseMVVMActivity<ActivityUnityTestBinding, UnityModel>
         if (requestCode == 1000) {
             val loadProgressDialog = LoadProgressDialog(this@UnityTestActivity, "自动进入第二个游戏")
             loadProgressDialog.show()
-
-
 
             GlobalScope.launch(Dispatchers.Main) {
                 delay(2000)

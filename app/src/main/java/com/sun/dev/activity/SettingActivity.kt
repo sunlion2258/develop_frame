@@ -24,7 +24,6 @@ class SettingActivity : BaseMVVMActivity<ActivitySettingBinding, SettingModel>()
         ViewModelProviders.of(this, SettingFactory(SettingRepository()))
             .get(SettingModel::class.java)
 
-
     override fun onMVVMCreated(savedInstanceState: Bundle?) {
         ImmersionBar.setTitleBar(this, toolbar)
         ImmersionBar.with(this)
@@ -34,7 +33,6 @@ class SettingActivity : BaseMVVMActivity<ActivitySettingBinding, SettingModel>()
         GlobalScope.launch {
             val allAssessmentLevel = db.assessmentLevelDao().getAllAssessmentLevel()
             if (allAssessmentLevel.isNotEmpty()) {
-
                 runOnUiThread {
                     toast("有数据了:  ${allAssessmentLevel[0]}")
                 }

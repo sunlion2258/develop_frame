@@ -21,7 +21,7 @@ abstract class BaseMVVMActivity<VDB : ViewDataBinding, VM : ViewModel> : AppComp
     lateinit var bindViews: VDB
     lateinit var vm: VM
     //订阅
-    var mCompositeDisposable: CompositeDisposable? = null
+    private var mCompositeDisposable: CompositeDisposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,6 @@ abstract class BaseMVVMActivity<VDB : ViewDataBinding, VM : ViewModel> : AppComp
 
         mCompositeDisposable = CompositeDisposable()
         onMVVMCreated(savedInstanceState)
-
     }
 
     abstract fun initViewModel(): VM
@@ -65,5 +64,4 @@ abstract class BaseMVVMActivity<VDB : ViewDataBinding, VM : ViewModel> : AppComp
         //及时销毁订阅
         clearDisposable()
     }
-
 }

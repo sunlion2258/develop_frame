@@ -24,7 +24,7 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/dp_6"
         android:layout_toEndOf="@+id/row_left_iv"
-        android:text="实名认证"
+        tools:text="左边文字"
         android:textColor="?attr/view1color"
         android:textSize="@dimen/sp_14" />
 
