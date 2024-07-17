@@ -7,6 +7,8 @@ import android.content.res.Configuration
 import android.os.Build
 import android.os.CountDownTimer
 import com.gyf.immersionbar.ImmersionBar
+import com.hjq.permissions.OnPermissionCallback
+import com.hjq.permissions.XXPermissions
 import com.sun.dev.R
 import com.sun.dev.base.BaseActivity
 import com.sun.dev.common.Constants
@@ -15,7 +17,6 @@ import com.sun.dev.datebase.DatabaseProvider
 import com.sun.dev.util.CodeUtil
 import com.sun.dev.util.SharedHelper
 import com.sun.dev.util.toast
-import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_welcome.tv_skip
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -48,31 +49,46 @@ class WelcomeActivity : BaseActivity() {
             return
         }
 
-        RxPermissions(this).request(
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE
-        ).subscribe {
-            if (it) {
-                val boolean = SharedHelper.getShared().getBoolean(Constants.SP.IS_FIRST, true)
-                if (boolean) {
-                    GlobalScope.launch {
-                        // 初始化数据库
-                        MyApplication.dp = DatabaseProvider.getDatabase(this@WelcomeActivity)
+        XXPermissions.with(this)
+            // 申请单个权限
+            .permission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .permission(Manifest.permission.READ_EXTERNAL_STORAGE)
+            //.unchecked()
+            .request(object : OnPermissionCallback {
+
+                override fun onGranted(permissions: MutableList<String>, allGranted: Boolean) {
+                    if (!allGranted) {
+                        toast("获取部分权限成功，但部分权限未正常授予")
+                        return
                     }
-                    SharedHelper.getEdit { sp -> sp.putBoolean(Constants.SP.IS_FIRST, false) }
+                    val boolean = SharedHelper.getShared().getBoolean(Constants.SP.IS_FIRST, true)
+                    if (boolean) {
+                        GlobalScope.launch {
+                            // 初始化数据库
+                            MyApplication.dp = DatabaseProvider.getDatabase(this@WelcomeActivity)
+                        }
+                        SharedHelper.getEdit { sp -> sp.putBoolean(Constants.SP.IS_FIRST, false) }
+                    }
+
+                    val checkIsLogin = CodeUtil.checkIsLogin()
+                    if (!checkIsLogin) {
+                        delayToMainActivity()
+                    } else {
+                        startActivity<MainActivity>()
+                    }
                 }
 
-                val checkIsLogin = CodeUtil.checkIsLogin()
-                if (!checkIsLogin) {
-                    delayToMainActivity()
-                } else {
-                    startActivity<MainActivity>()
+                override fun onDenied(permissions: MutableList<String>, doNotAskAgain: Boolean) {
+                    if (doNotAskAgain) {
+                        toast("被永久拒绝授权，请手动授予相关权限")
+                        // 如果是被永久拒绝就跳转到应用权限系统设置页面
+                        XXPermissions.startPermissionActivity(this@WelcomeActivity, permissions)
+                    } else {
+                        toast("需要同意存储权限")
+                        finish()
+                    }
                 }
-            } else {
-                toast("需要同意存储权限")
-                finish()
-            }
-        }
+            })
 
         tv_skip.setOnClickListener {
             //取消定时器

@@ -2,11 +2,14 @@
 
 package com.sun.dev.fragment.mine
 
+import android.Manifest
 import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityCompat.recreate
 import androidx.lifecycle.ViewModelProviders
 import com.gyf.immersionbar.ImmersionBar
+import com.hjq.permissions.OnPermissionCallback
+import com.hjq.permissions.XXPermissions
 import com.sun.dev.R
 import com.sun.dev.activity.ChangeLanguageActivity
 import com.sun.dev.activity.GLBActivity
@@ -20,6 +23,7 @@ import com.sun.dev.common.Constants
 import com.sun.dev.databinding.FragmentMainMineBinding
 import com.sun.dev.util.ClickUtils
 import com.sun.dev.util.SharedHelper
+import com.sun.dev.util.toast
 import org.jetbrains.anko.support.v4.startActivity
 
 /**

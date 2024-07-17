@@ -10,9 +10,9 @@
     </data>
 
     <LinearLayout
-        android:background="@color/color_white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/color_white"
         android:orientation="vertical">
 
         <com.sun.dev.widget.AppToolBar
@@ -34,6 +34,14 @@
         <com.xw.repo.BubbleSeekBar
             android:id="@+id/bsc_vas_dynamic"
             style="@style/SettingSeekBarBase" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:max="255" />
 
     </LinearLayout>
 </layout>

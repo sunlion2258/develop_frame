@@ -22,8 +22,6 @@ ext {
             // 测试
             junit                 : "junit:junit:4.12",
             espresso              : "com.android.support.test.espresso:espresso-core:2.2.2",
-            // 第三方
-            rxpermissions         : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar",
             rxjava                : "io.reactivex.rxjava2:rxjava:2.1.0",
             eventbus              : 'org.greenrobot:eventbus:3.1.1',
             glide                 : "com.github.bumptech.glide:glide:3.7.0",

@@ -13,7 +13,6 @@ import com.sun.dev.common.Constants
 import com.sun.dev.dialog.BottomDialog
 import com.sun.dev.dialog.EdittextDialog
 import com.sun.dev.util.toast
-import com.tbruyelle.rxpermissions2.RxPermissions
 import org.jetbrains.anko.startActivity
 
 /**
@@ -40,18 +39,12 @@ class MineViewModel(repository: MineRepository, val activity: MainActivity) : Vi
                     TitleWithContentActivity.TYPE_MY_INFO
                 )
             )
-            R.id.mine_location -> {
-                checkPermission(it)
-            }
             R.id.mine_drawing -> activity.startActivity<TitleWithContentActivity>(
                 Pair(
                     Constants.SP.TITLE_ACTIVITY_TYPE,
                     TitleWithContentActivity.TYPE_DRAWING
                 )
             )
-            R.id.mine_contact -> {
-                checkContactPermission(it)
-            }
             //退出按钮点击
             R.id.tv_quit -> {
                 val fragment = BottomDialog().newInstance()
@@ -65,43 +58,4 @@ class MineViewModel(repository: MineRepository, val activity: MainActivity) : Vi
     }
 
 
-    /**
-     * 检查权限
-     */
-    @SuppressLint("CheckResult")
-    private fun checkPermission(view: View) {
-        RxPermissions(view.context as FragmentActivity).request(
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION
-        ).subscribe {
-            if (it) {
-            } else {
-                toast("需要同意定位权限")
-            }
-        }
-    }
-
-    /**
-     * 通话记录权限
-     */
-    @SuppressLint("CheckResult")
-    private fun checkContactPermission(view: View) {
-        RxPermissions(view.context as FragmentActivity).request(
-            Manifest.permission.READ_CONTACTS,
-            Manifest.permission.READ_PHONE_STATE,
-            Manifest.permission.READ_CALL_LOG,
-            Manifest.permission.WRITE_CALL_LOG
-        ).subscribe {
-            if (it) {
-                activity.startActivity<TitleWithContentActivity>(
-                    Pair(
-                        Constants.SP.TITLE_ACTIVITY_TYPE,
-                        TitleWithContentActivity.TYPE_CONTACT
-                    )
-                )
-            } else {
-                toast("需要同意相关权限")
-            }
-        }
-    }
 }

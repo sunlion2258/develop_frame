@@ -15,6 +15,9 @@ import kotlinx.android.synthetic.main.activity_test.toolbar
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.toast
+import android.provider.Settings
+import android.widget.SeekBar
+import kotlinx.android.synthetic.main.activity_setting.seekBar
 
 /**
  * Created by fengwj on 2024/7/4.
@@ -46,6 +49,28 @@ class SettingActivity : BaseMVVMActivity<ActivitySettingBinding, SettingModel>()
                 }
             }
         }
+
+        // 获取当前屏幕亮度
+        val currentBrightness = Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS, 0)
+        seekBar.progress = currentBrightness
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                // 调节屏幕亮度
+                val layoutParams = window.attributes
+                layoutParams.screenBrightness = progress / 255.0f
+                window.attributes = layoutParams
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                // 不需要实现
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                // 不需要实现
+            }
+        })
+
+
     }
 
     override fun initContentViewID(): Int = R.layout.activity_setting
