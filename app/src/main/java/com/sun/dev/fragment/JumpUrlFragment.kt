@@ -11,8 +11,8 @@ import android.widget.TextView
 import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseFragment
-import com.sun.dev.dialog.BottomDialog
-import kotlinx.android.synthetic.main.fragment_blog.*
+import kotlinx.android.synthetic.main.fragment_jump_url.progressBar
+import kotlinx.android.synthetic.main.fragment_jump_url.webView
 import kotlinx.android.synthetic.main.include_toolbar.view.*
 import org.jetbrains.anko.support.v4.find
 

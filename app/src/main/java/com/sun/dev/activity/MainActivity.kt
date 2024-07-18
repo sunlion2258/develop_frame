@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.gyf.immersionbar.ImmersionBar
 import com.sun.dev.R
 import com.sun.dev.base.BaseActivity
-import com.sun.dev.fragment.BlogFragment
 import com.sun.dev.fragment.home.HomeFragment
 import com.sun.dev.fragment.mine.MineFragment
 import com.sun.dev.fragment.mine.MineRepository
@@ -52,8 +51,8 @@ class MainActivity : BaseActivity() {
             lottie_home.playAnimation()
         }
         rl_mine.setOnClickListener {
-            setImmersionBar(2)
-            mainFragmentManager.select(2)
+            setImmersionBar(1)
+            mainFragmentManager.select(1)
             tv_main.setTextColor(resources.getColor(R.color.color_c5))
             tv_mine.setTextColor(resources.getColor(R.color.common_blue))
             lottie_mine.repeatCount=0
@@ -78,7 +77,6 @@ class MainActivity : BaseActivity() {
         //初始化Fragment，并且显示第一个Fragment
         init {
             fragments.add(HomeFragment())
-            fragments.add(BlogFragment.newInstance("https://blog.csdn.net/qq_36255612"))
             fragments.add(MineFragment())
             fragmentManager.beginTransaction().replace(containerId, fragments[0])
                 .commitAllowingStateLoss()
@@ -112,13 +110,6 @@ class MainActivity : BaseActivity() {
                     .init()
             }
             1 -> {
-                ImmersionBar.with(this)
-                    .statusBarDarkFont(true)
-                    .navigationBarColor(android.R.color.white)
-                    .navigationBarDarkIcon(true)
-                    .init()
-            }
-            2 -> {
                 ImmersionBar.with(this)
                     .statusBarDarkFont(true)
                     .navigationBarColor(android.R.color.white)

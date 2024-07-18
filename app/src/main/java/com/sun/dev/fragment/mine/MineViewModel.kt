@@ -1,9 +1,7 @@
 package com.sun.dev.fragment.mine
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.view.View
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sun.dev.R
@@ -12,7 +10,6 @@ import com.sun.dev.activity.TitleWithContentActivity
 import com.sun.dev.common.Constants
 import com.sun.dev.dialog.BottomDialog
 import com.sun.dev.dialog.EdittextDialog
-import com.sun.dev.util.toast
 import org.jetbrains.anko.startActivity
 
 /**
