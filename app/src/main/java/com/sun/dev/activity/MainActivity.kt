@@ -23,13 +23,12 @@ import kotlinx.android.synthetic.main.activity_main.rl_mine
 import kotlinx.android.synthetic.main.activity_main.tv_main
 import kotlinx.android.synthetic.main.activity_main.tv_mine
 
-
 class MainActivity : BaseActivity() {
     override fun initContentViewID(): Int = R.layout.activity_main
 
     override fun onViewCreated() {
         super.onViewCreated()
-
+        
         ImmersionBar.with(this)
             .transparentStatusBar()
             .statusBarDarkFont(false)
@@ -41,13 +40,12 @@ class MainActivity : BaseActivity() {
         mainFragmentManager =
             MainFragmentManager(supportFragmentManager, container.id)
 
-
         rl_main.setOnClickListener {
             setImmersionBar(0)
             mainFragmentManager.select(0)
             tv_main.setTextColor(resources.getColor(R.color.common_blue))
             tv_mine.setTextColor(resources.getColor(R.color.color_c5))
-            lottie_home.repeatCount=0
+            lottie_home.repeatCount = 0
             lottie_home.playAnimation()
         }
         rl_mine.setOnClickListener {
@@ -55,13 +53,14 @@ class MainActivity : BaseActivity() {
             mainFragmentManager.select(1)
             tv_main.setTextColor(resources.getColor(R.color.color_c5))
             tv_mine.setTextColor(resources.getColor(R.color.common_blue))
-            lottie_mine.repeatCount=0
+            lottie_mine.repeatCount = 0
             lottie_mine.playAnimation()
         }
 
 
         //MineFragment的ViewModel
-        ViewModelProviders.of(this, MineVMFactory(MineRepository(), this)).get(MineViewModel::class.java)
+        ViewModelProviders.of(this, MineVMFactory(MineRepository(), this))
+            .get(MineViewModel::class.java)
     }
 
     private lateinit var mainFragmentManager: MainFragmentManager
@@ -109,6 +108,7 @@ class MainActivity : BaseActivity() {
                     .navigationBarDarkIcon(true)
                     .init()
             }
+
             1 -> {
                 ImmersionBar.with(this)
                     .statusBarDarkFont(true)
@@ -127,7 +127,6 @@ class MainActivity : BaseActivity() {
             && event!!.action == KeyEvent.ACTION_DOWN
         ) {
             if ((System.currentTimeMillis() - exitTime) > 2000) {
-                //弹出提示，可以有多种方式
                 toast("再按一次退出程序")
                 exitTime = System.currentTimeMillis()
             } else {

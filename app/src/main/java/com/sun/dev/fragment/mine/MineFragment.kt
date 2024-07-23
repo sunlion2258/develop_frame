@@ -1,5 +1,4 @@
 @file:Suppress("DEPRECATION")
-
 package com.sun.dev.fragment.mine
 
 import android.os.Bundle
@@ -18,8 +17,10 @@ import com.sun.dev.activity.UnityTestActivity
 import com.sun.dev.base.BaseMVVMFragment
 import com.sun.dev.common.Constants
 import com.sun.dev.databinding.FragmentMainMineBinding
+import com.sun.dev.event.RedPacketDeleteIdEvent
 import com.sun.dev.util.ClickUtils
 import com.sun.dev.util.SharedHelper
+import org.greenrobot.eventbus.EventBus
 import org.jetbrains.anko.support.v4.startActivity
 
 /**
@@ -45,7 +46,6 @@ class MineFragment : BaseMVVMFragment<FragmentMainMineBinding, MineViewModel>() 
             requireActivity().setTheme(R.style.AppTheme)
         }
         super.onViewCreated(view, savedInstanceState)
-
 
         ImmersionBar.with(this)
             .statusBarDarkFont(true)
@@ -93,6 +93,7 @@ class MineFragment : BaseMVVMFragment<FragmentMainMineBinding, MineViewModel>() 
             SharedHelper.getEdit { sp -> sp.putBoolean(Constants.SP.THEME_PREFS, isDarkTheme) }
             // 重新启动活动以应用新主题
             recreate(requireActivity())
+            EventBus.getDefault().post(RedPacketDeleteIdEvent(""))
         }
         bindView.mineSetting.setOnClickListener {
             if (!ClickUtils.isNotFastClick()) {
