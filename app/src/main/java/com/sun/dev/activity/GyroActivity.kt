@@ -2,18 +2,13 @@
 
 package com.sun.dev.activity
 
-import android.content.Context
-import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.Paint
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
-import android.util.AttributeSet
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gyf.immersionbar.ImmersionBar
@@ -26,9 +21,10 @@ import com.sun.dev.databinding.ActivityGyroBinding
 import com.sun.dev.viewmodel.GyroModel
 import com.sun.dev.viewrepository.GyroRepository
 import com.sun.dev.vmfactory.GyroFactory
+import kotlinx.android.synthetic.main.activity_gyro.ballView
 import kotlinx.android.synthetic.main.activity_gyro.rv_gyro_list
 import kotlinx.android.synthetic.main.activity_gyro.rv_gyro_xy
-import kotlinx.android.synthetic.main.activity_test.toolbar
+import kotlinx.android.synthetic.main.activity_gyro.toolbar_gyro
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -36,6 +32,7 @@ import kotlinx.coroutines.launch
 import org.jetbrains.anko.toast
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.random.Random
 
 /**
  * 陀螺仪页面
@@ -56,8 +53,6 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
     private val displacement = FloatArray(2) // 用于存储X和Y轴的位移值
 
 
-    private lateinit var ballView: BallView
-
     private var ballX = 0f
     private var ballY = 0f
     private var velocityX = 0f
@@ -70,7 +65,7 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
             .get(GyroModel::class.java)
 
     override fun onMVVMCreated(savedInstanceState: Bundle?) {
-        ImmersionBar.setTitleBar(this, toolbar)
+        ImmersionBar.setTitleBar(this, toolbar_gyro)
         ImmersionBar.with(this)
             .statusBarDarkFont(true)
             .init()
@@ -87,9 +82,6 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
 
         rv_gyro_xy.layoutManager = LinearLayoutManager(this)
         rv_gyro_xy.adapter = mXYAdapter
-
-        ballView = BallView(this)
-        setContentView(ballView)
 
         val gyroscopeSensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
 
@@ -108,19 +100,83 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
         }
 
 
-        GlobalScope.launch(Dispatchers.Main) {
-            for (index in -1..100){
-                delay(200)
-                // 更新速度和位置
-                velocityX += index * 0.1f
-                velocityY += index * 0.01f
+        ballMovement(5)
+    }
 
-                ballX -= velocityX * 0.001f
-                ballY += velocityY * 0.001f
+    /**
+     * level 小球运动速度，1-10之间
+     */
+    private fun ballMovement(level: Int) {
+        GlobalScope.launch(Dispatchers.Main) {
+            for (index in -100..100) {
+                delay(10 * level.toLong())
+
+                if (index in 19..41) {
+                    val currentIndex = Random.nextInt(20, 40)
+                    velocityX = currentIndex * 0.1f
+                    velocityY = currentIndex * 0.1f
+                } else {
+                    // 更新速度和位置
+                    velocityX = index * 0.1f
+                    velocityY = index * 0.1f
+                }
+
+                ballX = velocityX * 0.1f
+                ballY = velocityY * 0.14f
+
 
                 // 限制小球在屏幕范围内
                 ballX = min(max(ballX, -1f), 1f)
                 ballY = min(max(ballY, -1f), 1f)
+
+                ballView.setBallXY(ballX,ballY)
+
+                val nextIntColor = Random.nextInt(1, 10)
+                when (nextIntColor) {
+                    1 -> {
+                        ballView.paint.color = Color.BLACK
+                    }
+
+                    2 -> {
+                        ballView.paint.color = Color.BLUE
+                    }
+
+                    3 -> {
+                        ballView.paint.color = Color.CYAN
+                    }
+
+                    4 -> {
+                        ballView.paint.color = Color.DKGRAY
+                    }
+
+                    5 -> {
+                        ballView.paint.color = Color.GRAY
+                    }
+
+                    6 -> {
+                        ballView.paint.color = Color.GREEN
+                    }
+
+                    7 -> {
+                        ballView.paint.color = Color.LTGRAY
+                    }
+
+                    8 -> {
+                        ballView.paint.color = Color.MAGENTA
+                    }
+
+                    9 -> {
+                        ballView.paint.color = Color.RED
+                    }
+
+                    10 -> {
+                        ballView.paint.color = Color.YELLOW
+                    }
+
+                    else -> {
+                        ballView.paint.color = Color.GREEN
+                    }
+                }
 
                 ballView.invalidate()
             }
@@ -202,27 +258,5 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
         mXYList.add(GyroBean("X轴位置：$displacement[0]  Y轴：$ displacement[1] "))
         mXYAdapter.setNewData(mXYList)
         rv_gyro_xy.smoothScrollToPosition(mXYList.size - 1)
-    }
-
-    inner class BallView(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
-        private val paint = Paint().apply {
-            color = Color.RED
-        }
-
-        override fun onDraw(canvas: Canvas) {
-            super.onDraw(canvas)
-            val canvasWidth = width.toFloat()
-            val canvasHeight = height.toFloat()
-            val ballRadius = 10f
-
-            val centerX = canvasWidth / 2
-            val centerY = canvasHeight / 2
-
-            val drawX = centerX + ballX * (canvasWidth / 2 - ballRadius)
-            val drawY = centerY - ballY * (canvasHeight / 2 - ballRadius)
-
-            canvas.drawColor(Color.WHITE)
-            canvas.drawCircle(drawX, drawY, ballRadius, paint)
-        }
     }
 }

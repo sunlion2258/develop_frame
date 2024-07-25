@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <com.sun.dev.widget.AppToolBar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_gyro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:toolbar_style="back_title"
@@ -24,30 +24,38 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="当前设备传感器："
             android:layout_marginStart="@dimen/dp_10"
+            android:text="当前设备传感器："
             android:textSize="@dimen/sp_11" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_gyro_list"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:orientation="horizontal">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_gyro_xy"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_gyro_list"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_gyro_xy"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2" />
 
-        </LinearLayout>
+            </LinearLayout>
 
+            <com.sun.dev.widget.BallView
+                android:id="@+id/ballView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
 
     </LinearLayout>
 </layout>
