@@ -15,7 +15,6 @@ class BallView(context: Context, attrs: AttributeSet? = null) : View(context, at
     private var ballX = 0f
     private var ballY = 0f
 
-
     val paint = Paint().apply {
         color = Color.RED
     }

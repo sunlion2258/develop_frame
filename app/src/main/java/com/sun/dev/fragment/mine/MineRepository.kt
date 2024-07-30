@@ -22,9 +22,4 @@ class MineRepository {
             str
         }
     }
-
-
-    fun getRecordResultData(str: String): Observable<RecordVoiceResultBean> {
-        return RetrofitManager.getRecordResultData(str)
-    }
 }

@@ -32,34 +32,14 @@
                 app:row_title_text="@string/my_info" />
 
             <com.sun.dev.widget.AppRowLayout
-                android:id="@+id/mine_location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="@{vm.mineViewOnClick}"
-                android:visibility="gone"
-                app:image_left="@mipmap/icon_location"
-                app:layout_constraintTop_toBottomOf="@+id/mine_my"
-                app:row_title_text="@string/location" />
-
-            <com.sun.dev.widget.AppRowLayout
                 android:id="@+id/mine_drawing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="@{vm.mineViewOnClick}"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:image_left="@mipmap/icon_draw"
-                app:layout_constraintTop_toBottomOf="@+id/mine_location"
+                app:layout_constraintTop_toBottomOf="@+id/mine_my"
                 app:row_title_text="@string/drawing" />
-
-            <com.sun.dev.widget.AppRowLayout
-                android:id="@+id/mine_contact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="@{vm.mineViewOnClick}"
-                android:visibility="gone"
-                app:image_left="@mipmap/icon_contact"
-                app:layout_constraintTop_toBottomOf="@+id/mine_drawing"
-                app:row_title_text="@string/contact" />
 
             <com.sun.dev.widget.AppRowLayout
                 android:id="@+id/mine_jump_url"
@@ -67,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="@{vm.mineViewOnClick}"
                 app:image_left="@mipmap/icon_jump_url"
-                app:layout_constraintTop_toBottomOf="@+id/mine_contact"
+                app:layout_constraintTop_toBottomOf="@+id/mine_drawing"
                 app:row_title_text="@string/jump_url" />
 
             <com.sun.dev.widget.AppRowLayout

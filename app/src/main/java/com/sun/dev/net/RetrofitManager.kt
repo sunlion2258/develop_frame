@@ -1,13 +1,8 @@
-@file:Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-
 package com.sun.dev.net
 
-import android.text.Html
-import com.google.gson.Gson
 import com.sun.dev.common.ApiService
 import com.sun.dev.common.Constants
 import com.sun.dev.entity.CodeBean
-import com.sun.dev.entity.RecordVoiceResultBean
 import com.sun.dev.entity.RegisterBean
 import com.sun.dev.util.CodeUtil
 import com.sun.dev.util.SharedHelper
@@ -81,7 +76,6 @@ object RetrofitManager {
                 "secret",
                 CodeUtil.encode(phone.substring(phone.length - 4, phone.length) + Constants.URL.YAN)
             )
-            //Log.d("===>",phone.substring(phone.length - 4, phone.length))
         }
         return apiService.getPhoneCode(getRequestBody(json.toString()))
     }
@@ -97,19 +91,5 @@ object RetrofitManager {
             this.put("devAlias", phoneName)
         }
         return apiService.beginLogin(getRequestBody(json.toString()))
-    }
-
-    /**
-     *  blog
-     */
-    fun getBlogData(): Observable<Html> {
-        return apiService.getBlog()
-    }
-
-    /**
-     * 获取录音请求结果
-     */
-    fun getRecordResultData(str: String): Observable<RecordVoiceResultBean> {
-        return apiService.getRecordResultData(str)
     }
 }

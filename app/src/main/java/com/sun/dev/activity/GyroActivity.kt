@@ -47,16 +47,10 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
     private var mXYAdapter = GyroXYZListAdapter()
     private var mXYList = mutableListOf<GyroBean>()
 
-    private var lastAccelerationValues = FloatArray(3)
-    private var lastGyroValues = FloatArray(3)
-
-    private val displacement = FloatArray(2) // 用于存储X和Y轴的位移值
-
-
-    private var ballX = 0f
-    private var ballY = 0f
-    private var velocityX = 0f
-    private var velocityY = 0f
+    private var ballX = 0.00
+    private var ballY = 0.00
+    private var velocityX = 0.00
+    private var velocityY = 0.00
 
     override fun initContentViewID(): Int = R.layout.activity_gyro
 
@@ -83,7 +77,10 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
         rv_gyro_xy.layoutManager = LinearLayoutManager(this)
         rv_gyro_xy.adapter = mXYAdapter
 
-        val gyroscopeSensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
+        //陀螺仪
+//        val gyroscopeSensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
+        //加速度
+        val gyroscopeSensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
         if (gyroscopeSensor != null) {
             val registered = sensorManager!!.registerListener(
@@ -98,9 +95,6 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
         } else {
             toast("没有陀螺仪传感器")
         }
-
-
-        ballMovement(5)
     }
 
     /**
@@ -111,25 +105,19 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
             for (index in -100..100) {
                 delay(10 * level.toLong())
 
-                if (index in 19..41) {
-                    val currentIndex = Random.nextInt(20, 40)
-                    velocityX = currentIndex * 0.1f
-                    velocityY = currentIndex * 0.1f
-                } else {
-                    // 更新速度和位置
-                    velocityX = index * 0.1f
-                    velocityY = index * 0.1f
-                }
+                // 更新速度和位置
+                velocityX = index * 0.10
+                velocityY = index * 0.10
 
-                ballX = velocityX * 0.1f
-                ballY = velocityY * 0.14f
+                ballX = velocityX * 0.10
+                ballY = velocityY * 0.14
 
 
                 // 限制小球在屏幕范围内
-                ballX = min(max(ballX, -1f), 1f)
-                ballY = min(max(ballY, -1f), 1f)
+                ballX = min(max(ballX, -1.00), 1.00)
+                ballY = min(max(ballY, -1.00), 1.00)
 
-                ballView.setBallXY(ballX,ballY)
+                ballView.setBallXY(ballX.toFloat(), ballY.toFloat())
 
                 val nextIntColor = Random.nextInt(1, 10)
                 when (nextIntColor) {
@@ -177,7 +165,6 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
                         ballView.paint.color = Color.GREEN
                     }
                 }
-
                 ballView.invalidate()
             }
         }
@@ -199,36 +186,31 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
         override fun onSensorChanged(event: SensorEvent?) {
             when (event!!.sensor.type) {
                 Sensor.TYPE_ACCELEROMETER -> {
-                    val x = event.values[0]
-                    val y = event.values[1]
-                    val z = event.values[2]
+                    val y = event.values[0]
+                    val x = event.values[1]
 
-                    // 更新加速度传感器的值
-                    lastAccelerationValues = floatArrayOf(x, y, z)
-                    calculateDisplacement()
+                    velocityX = x * 0.10
+                    velocityY = y * 0.10
 
-                    // 更新速度和位置
-                    velocityX += x * 0.1f
-                    velocityY += y * 0.1f
-
-                    ballX -= velocityX * 0.01f
-                    ballY += velocityY * 0.01f
+                    ballX = velocityX * 1f
+                    ballY = velocityY * 1f
 
                     // 限制小球在屏幕范围内
-                    ballX = min(max(ballX, -1f), 1f)
-                    ballY = min(max(ballY, -1f), 1f)
+                    ballX = min(max(ballX, -1.00), 1.00)
+                    ballY = min(max(ballY, -1.00), 1.00)
 
+                    ballView.setBallXY(ballX.toFloat(), -ballY.toFloat())
                     ballView.invalidate()
+
+                    mXYList.add(GyroBean("X轴：${x     }     Y轴：${y}"))
+                    mXYAdapter.setNewData(mXYList)
+                    rv_gyro_xy.smoothScrollToPosition(mXYList.size - 1)
                 }
 
                 Sensor.TYPE_GYROSCOPE -> {
                     val x = event.values[0]
                     val y = event.values[1]
-                    val z = event.values[2]
 
-                    // 更新陀螺仪传感器的值
-                    lastGyroValues = floatArrayOf(x, y, z)
-                    calculateDisplacement()
                 }
             }
         }
@@ -236,27 +218,5 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
         override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
             //精度改变时调用
         }
-    }
-
-    private fun calculateDisplacement() {
-        // 假设时间间隔为1秒
-        val deltaTime = 1.0f
-
-        // 简单的位移计算公式，考虑加速度和角速度的影响
-        val ax = lastAccelerationValues[0]
-        val ay = lastAccelerationValues[1]
-
-        // 计算X和Y的位移
-        displacement[0] += ax * deltaTime
-        displacement[1] += ay * deltaTime
-
-        // 确保位移值在-1到1之间
-        displacement[0] = displacement[0].coerceIn(-1f, 1f)
-        displacement[1] = displacement[1].coerceIn(-1f, 1f)
-
-
-        mXYList.add(GyroBean("X轴位置：$displacement[0]  Y轴：$ displacement[1] "))
-        mXYAdapter.setNewData(mXYList)
-        rv_gyro_xy.smoothScrollToPosition(mXYList.size - 1)
     }
 }
