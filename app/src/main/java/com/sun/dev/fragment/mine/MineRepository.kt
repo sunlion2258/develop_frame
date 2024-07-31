@@ -1,7 +1,6 @@
 package com.sun.dev.fragment.mine
 
 import com.sun.dev.common.Constants
-import com.sun.dev.entity.RecordVoiceResultBean
 import com.sun.dev.entity.RegisterBean
 import com.sun.dev.util.SharedHelper
 import com.sun.dev.net.RetrofitManager

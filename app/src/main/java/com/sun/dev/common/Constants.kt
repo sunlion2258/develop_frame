@@ -25,8 +25,6 @@ object Constants {
         const val PHONE_CODE = "xiaoyu/member/sendSms"
         //登录
         const val LOGIN = "xiaoyu/member/smsLogin"
-        //博客地址
-        const val BLOG_URL = "https://blog.csdn.net/qq_36255612/article/list/1"
     }
 
     /**
