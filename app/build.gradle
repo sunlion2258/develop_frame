@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -221,5 +222,6 @@ dependencies {
     implementation rootProject.ext.dependencies.gltfio_android
     implementation rootProject.ext.dependencies.bubbleseekbar
     implementation rootProject.ext.dependencies.XXPermissions
+    implementation rootProject.ext.dependencies.android_pdf_viewer
 
 }

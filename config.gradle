@@ -42,8 +42,9 @@ ext {
             filament_android      : 'com.google.android.filament:filament-android:1.21.1',
             filament_utils_android: 'com.google.android.filament:filament-utils-android:1.21.1',
             gltfio_android        : 'com.google.android.filament:gltfio-android:1.21.1',
-            room_runtime          : "androidx.room:room-runtime:2.4.0",
-            room_ktx              : "androidx.room:room-ktx:2.2.5"
+            room_runtime          : 'androidx.room:room-runtime:2.4.0',
+            room_ktx              : 'androidx.room:room-ktx:2.2.5',
+            android_pdf_viewer: 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
     ]
 
 }

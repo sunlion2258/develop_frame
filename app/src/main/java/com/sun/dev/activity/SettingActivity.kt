@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 import org.jetbrains.anko.toast
 import android.provider.Settings
 import android.widget.SeekBar
+import kotlinx.android.synthetic.main.activity_setting.pdfView
 import kotlinx.android.synthetic.main.activity_setting.seekBar
 
 /**
@@ -37,7 +38,7 @@ class SettingActivity : BaseMVVMActivity<ActivitySettingBinding, SettingModel>()
             val allAssessmentLevel = db.assessmentLevelDao().getAllAssessmentLevel()
             if (allAssessmentLevel.isNotEmpty()) {
                 runOnUiThread {
-                    toast("有数据了:  ${allAssessmentLevel[0]}")
+//                    toast("有数据了:  ${allAssessmentLevel[0]}")
                 }
                 return@launch
             }
@@ -70,7 +71,19 @@ class SettingActivity : BaseMVVMActivity<ActivitySettingBinding, SettingModel>()
             }
         })
 
-
+        pdfView.fromAsset("mafeng.pdf")
+            .enableSwipe(true)
+            .swipeHorizontal(false)
+            .enableDoubletap(true)
+            .defaultPage(0)
+            .onLoad { }
+            .onPageChange { page, pageCount ->
+                // Handle page change
+            }
+            .onError { t -> // Handle error
+            }
+            .enableAnnotationRendering(true)
+            .load()
     }
 
     override fun initContentViewID(): Int = R.layout.activity_setting
