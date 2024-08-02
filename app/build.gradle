@@ -4,7 +4,11 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'maven-publish'
+    id 'com.github.dcendents.android-maven'
 }
+
+group = 'com.github.sunlion'
+
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -16,6 +20,8 @@ android {
             storePassword KEY_PASS
             keyAlias ALIAS_NAME
             keyPassword ALIAS_PASS
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
         //高德地图必须配置debug，不然报错鉴权失败
         debug {
@@ -24,6 +30,8 @@ android {
             storePassword KEY_PASS
             keyAlias ALIAS_NAME
             keyPassword ALIAS_PASS
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
     defaultConfig {
@@ -59,9 +67,9 @@ android {
         debug {
             minifyEnabled false
             useProguard false
+            jniDebuggable true
             signingConfig signingConfigs.debug
             buildConfigField "String", "ApiHost", "\"http://47.104.224.130:8080/\""
-            jniDebuggable true
         }
         release {
             minifyEnabled false
@@ -140,36 +148,6 @@ android {
         }
         abi {
             enableSplit = true
-        }
-    }
-}
-
-publishing {
-    publications {
-        // 创建 MavenPublication 类型的 publication
-        maven(MavenPublication) {
-            groupId = 'com.example'
-            artifactId = 'my-library'
-            version = '1.0.0'
-
-            // 选择你要发布的 artifacts
-            artifact("$buildDir/outputs/aar/my-library-release.aar")
-
-            // 可选的 POM 配置
-            pom {
-                name.set('My Library')
-                description.set('A description of my library')
-                url.set('http://www.example.com')
-            }
-        }
-    }
-    repositories {
-        maven {
-            url = uri("https://your-repository-url")
-            credentials {
-                username = project.findProperty("mavenUser") ?: ""
-                password = project.findProperty("mavenPassword") ?: ""
-            }
         }
     }
 }
