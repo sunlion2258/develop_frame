@@ -152,6 +152,38 @@ android {
     }
 }
 
+publishing {
+    publications {
+        // 创建 MavenPublication 类型的 publication
+        maven(MavenPublication) {
+            groupId = 'com.example'
+            artifactId = 'my-library'
+            version = '1.0.0'
+
+            // 选择你要发布的 artifacts
+            artifact("$buildDir/outputs/aar/my-library-release.aar")
+
+            // 可选的 POM 配置
+            pom {
+                name.set('My Library')
+                description.set('A description of my library')
+                url.set('http://www.example.com')
+            }
+        }
+    }
+    repositories {
+        maven {
+            url = uri("https://your-repository-url")
+            credentials {
+                username = project.findProperty("mavenUser") ?: ""
+                password = project.findProperty("mavenPassword") ?: ""
+            }
+        }
+    }
+}
+
+
+
 dependencies {
     api project(':unityLibrary')
     implementation fileTree(dir: project(':unityLibrary').getProjectDir().toString() + ('\\libs'), includes: ['*.jar'])
