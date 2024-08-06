@@ -23,6 +23,4 @@ interface ApiService {
     @POST(Constants.URL.LOGIN)
     fun beginLogin(@Body requestBody: RequestBody): Observable<RegisterBean>
 
-
-
 }

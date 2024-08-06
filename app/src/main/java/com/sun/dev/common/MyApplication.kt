@@ -3,12 +3,7 @@ package com.sun.dev.common
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
 import com.sun.dev.datebase.AppDatabase
-import com.sun.dev.datebase.DatabaseProvider
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 
 /**

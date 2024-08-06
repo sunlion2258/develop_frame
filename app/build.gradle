@@ -182,8 +182,6 @@ publishing {
     }
 }
 
-
-
 dependencies {
     api project(':unityLibrary')
     implementation fileTree(dir: project(':unityLibrary').getProjectDir().toString() + ('\\libs'), includes: ['*.jar'])
