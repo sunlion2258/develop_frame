@@ -1,5 +1,4 @@
 ext {
-
     android = [
             compileSdkVersion: 31,
             buildToolsVersion: "31.0.0",
@@ -42,5 +41,4 @@ ext {
             room_ktx              : 'androidx.room:room-ktx:2.2.5',
             android_pdf_viewer    : 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
     ]
-
 }

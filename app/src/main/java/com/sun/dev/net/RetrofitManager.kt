@@ -64,7 +64,6 @@ object RetrofitManager {
         return str.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
     }
 
-
     /**
      * 获取验证码
      */

@@ -4,7 +4,6 @@ package com.sun.dev.activity
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
-import cn.qqtheme.framework.util.LogUtils
 import com.google.android.filament.Engine
 import com.google.android.filament.gltfio.FilamentAsset
 import com.google.android.filament.utils.Mat4
@@ -52,39 +51,10 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
             asset = getAsset()
             engine = getEngine()
 
-//            setModelScale(1.6f)
-//            getJoints(asset!!, engine!!)
+            setModelScale(1.6f)
+            getJoints(asset!!, engine!!)
 
-            val entities = asset!!.entities
-            val transformManager = engine!!.transformManager
 
-            entities.forEach { entity ->
-                val transformInstance = transformManager.getInstance(entity)
-                if (transformInstance != 0) {
-                    val name = asset!!.getName(entity)
-                    LogUtils.debug("Joint name ----------", name)
-                    if (name.contains("RootNode")) {
-                        val transformInstance = transformManager.getInstance(entity)
-                        if (transformInstance != 0) {
-                            val transformArray = FloatArray(16)
-                            transformManager.getTransform(transformInstance, transformArray)
-                            val scaleMatrix = Mat4.of(
-                                1.5f, 0.0f, 0.0f, 0.0f,
-                                0f, 1.5f, 0.0f, 0.0f,
-                                0f, 0.0f, 1.5f, 0.0f,
-                                0f, 0.0f, 0.0f, 0.95f,
-                            )
-
-                            val currentTransform = Mat4.of(*transformArray)
-                            val newTransform = scaleMatrix * currentTransform
-                            transformManager.setTransform(
-                                transformInstance,
-                                newTransform.toFloatArray()
-                            )
-                        }
-                    }
-                }
-            }
         }
     }
 
@@ -97,7 +67,6 @@ class GLBActivity : BaseMVVMActivity<ActivityGlbBinding, TestModel>() {
         super.onPause()
         customViewer.onPause()
     }
-
 
     /**
      * 缩放模型

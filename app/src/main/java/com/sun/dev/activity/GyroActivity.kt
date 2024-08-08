@@ -202,7 +202,7 @@ class GyroActivity : BaseMVVMActivity<ActivityGyroBinding, GyroModel>() {
                     ballView.setBallXY(ballX.toFloat(), -ballY.toFloat())
                     ballView.invalidate()
 
-                    mXYList.add(GyroBean("X轴：${x     }     Y轴：${y}"))
+                    mXYList.add(GyroBean("X轴：${x}     Y轴：${y}"))
                     mXYAdapter.setNewData(mXYList)
                     rv_gyro_xy.smoothScrollToPosition(mXYList.size - 1)
                 }
