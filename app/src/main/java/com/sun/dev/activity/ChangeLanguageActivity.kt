@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gyf.immersionbar.ImmersionBar
+import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.sun.dev.R
 import com.sun.dev.adapter.ChangeLanguageListAdapter
 import com.sun.dev.base.BaseMVVMActivity
@@ -61,6 +62,7 @@ class ChangeLanguageActivity :
 
         bindViews.recyclerViewChangeLanguage.layoutManager = LinearLayoutManager(this)
         bindViews.recyclerViewChangeLanguage.adapter = mListAdapter
+        bindViews.refreshChangeLanguage.setRefreshHeader(ClassicsHeader(this@ChangeLanguageActivity))
 
         mList.add(0, ChangeLanguageBean("English", "en"))
         mList.add(1, ChangeLanguageBean("简体中文", "zh"))

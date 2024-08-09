@@ -28,7 +28,7 @@ class MainActivity : BaseActivity() {
 
     override fun onViewCreated() {
         super.onViewCreated()
-        
+
         ImmersionBar.with(this)
             .transparentStatusBar()
             .statusBarDarkFont(false)

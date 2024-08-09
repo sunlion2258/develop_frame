@@ -80,9 +80,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="@string/main_tab_mine"
                     android:textColor="@color/color_c5" />
-
             </RelativeLayout>
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

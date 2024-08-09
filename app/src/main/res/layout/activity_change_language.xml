@@ -40,7 +40,7 @@
                 android:id="@+id/recycler_view_change_language"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="5dp"
                 android:overScrollMode="never"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
